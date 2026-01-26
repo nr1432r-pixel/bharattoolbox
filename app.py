@@ -3,10 +3,7 @@ from pdf2docx import Converter
 from docx2pdf import convert
 from pypdf import PdfReader, PdfWriter
 import os, uuid, asyncio, requests
-import edge_tts
 import requests
-import asyncio
-import edge_tts
 import subprocess
 
 app = Flask(__name__, static_folder="static")
@@ -299,3 +296,4 @@ def instagram_download():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
