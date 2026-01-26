@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Unit Converter</title>
+
+<style>
+body{
+  background:#eef2f7;
+  font-family:Arial, sans-serif;
+}
+
+.app{
+  width:330px;
+  margin:60px auto;
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 10px 28px rgba(0,0,0,.15);
+}
+
+h1{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+input, select{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  background:#0ea5e9;
+  border:none;
+  color:#fff;
+  border-radius:6px;
+  cursor:pointer;
+  margin-top:8px;
+}
+
+button:hover{
+  background:#0369a1;
+}
+
+#result{
+  margin-top:12px;
+  font-weight:bold;
+  text-align:center;
+}
+
+.back{
+  text-align:center;
+  margin-top:12px;
+}
+
+.back a{
+  text-decoration:none;
+  font-weight:bold;
+  color:#2563eb;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+  <h1>📐 Unit Converter</h1>
+
+  <select id="type" onchange="updateUnits()">
+    <option value="length">Length</option>
+    <option value="weight">Weight</option>
+    <option value="temp">Temperature</option>
+  </select>
+
+  <input id="value" placeholder="Enter value">
+
+  <select id="from"></select>
+  <select id="to"></select>
+
+  <button onclick="convert()">Convert</button>
+
+  <p id="result"></p>
+
+  <div class="back">
+    <a href="/">⬅ Home</a>
+  </div>
+</div>
+
+<script>
+const units = {
+  length: ["Meter","Kilometer","Centimeter","Inch","Foot"],
+  weight: ["Kg","Gram","Pound"],
+  temp: ["Celsius","Fahrenheit","Kelvin"]
+};
+
+const type = document.getElementById("type");
+const from = document.getElementById("from");
+const to = document.getElementById("to");
+const result = document.getElementById("result");
+
+function updateUnits(){
+  from.innerHTML = "";
+  to.innerHTML = "";
+  units[type.value].forEach(u=>{
+    from.add(new Option(u,u));
+    to.add(new Option(u,u));
+  });
+}
+updateUnits();
+
+function convert(){
+  let v = parseFloat(document.getElementById("value").value);
+  if(isNaN(v)){
+    result.textContent = "Enter valid number";
+    return;
+  }
+
+  let f = from.value;
+  let t = to.value;
+  let r = v;
+
+  /* LENGTH */
+  if(type.value==="length"){
+    let m = f==="Meter"?v:
+            f==="Kilometer"?v*1000:
+            f==="Centimeter"?v/100:
+            f==="Inch"?v*0.0254:
+            v*0.3048;
+    r = t==="Meter"?m:
+        t==="Kilometer"?m/1000:
+        t==="Centimeter"?m*100:
+        t==="Inch"?m/0.0254:
+        m/0.3048;
+  }
+
+  /* WEIGHT */
+  if(type.value==="weight"){
+    let kg = f==="Kg"?v:
+             f==="Gram"?v/1000:
+             v*0.453592;
+    r = t==="Kg"?kg:
+        t==="Gram"?kg*1000:
+        kg/0.453592;
+  }
+
+  /* TEMPERATURE */
+  if(type.value==="temp"){
+    let c = f==="Celsius"?v:
+            f==="Fahrenheit"?(v-32)*5/9:
+            v-273.15;
+    r = t==="Celsius"?c:
+        t==="Fahrenheit"?c*9/5+32:
+        c+273.15;
+  }
+
+  result.textContent = "Result: " + r;
+}
+</script>
+
+</body>
+</html>

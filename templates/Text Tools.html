@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Text Tools</title>
+
+<style>
+body {
+  background:#eef1f6;
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  width: 420px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.15);
+}
+
+h1 {
+  text-align:center;
+  margin-bottom:10px;
+}
+
+textarea {
+  width:100%;
+  height:140px;
+  padding:10px;
+  resize:vertical;
+  font-size:14px;
+}
+
+.btns button {
+  width:100%;
+  margin-top:8px;
+  padding:10px;
+  border:none;
+  border-radius:6px;
+  background:#4f46e5;
+  color:#fff;
+  cursor:pointer;
+}
+
+.btns button:hover {
+  background:#3730a3;
+}
+
+.stats {
+  display:flex;
+  justify-content:space-between;
+  margin-top:10px;
+  font-size:13px;
+  color:#444;
+}
+
+.danger {
+  background:#dc2626 !important;
+}
+
+.back {
+  text-align:center;
+  margin-top:12px;
+}
+
+.back a {
+  text-decoration:none;
+  font-weight:bold;
+  color:#2563eb;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>📝 Text Tools</h1>
+
+  <textarea id="textInput" placeholder="Paste or type text here..."></textarea>
+
+  <div class="btns">
+    <button onclick="toUpper()">UPPERCASE</button>
+    <button onclick="toLower()">lowercase</button>
+    <button onclick="removeSpaces()">Remove Extra Spaces</button>
+    <button onclick="reverseText()">Reverse</button>
+  </div>
+
+  <div class="stats">
+    <span id="words">Words: 0</span>
+    <span id="chars">Chars: 0</span>
+  </div>
+
+  <div class="btns">
+    <button onclick="copyText()">Copy</button>
+    <button class="danger" onclick="clearText()">Clear</button>
+  </div>
+
+  <div class="back">
+    <a href="/">⬅ Home</a>
+  </div>
+</div>
+
+<script>
+const input = document.getElementById("textInput");
+const wordsEl = document.getElementById("words");
+const charsEl = document.getElementById("chars");
+
+input.addEventListener("input", updateCount);
+
+function updateCount() {
+  const text = input.value.trim();
+  const words = text ? text.split(/\s+/).length : 0;
+  const chars = input.value.length;
+
+  wordsEl.textContent = "Words: " + words;
+  charsEl.textContent = "Chars: " + chars;
+}
+
+function toUpper() {
+  input.value = input.value.toUpperCase();
+  updateCount();
+}
+
+function toLower() {
+  input.value = input.value.toLowerCase();
+  updateCount();
+}
+
+function removeSpaces() {
+  input.value = input.value.replace(/\s+/g, " ").trim();
+  updateCount();
+}
+
+function reverseText() {
+  input.value = input.value.split("").reverse().join("");
+  updateCount();
+}
+
+function copyText() {
+  navigator.clipboard.writeText(input.value);
+  alert("Copied!");
+}
+
+function clearText() {
+  input.value = "";
+  updateCount();
+}
+</script>
+
+</body>
+</html>
