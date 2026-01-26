@@ -20,10 +20,3 @@ requests==2.31.0
 
 # Optional (audio / video tools ke liye)
 moviepy==1.0.3
-
-flask
-pdf2docx
-docx2pdf
-pypdf
-requests
-edge-tts
