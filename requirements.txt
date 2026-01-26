@@ -5,9 +5,10 @@ Jinja2==3.1.3
 itsdangerous==2.1.2
 click==8.1.7
 
-Pillow==9.5.0
-PyPDF2==3.0.1
-qrcode==7.4.2
+Pillow==10.4.0
+pypdf==4.2.0
+pdf2docx
 
-python-dateutil==2.9.0.post0
-requests==2.31.0
+qrcode
+requests
+python-dateutil
