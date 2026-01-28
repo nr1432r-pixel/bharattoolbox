@@ -208,7 +208,7 @@ def voice():
         "en": "en-US-AriaNeural",
         "hi": "hi-IN-MadhurNeural",
         "ta": "ta-IN-PallaviNeural",
-        "or": "or-IN-SrutiNeural",
+        "or": "hi-IN-MadhurNeural",
         "fr": "fr-FR-DeniseNeural",
         "de": "de-DE-KatjaNeural",
         "es": "es-ES-ElviraNeural",
@@ -297,3 +297,4 @@ def instagram_download():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
