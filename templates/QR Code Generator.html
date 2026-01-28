@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>QR Code Generator | Bharat Toolbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --primary:#4f46e5;
+  --bg:#eef2ff;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --green:#16a34a;
+  --red:#dc2626;
+}
+
+*{box-sizing:border-box}
+
+body{
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  font-family:system-ui,-apple-system,Segoe UI;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* CARD */
+.card{
+  width:380px;
+  background:var(--card);
+  padding:22px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 25px 55px rgba(0,0,0,.18);
+}
+
+/* TOP BAR */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+}
+.home-btn{
+  text-decoration:none;
+  font-size:13px;
+  padding:6px 14px;
+  border-radius:999px;
+  background:#e0e7ff;
+  color:#1e3a8a;
+  font-weight:600;
+}
+.brand{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* TITLE */
+h2{
+  margin:6px 0 4px;
+}
+p{
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* INPUT */
+textarea{
+  width:100%;
+  height:80px;
+  padding:12px;
+  margin:12px 0;
+  border-radius:12px;
+  border:1px solid #c7d2fe;
+  resize:none;
+  font-size:14px;
+}
+
+/* RANGE */
+input[type=range]{width:100%}
+
+/* BUTTONS */
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:12px;
+  background:var(--primary);
+  color:#fff;
+  font-size:14px;
+  cursor:pointer;
+  font-weight:600;
+}
+button:hover{background:#3730a3}
+.danger{background:var(--red)}
+
+/* QR BOX */
+#qrBox{
+  margin:16px 0;
+}
+
+/* INFO */
+#info{
+  font-size:13px;
+  margin-top:6px;
+  font-weight:600;
+}
+
+/* FOOT */
+.footer{
+  margin-top:10px;
+  font-size:12px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- TOP -->
+  <div class="top">
+    <a href="/" class="home-btn">🏠 Home</a>
+    <div class="brand">IN Bharat Toolbox</div>
+  </div>
+
+  <h2>🔳 QR Code Generator</h2>
+  <p>Text / URL / UPI paste karo</p>
+
+  <textarea id="qrText" placeholder="Enter text, URL or UPI ID"></textarea>
+
+  <label>QR Size</label>
+  <input type="range" id="size" min="150" max="350" value="220">
+
+  <button onclick="generateQR()">Generate QR</button>
+  <button class="danger" onclick="clearQR()">Clear</button>
+
+  <div id="qrBox"></div>
+  <div id="info"></div>
+
+  <button id="downloadBtn" onclick="downloadQR()" disabled>Download QR</button>
+
+  <div class="footer">
+    Fast • Safe • Free
+  </div>
+
+</div>
+
+<!-- QR LIB -->
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+
+<script>
+let qr;
+
+function detectType(text){
+  text=text.toLowerCase();
+  if(text.startsWith("upi://") || text.includes("@upi"))
+    return "🇮🇳 UPI Payment QR (Safe)";
+  if(text.includes("gov.in"))
+    return "🏛️ Govt Website QR";
+  if(text.startsWith("http"))
+    return "🌍 Website / Link QR";
+  return "📝 Text QR";
+}
+
+function generateQR(){
+  const text = qrText.value.trim();
+  const size = sizeInput.value;
+  const box = document.getElementById("qrBox");
+  const info = document.getElementById("info");
+  const btn = document.getElementById("downloadBtn");
+
+  if(!text){
+    alert("Text ya URL enter karo");
+    return;
+  }
+
+  box.innerHTML="";
+  qr = new QRCode(box,{
+    text:text,
+    width:size,
+    height:size
+  });
+
+  info.textContent = detectType(text);
+  info.style.color="#16a34a";
+  btn.disabled=false;
+}
+
+function downloadQR(){
+  const img = document.querySelector("#qrBox img");
+  if(!img) return;
+  const a=document.createElement("a");
+  a.href=img.src;
+  a.download="qr-code.png";
+  a.click();
+}
+
+function clearQR(){
+  qrText.value="";
+  qrBox.innerHTML="";
+  info.textContent="";
+  downloadBtn.disabled=true;
+}
+
+/* IDs */
+const qrText=document.getElementById("qrText");
+const sizeInput=document.getElementById("size");
+const downloadBtn=document.getElementById("downloadBtn");
+</script>
+
+</body>
+</html>

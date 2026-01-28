@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Translator + Voice | Bharat Toolbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --primary:#4f46e5;
+  --bg:#eef2ff;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+}
+
+*{box-sizing:border-box}
+
+body{
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  font-family:system-ui,-apple-system,Segoe UI;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding-top:40px;
+}
+
+/* CARD */
+.card{
+  width:420px;
+  background:var(--card);
+  padding:22px;
+  border-radius:18px;
+  box-shadow:0 25px 55px rgba(0,0,0,.18);
+}
+
+/* TOP */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+.home-btn{
+  text-decoration:none;
+  font-size:13px;
+  padding:6px 14px;
+  border-radius:999px;
+  background:#e0e7ff;
+  color:#1e3a8a;
+  font-weight:600;
+}
+.brand{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* TITLE */
+h2{
+  text-align:center;
+  margin:10px 0 14px;
+}
+
+/* INPUTS */
+textarea{
+  width:100%;
+  height:90px;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #c7d2fe;
+  font-size:15px;
+  resize:none;
+}
+
+.select-row{
+  display:flex;
+  gap:10px;
+  margin:12px 0;
+}
+
+select{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #c7d2fe;
+}
+
+/* BUTTONS */
+button{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  background:var(--primary);
+  color:white;
+  border:none;
+  border-radius:12px;
+  font-size:15px;
+  cursor:pointer;
+  font-weight:600;
+}
+button.secondary{
+  background:#16a34a;
+}
+button:active{transform:scale(.98)}
+
+audio{
+  width:100%;
+  margin-top:12px;
+}
+
+/* FOOT */
+.footer{
+  margin-top:10px;
+  font-size:12px;
+  color:var(--muted);
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- TOP BAR -->
+  <div class="top">
+    <a href="/" class="home-btn">🏠 Home</a>
+    <div class="brand">IN Bharat Toolbox</div>
+  </div>
+
+  <h2>🌍 Translator + 🔊 Voice</h2>
+
+  <textarea id="input" placeholder="Enter text here...">hello</textarea>
+
+  <div class="select-row">
+    <select id="source">
+      <option value="auto">Auto</option>
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="ta">Tamil</option>
+      <option value="or">Odia</option>
+      <option value="fr">French</option>
+      <option value="de">German</option>
+      <option value="es">Spanish</option>
+      <option value="ar">Arabic</option>
+      <option value="ru">Russian</option>
+      <option value="ja">Japanese</option>
+    </select>
+
+    <select id="target">
+      <option value="hi">Hindi</option>
+      <option value="en">English</option>
+      <option value="ta">Tamil</option>
+      <option value="or">Odia</option>
+      <option value="fr">French</option>
+      <option value="de">German</option>
+      <option value="es">Spanish</option>
+      <option value="ar">Arabic</option>
+      <option value="ru">Russian</option>
+      <option value="ja">Japanese</option>
+    </select>
+  </div>
+
+  <textarea id="output" placeholder="Translated text will appear here..."></textarea>
+
+  <button onclick="translateText()">Translate</button>
+  <button class="secondary" onclick="playVoice()">🔊 Play / Download Voice</button>
+
+  <audio id="player" controls></audio>
+
+  <div class="footer">
+    Smart • Free • AI Powered
+  </div>
+
+</div>
+
+<script>
+async function translateText(){
+  const res = await fetch("/translate",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      text:document.getElementById("input").value,
+      target:document.getElementById("target").value
+    })
+  });
+
+  const data = await res.json();
+  document.getElementById("output").value = data.translated || "";
+}
+
+async function playVoice(){
+  const text = document.getElementById("output").value.trim();
+  if(!text){alert("Translate text first");return;}
+
+  const res = await fetch("/voice",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({
+      text:text,
+      lang:document.getElementById("target").value
+    })
+  });
+
+  const data = await res.json();
+  if(data.file){
+    const player=document.getElementById("player");
+    player.src="/audio/"+data.file;
+    player.play();
+  }else{
+    alert("Voice generation failed");
+  }
+}
+</script>
+
+</body>
+</html>

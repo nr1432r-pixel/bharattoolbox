@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Unit Converter | Bharat Toolbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --primary:#4f46e5;
+  --bg:#eef2ff;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+}
+
+*{box-sizing:border-box}
+
+body{
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  font-family:system-ui,-apple-system,Segoe UI;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* CARD */
+.app{
+  width:360px;
+  background:var(--card);
+  padding:22px;
+  border-radius:18px;
+  box-shadow:0 25px 55px rgba(0,0,0,.18);
+}
+
+/* TOP BAR */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+}
+.home-btn{
+  text-decoration:none;
+  font-size:13px;
+  padding:6px 14px;
+  border-radius:999px;
+  background:#e0e7ff;
+  color:#1e3a8a;
+  font-weight:600;
+}
+.brand{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* TITLE */
+h2{
+  text-align:center;
+  margin:6px 0 12px;
+}
+
+/* INPUTS */
+input, select{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:12px;
+  border:1px solid #c7d2fe;
+  font-size:15px;
+}
+
+/* BUTTON */
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  background:var(--primary);
+  border:none;
+  color:#fff;
+  border-radius:14px;
+  font-weight:600;
+  font-size:15px;
+  cursor:pointer;
+}
+button:hover{
+  background:#3730a3;
+}
+
+/* RESULT */
+#result{
+  margin-top:14px;
+  font-size:18px;
+  font-weight:700;
+  text-align:center;
+}
+
+/* FOOT */
+.footer{
+  margin-top:10px;
+  font-size:12px;
+  color:var(--muted);
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- TOP -->
+  <div class="top">
+    <a href="/" class="home-btn">🏠 Home</a>
+    <div class="brand">IN Bharat Toolbox</div>
+  </div>
+
+  <h2>📐 Unit Converter</h2>
+
+  <select id="type" onchange="updateUnits()">
+    <option value="length">📏 Length</option>
+    <option value="weight">⚖️ Weight</option>
+    <option value="temp">🌡 Temperature</option>
+  </select>
+
+  <input id="value" placeholder="Enter value">
+
+  <select id="from"></select>
+  <select id="to"></select>
+
+  <button onclick="convert()">Convert</button>
+
+  <div id="result"></div>
+
+  <div class="footer">
+    Fast • Accurate • Simple
+  </div>
+
+</div>
+
+<script>
+const units = {
+  length: ["Meter","Kilometer","Centimeter","Inch","Foot"],
+  weight: ["Kg","Gram","Pound"],
+  temp: ["Celsius","Fahrenheit","Kelvin"]
+};
+
+const type = document.getElementById("type");
+const from = document.getElementById("from");
+const to = document.getElementById("to");
+const result = document.getElementById("result");
+
+function updateUnits(){
+  from.innerHTML="";
+  to.innerHTML="";
+  units[type.value].forEach(u=>{
+    from.add(new Option(u,u));
+    to.add(new Option(u,u));
+  });
+}
+updateUnits();
+
+function convert(){
+  let v = parseFloat(document.getElementById("value").value);
+  if(isNaN(v)){
+    result.textContent="❌ Enter valid number";
+    return;
+  }
+
+  let f=from.value,t=to.value,r=v;
+
+  /* LENGTH */
+  if(type.value==="length"){
+    let m = f==="Meter"?v:
+            f==="Kilometer"?v*1000:
+            f==="Centimeter"?v/100:
+            f==="Inch"?v*0.0254:
+            v*0.3048;
+    r = t==="Meter"?m:
+        t==="Kilometer"?m/1000:
+        t==="Centimeter"?m*100:
+        t==="Inch"?m/0.0254:
+        m/0.3048;
+  }
+
+  /* WEIGHT */
+  if(type.value==="weight"){
+    let kg = f==="Kg"?v:
+             f==="Gram"?v/1000:
+             v*0.453592;
+    r = t==="Kg"?kg:
+        t==="Gram"?kg*1000:
+        kg/0.453592;
+  }
+
+  /* TEMP */
+  if(type.value==="temp"){
+    let c = f==="Celsius"?v:
+            f==="Fahrenheit"?(v-32)*5/9:
+            v-273.15;
+    r = t==="Celsius"?c:
+        t==="Fahrenheit"?c*9/5+32:
+        c+273.15;
+  }
+
+  result.textContent = `✅ Result: ${r}`;
+}
+</script>
+
+</body>
+</html>

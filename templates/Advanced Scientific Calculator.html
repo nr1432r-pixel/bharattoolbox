@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advanced Scientific Calculator | Bharat Toolbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --primary:#4f46e5;
+  --bg:#eef2ff;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --danger:#e11d48;
+}
+
+*{box-sizing:border-box}
+
+body{
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  font-family:system-ui,-apple-system,Segoe UI;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.app{
+  width:380px;
+  background:var(--card);
+  padding:18px;
+  border-radius:18px;
+  box-shadow:0 25px 50px rgba(0,0,0,.15);
+}
+
+/* TOP BAR */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+}
+.home-btn{
+  text-decoration:none;
+  font-size:13px;
+  padding:6px 12px;
+  border-radius:999px;
+  background:#e0e7ff;
+  color:#1e3a8a;
+  font-weight:600;
+}
+.brand{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* TITLE */
+h1{
+  text-align:center;
+  margin:6px 0 10px;
+}
+
+/* DISPLAY */
+#display{
+  width:100%;
+  padding:10px;
+  font-size:18px;
+  border-radius:10px;
+  border:1px solid #c7d2fe;
+  margin-bottom:8px;
+}
+
+/* TABS */
+.tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  justify-content:center;
+  margin-bottom:8px;
+}
+.tabs button{
+  padding:6px 12px;
+  border:none;
+  border-radius:999px;
+  background:#c7d2fe;
+  color:#1e3a8a;
+  font-weight:600;
+  cursor:pointer;
+  font-size:13px;
+}
+.tabs button:hover{
+  background:var(--primary);
+  color:white;
+}
+
+/* BUTTON GRID */
+.box{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  margin-top:8px;
+}
+button{
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:var(--primary);
+  color:white;
+  font-size:14px;
+  cursor:pointer;
+  font-weight:600;
+}
+button:hover{opacity:.9}
+
+.danger{background:var(--danger)}
+.hide{display:none}
+
+textarea,input{
+  grid-column:1/-1;
+  padding:8px;
+  border-radius:8px;
+  border:1px solid #c7d2fe;
+}
+
+pre{
+  grid-column:1/-1;
+  background:#f1f5f9;
+  padding:10px;
+  border-radius:10px;
+  font-size:13px;
+  overflow:auto;
+}
+
+canvas{
+  grid-column:1/-1;
+  border:1px solid #c7d2fe;
+  border-radius:10px;
+  margin-top:6px;
+}
+
+.footer{
+  margin-top:10px;
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- TOP -->
+  <div class="top">
+    <a href="/" class="home-btn">🏠 Home</a>
+    <div class="brand">IN Bharat Toolbox</div>
+  </div>
+
+  <h1>🧮 Scientific Calculator</h1>
+
+  <input id="display" readonly>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button onclick="tab('std')">Standard</button>
+    <button onclick="tab('sci')">Scientific</button>
+    <button onclick="tab('matrix')">Matrix</button>
+    <button onclick="tab('vector')">Vector</button>
+    <button onclick="tab('graph')">Graph</button>
+  </div>
+
+  <!-- STANDARD -->
+  <div id="std" class="box">
+    <button onclick="add('7')">7</button>
+    <button onclick="add('8')">8</button>
+    <button onclick="add('9')">9</button>
+    <button onclick="add('/')">÷</button>
+
+    <button onclick="add('4')">4</button>
+    <button onclick="add('5')">5</button>
+    <button onclick="add('6')">6</button>
+    <button onclick="add('*')">×</button>
+
+    <button onclick="add('1')">1</button>
+    <button onclick="add('2')">2</button>
+    <button onclick="add('3')">3</button>
+    <button onclick="add('-')">−</button>
+
+    <button onclick="add('0')">0</button>
+    <button onclick="add('.')">.</button>
+    <button onclick="calc()">=</button>
+    <button onclick="add('+')">+</button>
+
+    <button onclick="clearAll()" class="danger">C</button>
+    <button onclick="back()">⌫</button>
+  </div>
+
+  <!-- SCIENTIFIC -->
+  <div id="sci" class="box hide">
+    <button onclick="wrap('Math.sin')">sin</button>
+    <button onclick="wrap('Math.cos')">cos</button>
+    <button onclick="wrap('Math.tan')">tan</button>
+    <button onclick="wrap('Math.sqrt')">√</button>
+
+    <button onclick="wrap('Math.log10')">log</button>
+    <button onclick="wrap('Math.log')">ln</button>
+    <button onclick="add('Math.PI')">π</button>
+    <button onclick="add('Math.E')">e</button>
+
+    <button onclick="pow()">xʸ</button>
+    <button onclick="fact()">!</button>
+  </div>
+
+  <!-- MATRIX -->
+  <div id="matrix" class="box hide">
+    <textarea id="ma" placeholder="Matrix A (1 2;3 4)"></textarea>
+    <textarea id="mb" placeholder="Matrix B"></textarea>
+
+    <button onclick="mAdd()">A + B</button>
+    <button onclick="mSub()">A − B</button>
+    <button onclick="mMul()">A × B</button>
+    <button onclick="det()">Det(A)</button>
+    <button onclick="inv()">A⁻¹</button>
+
+    <pre id="mout"></pre>
+  </div>
+
+  <!-- VECTOR -->
+  <div id="vector" class="box hide">
+    <input id="va" placeholder="Vector A (1,2,3)">
+    <input id="vb" placeholder="Vector B (4,5,6)">
+    <button onclick="vAdd()">A + B</button>
+    <button onclick="dot()">Dot</button>
+    <button onclick="cross()">Cross</button>
+    <button onclick="mag()">|A|</button>
+    <pre id="vout"></pre>
+  </div>
+
+  <!-- GRAPH -->
+  <div id="graph" class="box hide">
+    <input id="fx" placeholder="y = f(x) e.g. x*x or Math.sin(x)">
+    <button onclick="draw()">Plot Graph</button>
+    <canvas id="c" width="300" height="300"></canvas>
+  </div>
+
+  <div class="footer">Free • Smart • Advanced Calculator</div>
+</div>
+
+<script>
+let d=document.getElementById("display");
+
+function add(v){d.value+=v}
+function clearAll(){d.value=""}
+function back(){d.value=d.value.slice(0,-1)}
+function calc(){try{d.value=eval(d.value)}catch{d.value="Error"}}
+function wrap(f){d.value=f+"("+d.value+")"}
+function pow(){d.value+="**"}
+function fact(){let n=eval(d.value);let r=1;for(let i=1;i<=n;i++)r*=i;d.value=r}
+function tab(id){
+  document.querySelectorAll(".box").forEach(b=>b.classList.add("hide"));
+  document.getElementById(id).classList.remove("hide")
+}
+
+/* MATRIX */
+const pm=t=>t.split(";").map(r=>r.trim().split(" ").map(Number))
+function mAdd(){let A=pm(ma.value),B=pm(mb.value);mout.textContent=A.map((r,i)=>r.map((v,j)=>v+B[i][j]).join(" ")).join("\n")}
+function mSub(){let A=pm(ma.value),B=pm(mb.value);mout.textContent=A.map((r,i)=>r.map((v,j)=>v-B[i][j]).join(" ")).join("\n")}
+function mMul(){let A=pm(ma.value),B=pm(mb.value);let R=A.map(r=>B[0].map((_,j)=>r.reduce((s,v,i)=>s+v*B[i][j],0)));mout.textContent=R.map(r=>r.join(" ")).join("\n")}
+function det(){let A=pm(ma.value);mout.textContent=A[0][0]*A[1][1]-A[0][1]*A[1][0]}
+function inv(){let A=pm(ma.value);let d=A[0][0]*A[1][1]-A[0][1]*A[1][0];let I=[[A[1][1]/d,-A[0][1]/d],[-A[1][0]/d,A[0][0]/d]];mout.textContent=I.map(r=>r.join(" ")).join("\n")}
+
+/* VECTOR */
+const pv=v=>v.split(",").map(Number)
+function vAdd(){let a=pv(va.value),b=pv(vb.value);vout.textContent=a.map((v,i)=>v+b[i])}
+function dot(){let a=pv(va.value),b=pv(vb.value);vout.textContent=a.reduce((s,v,i)=>s+v*b[i],0)}
+function cross(){let[a1,a2,a3]=pv(va.value),[b1,b2,b3]=pv(vb.value);vout.textContent=[a2*b3-a3*b2,a3*b1-a1*b3,a1*b2-a2*b1]}
+function mag(){let a=pv(va.value);vout.textContent=Math.sqrt(a.reduce((s,v)=>s+v*v,0))}
+
+/* GRAPH */
+function draw(){
+  let c=document.getElementById("c"),ctx=c.getContext("2d");
+  ctx.clearRect(0,0,300,300);
+  ctx.strokeStyle="#000";
+  ctx.beginPath();
+  ctx.moveTo(150,0);ctx.lineTo(150,300);
+  ctx.moveTo(0,150);ctx.lineTo(300,150);
+  ctx.stroke();
+
+  let f=fx.value;
+  ctx.beginPath();
+  ctx.strokeStyle="red";
+  for(let x=-150;x<150;x++){
+    let X=x/20;
+    let y=eval(f.replace(/x/g,X));
+    let px=150+X*20,py=150-y*20;
+    if(x==-150)ctx.moveTo(px,py);else ctx.lineTo(px,py)
+  }
+  ctx.stroke();
+}
+</script>
+
+</body>
+</html>

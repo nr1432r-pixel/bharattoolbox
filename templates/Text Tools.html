@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Text Tools | Bharat Toolbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --primary:#4f46e5;
+  --bg:#eef2ff;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+}
+
+*{box-sizing:border-box}
+
+body{
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  font-family:system-ui,-apple-system,Segoe UI;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding-top:40px;
+}
+
+/* CARD */
+.card{
+  width:420px;
+  background:var(--card);
+  padding:22px;
+  border-radius:18px;
+  box-shadow:0 25px 55px rgba(0,0,0,.18);
+}
+
+/* TOP BAR */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+.home-btn{
+  text-decoration:none;
+  font-size:13px;
+  padding:6px 14px;
+  border-radius:999px;
+  background:#e0e7ff;
+  color:#1e3a8a;
+  font-weight:600;
+}
+.brand{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* TITLE */
+h2{
+  text-align:center;
+  margin:10px 0 14px;
+}
+
+/* INPUT */
+textarea{
+  width:100%;
+  height:140px;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #c7d2fe;
+  font-size:15px;
+  resize:vertical;
+}
+
+/* BUTTONS */
+.btns{
+  margin-top:10px;
+}
+.btns button{
+  width:100%;
+  padding:11px;
+  margin-top:8px;
+  border:none;
+  border-radius:12px;
+  background:var(--primary);
+  color:white;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:600;
+}
+.btns button:hover{
+  background:#3730a3;
+}
+.danger{
+  background:#dc2626 !important;
+}
+
+/* STATS */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin-top:12px;
+  font-size:13px;
+  color:var(--text);
+}
+.stat{
+  background:#f1f5ff;
+  padding:8px;
+  border-radius:10px;
+  text-align:center;
+}
+
+/* FOOT */
+.footer{
+  margin-top:10px;
+  font-size:12px;
+  color:var(--muted);
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- TOP -->
+  <div class="top">
+    <a href="/" class="home-btn">🏠 Home</a>
+    <div class="brand">IN Bharat Toolbox</div>
+  </div>
+
+  <h2>📝 Text Tools</h2>
+
+  <textarea id="textInput" placeholder="Paste or type text here..."></textarea>
+
+  <div class="btns">
+    <button onclick="toUpper()">UPPERCASE</button>
+    <button onclick="toLower()">lowercase</button>
+    <button onclick="toTitle()">Title Case</button>
+    <button onclick="removeSpaces()">Remove Extra Spaces</button>
+    <button onclick="removeLines()">Remove Empty Lines</button>
+    <button onclick="reverseText()">Reverse Text</button>
+  </div>
+
+  <div class="stats">
+    <div class="stat" id="words">Words: 0</div>
+    <div class="stat" id="chars">Chars: 0</div>
+    <div class="stat" id="sentences">Sentences: 0</div>
+    <div class="stat" id="paragraphs">Paragraphs: 0</div>
+  </div>
+
+  <div class="btns">
+    <button onclick="copyText()">📋 Copy Text</button>
+    <button class="danger" onclick="clearText()">🗑 Clear</button>
+  </div>
+
+  <div class="footer">
+    Smart • Fast • Free
+  </div>
+
+</div>
+
+<script>
+const input = document.getElementById("textInput");
+const wordsEl = document.getElementById("words");
+const charsEl = document.getElementById("chars");
+const sentEl = document.getElementById("sentences");
+const paraEl = document.getElementById("paragraphs");
+
+input.addEventListener("input", updateCount);
+
+function updateCount(){
+  const txt = input.value.trim();
+  const words = txt ? txt.split(/\s+/).length : 0;
+  const chars = input.value.length;
+  const sentences = txt ? txt.split(/[.!?]+/).filter(s=>s.trim()).length : 0;
+  const paras = txt ? txt.split(/\n+/).filter(p=>p.trim()).length : 0;
+
+  wordsEl.textContent = "Words: " + words;
+  charsEl.textContent = "Chars: " + chars;
+  sentEl.textContent = "Sentences: " + sentences;
+  paraEl.textContent = "Paragraphs: " + paras;
+}
+
+function toUpper(){ input.value=input.value.toUpperCase(); updateCount(); }
+function toLower(){ input.value=input.value.toLowerCase(); updateCount(); }
+
+function toTitle(){
+  input.value = input.value
+    .toLowerCase()
+    .split(" ")
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+  updateCount();
+}
+
+function removeSpaces(){
+  input.value = input.value.replace(/\s+/g," ").trim();
+  updateCount();
+}
+
+function removeLines(){
+  input.value = input.value.split("\n").filter(l=>l.trim()).join("\n");
+  updateCount();
+}
+
+function reverseText(){
+  input.value = input.value.split("").reverse().join("");
+  updateCount();
+}
+
+function copyText(){
+  navigator.clipboard.writeText(input.value);
+  alert("Text copied!");
+}
+
+function clearText(){
+  input.value="";
+  updateCount();
+}
+</script>
+
+</body>
+</html>
