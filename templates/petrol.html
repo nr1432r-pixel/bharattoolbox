@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Petrol Cost Calculator | Bharat Toolbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --primary:#22c55e;
+  --bg:#ecfdf5;
+  --card:#ffffff;
+  --text:#064e3b;
+  --muted:#047857;
+}
+
+*{box-sizing:border-box}
+
+body{
+  font-family:system-ui,-apple-system,Segoe UI;
+  background:linear-gradient(135deg,#ecfdf5,#f0fdf4);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* CARD */
+.card{
+  width:380px;
+  background:var(--card);
+  padding:22px;
+  border-radius:18px;
+  box-shadow:0 25px 50px rgba(0,0,0,.15);
+}
+
+/* TOP */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+
+.home-btn{
+  text-decoration:none;
+  font-size:13px;
+  padding:6px 12px;
+  border-radius:8px;
+  background:#bbf7d0;
+  color:#065f46;
+  font-weight:600;
+}
+
+.brand{
+  font-size:12px;
+  color:#065f46;
+}
+
+/* TITLE */
+h2{
+  text-align:center;
+  margin:10px 0 14px;
+  color:#065f46;
+}
+
+/* INPUTS */
+input{
+  width:100%;
+  padding:12px;
+  margin-bottom:10px;
+  border-radius:10px;
+  border:1px solid #86efac;
+  font-size:15px;
+}
+
+/* BUTTON */
+button{
+  width:100%;
+  margin-top:6px;
+  padding:12px;
+  background:var(--primary);
+  color:white;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+button:active{transform:scale(.97)}
+
+/* OUTPUT */
+.result{
+  margin-top:14px;
+  background:#ecfdf5;
+  padding:12px;
+  border-radius:12px;
+  font-size:15px;
+  color:#065f46;
+}
+
+/* FOOT */
+.footer{
+  margin-top:10px;
+  font-size:12px;
+  color:#047857;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="top">
+    <a href="/" class="home-btn">🏠 Home</a>
+    <div class="brand">IN Bharat Toolbox</div>
+  </div>
+
+  <h2>⛽ Petrol Cost Calculator</h2>
+
+  <input id="distance" type="number" placeholder="Distance (km)">
+  <input id="mileage" type="number" placeholder="Mileage (km/l)">
+  <input id="price" type="number" placeholder="Petrol price (₹ per litre)">
+
+  <button onclick="calculate()">Calculate</button>
+
+  <div id="output" class="result"></div>
+
+  <div class="footer">Fast • Accurate • Free</div>
+</div>
+
+<script>
+function calculate(){
+  const d = parseFloat(distance.value);
+  const m = parseFloat(mileage.value);
+  const p = parseFloat(price.value);
+
+  if(!d || !m || !p){
+    output.innerHTML = "⚠️ Please fill all fields";
+    return;
+  }
+
+  const fuel = (d / m).toFixed(2);
+  const cost = (fuel * p).toFixed(2);
+
+  output.innerHTML = `
+    🚗 <b>Distance:</b> ${d} km <br>
+    ⛽ <b>Fuel Needed:</b> ${fuel} litres <br>
+    💰 <b>Total Cost:</b> ₹${cost}
+  `;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI QR Safety Checker | Bharat Toolbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://unpkg.com/jsqr/dist/jsQR.js"></script>
+
+<style>
+body{
+  font-family:system-ui;
+  background:linear-gradient(135deg,#ecfeff,#f0fdf4);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.card{
+  width:420px;
+  background:#fff;
+  padding:22px;
+  border-radius:18px;
+  box-shadow:0 25px 50px rgba(0,0,0,.15);
+}
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.home{
+  text-decoration:none;
+  font-size:13px;
+  padding:6px 12px;
+  background:#cffafe;
+  border-radius:8px;
+  color:#155e75;
+  font-weight:600;
+}
+.brand{font-size:12px;color:#155e75}
+h2{text-align:center;margin:12px 0}
+input,button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:10px;
+  font-size:15px;
+}
+input{border:1px solid #67e8f9}
+button{
+  border:none;
+  background:#0891b2;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+}
+video{
+  width:100%;
+  border-radius:12px;
+  display:none;
+  margin-top:10px;
+}
+.result{
+  margin-top:14px;
+  padding:12px;
+  border-radius:12px;
+  font-size:14px;
+}
+.safe{background:#ecfdf5;color:#065f46}
+.warn{background:#fffbeb;color:#92400e}
+.danger{background:#fef2f2;color:#7f1d1d}
+.footer{text-align:center;font-size:12px;color:#155e75;margin-top:10px}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <div class="top">
+    <a href="/" class="home">🏠 Home</a>
+    <div class="brand">IN Bharat Toolbox</div>
+  </div>
+
+  <h2>🧠 AI QR Safety Checker</h2>
+
+  <input id="url" placeholder="Paste QR URL manually">
+
+  <button onclick="analyze()">Check URL Safety</button>
+
+  <input type="file" accept="image/*" onchange="scanImage(this)">
+  <button onclick="startCamera()">📷 Scan Using Camera</button>
+
+  <video id="video" autoplay></video>
+
+  <div id="output"></div>
+
+  <div class="footer">Camera • AI • Govt Safe</div>
+</div>
+
+<script>
+const trustedGov = ["gov.in","nic.in","uidai.gov.in","incometax.gov.in"];
+const trustedUPI = ["upi://","paytm","phonepe","googlepay","bharatpe"];
+const dangerWords = ["login","verify","reward","free","win","bank","password","upi","account"];
+
+function analyzeURL(u){
+  let score = 0;
+  let hindi = [];
+
+  if(!u.startsWith("https://")){
+    score++;
+    hindi.push("यह लिंक सुरक्षित (HTTPS) नहीं है।");
+  }
+
+  dangerWords.forEach(w=>{
+    if(u.toLowerCase().includes(w)){
+      score++;
+      hindi.push(`इस लिंक में संदिग्ध शब्द "${w}" पाया गया।`);
+    }
+  });
+
+  if(trustedGov.some(d=>u.includes(d))){
+    return {type:"safe",msg:"🟢 सरकारी वेबसाइट",hi:"यह भारत सरकार की आधिकारिक वेबसाइट है।"};
+  }
+
+  if(trustedUPI.some(d=>u.includes(d))){
+    return {type:"safe",msg:"🟢 UPI Trusted Link",hi:"यह भरोसेमंद UPI पेमेंट लिंक है।"};
+  }
+
+  if(score===0){
+    return {type:"safe",msg:"🟢 Safe Link",hi:"यह लिंक सुरक्षित प्रतीत होती है।"};
+  }
+  if(score<=2){
+    return {type:"warn",msg:"🟠 सावधान रहें",hi:hindi.join(" ")};
+  }
+  return {type:"danger",msg:"🔴 खतरनाक लिंक",hi:"यह लिंक धोखाधड़ी (scam) हो सकती है।"};
+}
+
+function render(res){
+  output.innerHTML = `
+  <div class="result ${res.type}">
+    <b>${res.msg}</b><br>
+    <small>🤖 AI Explanation (Hindi): ${res.hi}</small>
+  </div>`;
+}
+
+function analyze(){
+  const u = url.value.trim();
+  if(!u) return;
+  render(analyzeURL(u));
+}
+
+// IMAGE QR
+function scanImage(input){
+  const img = new Image();
+  img.onload=()=>{
+    const c=document.createElement("canvas");
+    const x=c.getContext("2d");
+    c.width=img.width; c.height=img.height;
+    x.drawImage(img,0,0);
+    const d=x.getImageData(0,0,c.width,c.height);
+    const qr=jsQR(d.data,c.width,c.height);
+    if(qr) render(analyzeURL(qr.data));
+  };
+  img.src=URL.createObjectURL(input.files[0]);
+}
+
+// CAMERA QR
+function startCamera(){
+  video.style.display="block";
+  navigator.mediaDevices.getUserMedia({video:{facingMode:"environment"}})
+  .then(s=>{
+    video.srcObject=s;
+    const canvas=document.createElement("canvas");
+    const ctx=canvas.getContext("2d");
+    setInterval(()=>{
+      canvas.width=video.videoWidth;
+      canvas.height=video.videoHeight;
+      ctx.drawImage(video,0,0);
+      const d=ctx.getImageData(0,0,canvas.width,canvas.height);
+      const qr=jsQR(d.data,canvas.width,canvas.height);
+      if(qr){
+        render(analyzeURL(qr.data));
+        s.getTracks().forEach(t=>t.stop());
+        video.style.display="none";
+      }
+    },800);
+  });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Government Form Helper | Bharat Toolbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+  background:#fdf2f8;
+  font-family:system-ui,-apple-system,Segoe UI;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.card{
+  background:#fff;
+  width:420px;
+  padding:22px;
+  border-radius:18px;
+  box-shadow:0 25px 50px rgba(0,0,0,.15);
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+
+.home{
+  text-decoration:none;
+  background:#e0e7ff;
+  padding:6px 12px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:600;
+  color:#1e3a8a;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:12px;
+}
+
+input{
+  width:100%;
+  padding:12px;
+  font-size:15px;
+  border-radius:10px;
+  border:1px solid #fbcfe8;
+}
+
+button{
+  width:100%;
+  margin-top:12px;
+  padding:12px;
+  background:#db2777;
+  color:white;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+button:active{transform:scale(.97)}
+
+.output{
+  margin-top:15px;
+  font-size:15px;
+  line-height:1.6;
+}
+
+.footer{
+  text-align:center;
+  margin-top:12px;
+  font-size:12px;
+  color:#6b7280;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="top">
+    <a class="home" href="/">🏠 Home</a>
+    <div style="font-size:12px;color:#6b7280;">IN Bharat Toolbox</div>
+  </div>
+
+  <h2>Government Form Helper</h2>
+
+  <input id="query" placeholder="Type form name (PAN, Aadhaar, DL, Voter ID...)">
+
+  <button onclick="showSteps()">Show Steps</button>
+
+  <div class="output" id="result"></div>
+
+  <div class="footer">Free • Smart • Simple</div>
+</div>
+
+<script>
+// 🔹 SMART FORM DATA (extend anytime)
+const forms = {
+  pan: [
+    "Aadhaar must be linked",
+    "Photo & signature required",
+    "Apply on NSDL / UTI website"
+  ],
+  aadhaar: [
+    "Birth proof or address proof",
+    "Mobile number needed",
+    "Visit UIDAI centre"
+  ],
+  voter: [
+    "Age 18+ required",
+    "Address proof",
+    "Apply on NVSP portal"
+  ],
+  driving: [
+    "Learner license first",
+    "Medical certificate",
+    "Apply on Parivahan site"
+  ],
+  passport: [
+    "Birth proof",
+    "Address proof",
+    "Police verification",
+    "Apply on Passport Seva"
+  ]
+};
+
+// 🔹 SIMPLE AI MATCHING
+function findForm(text){
+  text = text.toLowerCase();
+  for(let key in forms){
+    if(text.includes(key)) return key;
+  }
+  return null;
+}
+
+// 🔹 MAIN
+function showSteps(){
+  const q = document.getElementById("query").value.trim();
+  const out = document.getElementById("result");
+  if(!q) return;
+
+  const key = findForm(q);
+
+  if(!key){
+    out.innerHTML = "❌ Form not found.<br>Try: PAN, Aadhaar, Passport, Driving License, Voter ID";
+    return;
+  }
+
+  out.innerHTML = "✅ <b>" + key.toUpperCase() + " FORM STEPS</b><br><br>" +
+    forms[key].map(s=>"• "+s).join("<br>");
+}
+</script>
+
+</body>
+</html>

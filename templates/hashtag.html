@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Social Media Caption & Hashtag Generator | Bharat Toolbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  font-family:system-ui,-apple-system,Segoe UI;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.card{
+  background:#fff;
+  width:460px;
+  padding:22px;
+  border-radius:18px;
+  box-shadow:0 25px 55px rgba(0,0,0,.15);
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+
+.home{
+  text-decoration:none;
+  background:#e0e7ff;
+  color:#1e3a8a;
+  padding:6px 12px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:600;
+}
+
+.brand{
+  font-size:12px;
+  color:#64748b;
+}
+
+h2{
+  text-align:center;
+  margin:10px 0 14px;
+}
+
+select,input{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #c7d2fe;
+  font-size:15px;
+  margin-bottom:10px;
+}
+
+button{
+  width:100%;
+  padding:12px;
+  background:#4f46e5;
+  color:white;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+button:active{transform:scale(.97)}
+
+.output{
+  margin-top:14px;
+  font-size:14px;
+  line-height:1.6;
+  word-break:break-word;
+}
+
+.copy{
+  background:#22c55e;
+  margin-top:10px;
+}
+
+.footer{
+  margin-top:10px;
+  font-size:12px;
+  color:#64748b;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="top">
+    <a href="/" class="home">🏠 Home</a>
+    <div class="brand">IN Bharat Toolbox</div>
+  </div>
+
+  <h2>Social Media Caption & Hashtag Generator</h2>
+
+  <select id="platform">
+    <option value="instagram">Instagram</option>
+    <option value="facebook">Facebook</option>
+    <option value="youtube">YouTube</option>
+    <option value="shorts">YouTube Shorts</option>
+    <option value="twitter">Twitter (X)</option>
+  </select>
+
+  <input id="keyword" placeholder="Enter topic (travel, fitness, reel…)">
+
+  <button onclick="generate()">Generate</button>
+
+  <div class="output" id="caption"></div>
+  <div class="output" id="hashtags"></div>
+
+  <button class="copy" onclick="copyAll()">📋 Copy All</button>
+
+  <div class="footer">Caption + 50 Smart Hashtags • Free Tool</div>
+
+</div>
+
+<script>
+// ===============================
+// TREND DATA
+// ===============================
+const globalTags = [
+ "viral","trending","explore","reels","shorts","instagood",
+ "content","creator","india","desi","daily","love","like","follow"
+];
+
+const platformExtra = {
+ instagram:["reelsinstagram","instareels","explorepage"],
+ facebook:["facebookpost","fbviral"],
+ youtube:["youtubevideo","youtuber","subscribe"],
+ shorts:["ytshorts","shortsvideo"],
+ twitter:["twitterpost","xtrending"]
+};
+
+// ===============================
+// MAIN LOGIC
+// ===============================
+function generate(){
+ const p = platform.value;
+ const k = keyword.value.trim().toLowerCase();
+ if(!k) return;
+
+ // CAPTION
+ let cap = "";
+ if(p=="instagram") cap = `✨ ${k} vibes 🔥\nDouble tap if you love this ❤️`;
+ if(p=="facebook") cap = `Sharing some ${k} moments ✨`;
+ if(p=="youtube") cap = `${k} video you must watch 🔥👇`;
+ if(p=="shorts") cap = `${k} shorts 🎬🔥`;
+ if(p=="twitter") cap = `${k} trending now 🚀`;
+
+ caption.innerHTML = "<b>📸 Caption:</b><br>"+cap;
+
+ // HASHTAGS
+ let tags = new Set();
+
+ globalTags.forEach(t=>tags.add("#"+t));
+ platformExtra[p].forEach(t=>tags.add("#"+t));
+
+ for(let i=1;i<=30;i++) tags.add("#"+k+i);
+ tags.add("#"+k);
+ tags.add("#"+k+"life");
+ tags.add("#"+k+"lover");
+
+ tags = Array.from(tags).slice(0,50);
+
+ hashtags.innerHTML =
+   "<br><b>🔖 Hashtags (50):</b><br>" + tags.join(" ");
+}
+
+// ===============================
+// COPY
+// ===============================
+function copyAll(){
+ const text = caption.innerText + "\n\n" + hashtags.innerText;
+ navigator.clipboard.writeText(text);
+ alert("Copied Successfully!");
+}
+</script>
+
+</body>
+</html>
