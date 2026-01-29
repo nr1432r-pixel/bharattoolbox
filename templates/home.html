@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <title>Bharat Toolbox</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6009208782223800"
-     crossorigin="anonymous"></script>
+
 <style>
 :root{
   --bg:#eef2ff;
@@ -17,101 +15,25 @@
   --muted:#64748b;
 }
 
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
 
-/* BODY */
 body{
-  min-height:100vh;
   font-family:system-ui, -apple-system, Segoe UI, Roboto;
   background:linear-gradient(135deg,#eef2ff,#f8fafc);
-  display:flex;
-  justify-content:center;
-  align-items:center;
   color:var(--text);
 }
 
-/* MAIN WRAPPER */
+/* APP WRAPPER */
 .app{
-  width:100%;
-  max-width:1100px;
-  background:var(--card);
-  border-radius:18px;
-  padding:32px;
-  box-shadow:0 25px 60px rgba(0,0,0,.15);
-}
-
-/* HEADER */
-.header{
-  text-align:center;
-  margin-bottom:35px;
-}
-
-.header h1{
-  font-size:36px;
-  font-weight:800;
-  letter-spacing:.5px;
-}
-
-.header p{
-  margin-top:8px;
-  color:var(--muted);
-  font-size:15px;
-}
-
-/* GRID */
-.tools{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:22px;
-}
-
-/* TOOL CARD */
-.tool{
+  max-width:1200px;
+  margin:20px auto;
   background:#fff;
-  border-radius:16px;
-  padding:24px 18px;
-  text-align:center;
-  text-decoration:none;
-  color:var(--text);
-  box-shadow:
-    0 8px 20px rgba(0,0,0,.08),
-    inset 0 -4px 0 rgba(0,0,0,.05);
-  transition:.25s ease;
-  position:relative;
+  border-radius:18px;
+  padding:24px;
+  box-shadow:0 20px 50px rgba(0,0,0,.12);
 }
 
-.tool:hover{
-  transform:translateY(-6px);
-  box-shadow:
-    0 15px 35px rgba(0,0,0,.18),
-    inset 0 -4px 0 rgba(0,0,0,.08);
-}
-
-.tool:active{
-  transform:translateY(0);
-}
-
-/* ICON */
-.icon{
-  font-size:34px;
-  margin-bottom:12px;
-}
-
-/* TITLE */
-.tool h3{
-  font-size:17px;
-  font-weight:700;
-  margin-bottom:4px;
-}
-
-/* DESC */
-.tool span{
-  font-size:13px;
-  color:var(--muted);
-}
-
-/* TOP BAR (future drawer) */
+/* TOP BAR */
 .topbar{
   display:flex;
   justify-content:space-between;
@@ -120,8 +42,28 @@ body{
 }
 
 .brand{
-  font-weight:800;
   font-size:20px;
+  font-weight:800;
+}
+
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.download-btn{
+  background:var(--primary);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:10px;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:600;
+}
+
+.download-btn:hover{
+  background:var(--primary-dark);
 }
 
 .menu-btn{
@@ -129,9 +71,52 @@ body{
   cursor:pointer;
 }
 
-/* FOOT */
+/* HEADER */
+.header{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.header h1{
+  font-size:34px;
+  font-weight:800;
+}
+
+.header p{
+  margin-top:8px;
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* GRID */
+.tools{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+/* CARD */
+.tool{
+  background:#fff;
+  border-radius:16px;
+  padding:22px;
+  text-align:center;
+  text-decoration:none;
+  color:var(--text);
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  transition:.25s;
+}
+
+.tool:hover{transform:translateY(-6px)}
+
+.icon{font-size:34px;margin-bottom:10px}
+
+.tool h3{font-size:16px;font-weight:700;margin-bottom:4px}
+.tool span{font-size:13px;color:var(--muted)}
+
+/* FOOTER */
 .footer{
-  margin-top:35px;
+  margin-top:30px;
   text-align:center;
   font-size:13px;
   color:#64748b;
@@ -139,27 +124,26 @@ body{
 
 /* MOBILE */
 @media(max-width:600px){
-  .header h1{font-size:28px}
-  .app{padding:22px}
+  .header h1{font-size:26px}
 }
 </style>
 </head>
+
 <body>
 
 <div class="app">
 
-  <!-- TOP BAR -->
-  <div class="top-actions">
-    <a class="download-btn"
-       href="https://drive.google.com/file/d/1tkeqcUoHbEmQFKJ7dkNXJu9saz3z6bz7/view?usp=sharing"
-       target="_blank">
-       ⬇ Download App
-    </a>
-
-    <div class="menu-btn">☰</div>
+  <div class="topbar">
+    <div class="brand">🇮🇳 Bharat Toolbox</div>
+    <div class="top-actions">
+      <a class="download-btn"
+         href="https://drive.google.com/uc?export=download&id=1tkeqcUoHbEmQFKJ7dkNXJu9saz3z6bz7">
+         ⬇ Download App
+      </a>
+      <div class="menu-btn">☰</div>
+    </div>
   </div>
-</div>
-  <!-- HEADER -->
+
   <div class="header">
     <h1>All tools in one powerful place</h1>
     <p>Fast • Free • Simple • No learning required</p>
@@ -167,7 +151,6 @@ body{
 
   <!-- TOOLS -->
   <div class="tools">
-    <div class="tools">
     <a class="tool" href="/pan-aadhaar">
       <div class="icon">🪪</div>
       <h3>PAN & Aadhaar Utilities</h3>
@@ -179,23 +162,7 @@ body{
       <h3>Age Calculator</h3>
       <span>Exact age for Govt forms & exams</span>
     </a>
-    <a class="tool" href="/govt">
-      <div class="icon">🏛</div>
-      <h3>Govt Form Helper</h3>
-      <span>Form filling guide</span>
-    </a>
-    <a class="tool" href="/petrol">
-      <div class="icon">⛽</div>
-      <h3>Petrol Cost</h3>
-      <span>Calculate fuel cost</span>
-    </a>
-      
-    <a class="tool" href="/qr">
-      <div class="icon">🔲</div>
-      <h3>QR Safety</h3>
-      <span>Check QR validity</span>
-    </a>
-      
+    
     <a class="tool" href="/PDF Tools">
       <div class="icon">📄</div>
       <h3>PDF Tools</h3>
@@ -259,7 +226,17 @@ body{
       <h3>Social Media Caption & Hashtag Generator</h3>
       <span>Generate hashtags</span>
     </a>
-      
+    <a class="tool" href="/petrol">
+      <div class="icon">⛽</div>
+      <h3>Petrol Cost</h3>
+      <span>Calculate fuel cost</span>
+    </a>
+    <a class="tool" href="/qr">
+      <div class="icon">🔲</div>
+      <h3>QR Safety</h3>
+      <span>Check QR validity</span>
+    </a>
+    
     <a class="tool" href="/name-meaning">
       <div class="icon">👶</div>
       <h3>Name Meaning</h3>
@@ -275,7 +252,11 @@ body{
       <h3>Birthday Countdown</h3>
       <span>Shareable timer</span>
     </a>
-    
+    <a class="tool" href="/govt">
+      <div class="icon">🏛</div>
+      <h3>Govt Form Helper</h3>
+      <span>Form filling guide</span>
+    </a>
   </div>
 
   <!-- FOOTER -->
@@ -287,6 +268,3 @@ body{
 
 </body>
 </html>
-
-
-
