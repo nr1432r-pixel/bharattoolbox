@@ -1,18 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
-<title>Birthday Countdown | Bharat Toolbox</title>
+<title>आज का राशिफल | Bharat Toolbox</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-:root{
-  --primary:#22c55e;
-  --blue:#0ea5e9;
-  --card:#ffffff;
-  --muted:#64748b;
-}
-*{box-sizing:border-box}
 body{
   background:linear-gradient(135deg,#eef2ff,#f8fafc);
   font-family:system-ui,-apple-system,Segoe UI;
@@ -22,16 +15,16 @@ body{
   min-height:100vh;
 }
 .card{
-  width:390px;
-  background:var(--card);
+  width:380px;
+  background:#fff;
   padding:22px;
-  border-radius:22px;
-  box-shadow:0 30px 70px rgba(0,0,0,.2);
-  text-align:center;
+  border-radius:18px;
+  box-shadow:0 25px 60px rgba(0,0,0,.18);
 }
 .top{
   display:flex;
   justify-content:space-between;
+  align-items:center;
 }
 .home{
   background:#e0e7ff;
@@ -42,60 +35,45 @@ body{
   font-size:13px;
   font-weight:600;
 }
-h2{margin:12px 0}
-.time{
-  font-size:13px;
-  color:var(--muted);
+.date{
+  font-size:12px;
+  color:#64748b;
 }
-input,button{
+h2{text-align:center;margin:12px 0}
+select,button{
   width:100%;
   padding:12px;
   margin-top:12px;
-  border-radius:16px;
-  font-size:15px;
+  border-radius:12px;
   border:1px solid #c7d2fe;
+  font-size:15px;
 }
 button{
-  background:var(--primary);
-  color:#fff;
+  background:#4f46e5;
+  color:white;
   border:none;
   font-weight:800;
-  cursor:pointer;
 }
-.count{
-  display:none;
-  margin-top:18px;
+.result{
+  margin-top:16px;
   background:#f1f5f9;
-  padding:16px;
-  border-radius:18px;
-}
-.timer{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  margin-top:12px;
-}
-.box{
-  background:white;
+  padding:14px;
   border-radius:14px;
-  padding:10px;
+  line-height:1.7;
+  display:none;
 }
-.num{
-  font-size:22px;
-  font-weight:900;
-}
-.lbl{
+.tag{
   font-size:11px;
-  color:var(--muted);
+  padding:4px 10px;
+  background:#dbeafe;
+  color:#1e40af;
+  border-radius:999px;
+  display:inline-block;
+  margin-right:6px;
 }
-.big{
-  margin-top:14px;
-  font-size:17px;
-  font-weight:800;
-}
-.share{
-  background:var(--blue);
-  margin-top:14px;
+.mood{
+  margin-top:8px;
+  font-weight:700;
 }
 </style>
 </head>
@@ -106,106 +84,104 @@ button{
 
   <div class="top">
     <a href="/" class="home">🏠 Home</a>
+    <div class="date" id="today"></div>
   </div>
 
-  <h2>🎂 Birthday Countdown</h2>
-  <div class="time" id="nowTime"></div>
+  <h2>🔮 आज का राशिफल</h2>
 
-  <input type="date" id="dob">
-  <button onclick="start()">Start Countdown</button>
+  <select id="rashi">
+    <option value="aries">Aries (मेष)</option>
+    <option value="taurus">Taurus (वृषभ)</option>
+    <option value="gemini">Gemini (मिथुन)</option>
+    <option value="cancer">Cancer (कर्क)</option>
+    <option value="leo">Leo (सिंह)</option>
+    <option value="virgo">Virgo (कन्या)</option>
+    <option value="libra">Libra (तुला)</option>
+    <option value="scorpio">Scorpio (वृश्चिक)</option>
+    <option value="sagittarius">Sagittarius (धनु)</option>
+    <option value="capricorn">Capricorn (मकर)</option>
+    <option value="aquarius">Aquarius (कुंभ)</option>
+    <option value="pisces">Pisces (मीन)</option>
+  </select>
 
-  <div class="count" id="box">
+  <button onclick="showRashi()">आज का राशिफल देखें</button>
 
-    <div class="timer">
-      <div class="box"><div class="num" id="d">0</div><div class="lbl">Days</div></div>
-      <div class="box"><div class="num" id="h">0</div><div class="lbl">Hours</div></div>
-      <div class="box"><div class="num" id="m">0</div><div class="lbl">Minutes</div></div>
-      <div class="box"><div class="num" id="s">0</div><div class="lbl">Seconds</div></div>
-    </div>
-
-    <div class="big" id="msg"></div>
-    <div class="big" id="age"></div>
-    <div class="big" id="lived"></div>
-
-    <button class="share" onclick="share()">📤 Share Countdown</button>
-
-  </div>
+  <div id="out" class="result"></div>
 
 </div>
 
 <script>
-let timer;
-let birthDate;
+// 📅 TODAY DATE (HINDI)
+const hindiDays=["रविवार","सोमवार","मंगलवार","बुधवार","गुरुवार","शुक्रवार","शनिवार"];
+const hindiMonths=["जनवरी","फ़रवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितंबर","अक्टूबर","नवंबर","दिसंबर"];
+const now=new Date();
+document.getElementById("today").innerText=
+`${hindiDays[now.getDay()]}, ${now.getDate()} ${hindiMonths[now.getMonth()]} ${now.getFullYear()}`;
 
-function updateClock(){
-  const now=new Date();
-  nowTime.innerText =
-    "⏰ " + now.toLocaleString("en-IN",{
-      weekday:"long",day:"numeric",month:"long",
-      hour:"2-digit",minute:"2-digit",second:"2-digit"
-    });
+// 🔮 RASHI NAMES
+const rashiHindi={
+  aries:"मेष", taurus:"वृषभ", gemini:"मिथुन", cancer:"कर्क",
+  leo:"सिंह", virgo:"कन्या", libra:"तुला", scorpio:"वृश्चिक",
+  sagittarius:"धनु", capricorn:"मकर", aquarius:"कुंभ", pisces:"मीन"
+};
+
+// 🧠 BIG PREDICTION POOL
+const pool=[
+{
+ day:"आज मन सकारात्मक रहेगा।",
+ career:"नए अवसर मिल सकते हैं।",
+ money:"आमदनी बढ़ने के संकेत हैं।",
+ love:"रिश्तों में भरोसा बढ़ेगा।",
+ health:"स्वास्थ्य अच्छा रहेगा।",
+ mood:"✨ शुभ दिन"
+},
+{
+ day:"थोड़ा संयम रखें।",
+ career:"काम का दबाव रह सकता है।",
+ money:"खर्च सोच-समझकर करें।",
+ love:"भावनाओं पर नियंत्रण रखें।",
+ health:"आराम जरूरी है।",
+ mood:"⚠️ सतर्क रहें"
+},
+{
+ day:"भाग्य आज साथ देगा।",
+ career:"उन्नति के योग बन रहे हैं।",
+ money:"रुका पैसा मिल सकता है।",
+ love:"पुराना संपर्क दोबारा होगा।",
+ health:"ऊर्जा महसूस करेंगे।",
+ mood:"🚀 भाग्यशाली दिन"
+},
+{
+ day:"नई शुरुआत के लिए अच्छा दिन।",
+ career:"सीनियर खुश रहेंगे।",
+ money:"निवेश से लाभ मिल सकता है।",
+ love:"घर में खुशी आएगी।",
+ health:"मन शांत रहेगा।",
+ mood:"🌸 सकारात्मक दिन"
 }
-setInterval(updateClock,1000);
+];
 
-function start(){
-  clearInterval(timer);
-  const input=dob.value;
-  if(!input){ alert("Select birth date first 🎯"); return; }
+// 🔹 SUPER SMART ENGINE
+function showRashi(){
+  const key=rashi.value;
+  const seed=now.getDate()+now.getMonth()*7+key.length;
+  const p=pool[seed % pool.length];
 
-  birthDate=new Date(input);
+  const box=document.getElementById("out");
   box.style.display="block";
 
-  timer=setInterval(updateCountdown,1000);
-  updateCountdown();
-}
+  box.innerHTML=`
+    <span class="tag">🇮🇳 ${rashiHindi[key]} राशि</span>
+    <span class="tag">आज का राशिफल</span>
 
-function updateCountdown(){
-  const now=new Date();
+    <div class="mood">${p.mood}</div><br>
 
-  // next birthday
-  let next=new Date(birthDate);
-  next.setFullYear(now.getFullYear());
-  if(next < now) next.setFullYear(now.getFullYear()+1);
-
-  const diff=next-now;
-
-  if(diff<=0){
-    msg.innerText="🎉 HAPPY BIRTHDAY 🎉";
-    age.innerText="Today is your special day 🎂";
-    lived.innerText="";
-    clearInterval(timer);
-    return;
-  }
-
-  const days=Math.floor(diff/86400000);
-  const hrs=Math.floor(diff/3600000)%24;
-  const min=Math.floor(diff/60000)%60;
-  const sec=Math.floor(diff/1000)%60;
-
-  d.innerText=days;
-  h.innerText=hrs;
-  m.innerText=min;
-  s.innerText=sec;
-
-  // Age
-  let years=now.getFullYear()-birthDate.getFullYear();
-  if(
-    now.getMonth()<birthDate.getMonth() ||
-    (now.getMonth()==birthDate.getMonth() && now.getDate()<birthDate.getDate())
-  ) years--;
-
-  const livedDays=Math.floor((now-birthDate)/86400000);
-
-  msg.innerText=`🎊 ${days} days remaining`;
-  age.innerText=`🎈 Turning ${years+1} years old`;
-  lived.innerText=`⏳ You have lived ${years} years & ${livedDays} days`;
-}
-
-function share(){
-  const text=`🎂 My birthday is coming!\nOnly ${d.innerText} days left 🎉`;
-  navigator.share
-    ? navigator.share({text})
-    : alert("Copy & share:\n\n"+text);
+    <b>🔮 दिन:</b> ${p.day}<br>
+    <b>💼 करियर:</b> ${p.career}<br>
+    <b>💰 पैसा:</b> ${p.money}<br>
+    <b>❤️ प्रेम:</b> ${p.love}<br>
+    <b>🧘 स्वास्थ्य:</b> ${p.health}
+  `;
 }
 </script>
 
