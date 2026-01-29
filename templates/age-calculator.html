@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Age Calculator | Bharat Toolbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --primary:#2563eb;
+  --card:#ffffff;
+  --muted:#64748b;
+}
+*{box-sizing:border-box}
+
+body{
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  font-family:system-ui,-apple-system,Segoe UI;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+
+.card{
+  width:460px;
+  background:#fff;
+  padding:22px;
+  border-radius:22px;
+  box-shadow:0 25px 60px rgba(0,0,0,.18);
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+
+.home{
+  background:#e0e7ff;
+  color:#1e3a8a;
+  padding:6px 14px;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+}
+
+h2{text-align:center;margin:10px 0}
+
+.notice{
+  background:#fef3c7;
+  color:#92400e;
+  padding:10px;
+  font-size:13px;
+  border-radius:12px;
+  margin-bottom:12px;
+}
+
+label{
+  font-size:13px;
+  color:#334155;
+  font-weight:600;
+  margin-top:10px;
+  display:block;
+}
+
+input,button{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  border-radius:14px;
+  border:1px solid #c7d2fe;
+  font-size:15px;
+}
+
+button{
+  background:var(--primary);
+  color:white;
+  border:none;
+  font-weight:800;
+  cursor:pointer;
+  margin-top:14px;
+}
+
+.result{
+  margin-top:16px;
+  background:#f1f5f9;
+  padding:16px;
+  border-radius:16px;
+  line-height:1.8;
+  display:none;
+}
+
+.tag{
+  font-size:11px;
+  padding:4px 10px;
+  background:#dbeafe;
+  color:#1e40af;
+  border-radius:999px;
+  display:inline-block;
+  margin-right:6px;
+  margin-bottom:6px;
+}
+
+.footer{
+  text-align:center;
+  margin-top:14px;
+  font-size:12px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="top">
+    <a href="/" class="home">🏠 Home</a>
+    <div style="font-size:12px;color:#6b7280">🇮🇳 Bharat Toolbox</div>
+  </div>
+
+  <h2>🎯 Age Calculator</h2>
+
+  <div class="notice">
+    ℹ️ Used for Govt forms, jobs & exams<br>
+    No data saved • 100% offline calculation
+  </div>
+
+  <label>Date of Birth</label>
+  <input type="date" id="dob">
+
+  <label>Calculate Age As On (optional)</label>
+  <input type="date" id="asOn">
+
+  <button onclick="calculate()">Calculate Exact Age</button>
+
+  <div class="result" id="out"></div>
+
+  <div class="footer">
+    ✅ Accurate • Govt Friendly • High Trust
+  </div>
+
+</div>
+
+<script>
+// Govt Job Age Rules (India – Common)
+const jobRules = [
+  {name:"SSC GD", min:18, max:23},
+  {name:"SSC CHSL", min:18, max:27},
+  {name:"SSC CGL", min:18, max:32},
+  {name:"Railway Group D", min:18, max:33},
+  {name:"Bank Clerk", min:20, max:28},
+  {name:"Bank PO", min:20, max:30},
+  {name:"UPSC CSE", min:21, max:32},
+  {name:"Police Constable", min:18, max:28},
+  {name:"State PCS", min:21, max:40}
+];
+
+function calculate(){
+  const dobInput = document.getElementById("dob").value;
+  const asOnInput = document.getElementById("asOn").value;
+
+  if(!dobInput){
+    alert("Please select Date of Birth");
+    return;
+  }
+
+  const dob = new Date(dobInput);
+  const today = asOnInput ? new Date(asOnInput) : new Date();
+
+  if(today < dob){
+    alert("As-on date cannot be before DOB");
+    return;
+  }
+
+  let years = today.getFullYear() - dob.getFullYear();
+  let months = today.getMonth() - dob.getMonth();
+  let days = today.getDate() - dob.getDate();
+
+  if(days < 0){
+    months--;
+    days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+  }
+  if(months < 0){
+    years--;
+    months += 12;
+  }
+
+  const totalDays = Math.floor((today - dob) / 86400000);
+
+  let nextBirthday = new Date(dob);
+  nextBirthday.setFullYear(today.getFullYear());
+  if(nextBirthday < today) nextBirthday.setFullYear(today.getFullYear()+1);
+  const daysLeft = Math.ceil((nextBirthday - today)/86400000);
+
+  // JOB ELIGIBILITY
+  let eligible=[], future=[], notEligible=[];
+  jobRules.forEach(j=>{
+    if(years >= j.min && years <= j.max){
+      eligible.push(j.name);
+    }else if(years < j.min){
+      future.push(`${j.name} (after ${j.min - years} year)`);
+    }else{
+      notEligible.push(j.name);
+    }
+  });
+
+  document.getElementById("out").style.display="block";
+  document.getElementById("out").innerHTML = `
+    <span class="tag">📄 Govt Forms</span>
+    <span class="tag">🎓 Jobs / Exams</span><br><br>
+
+    <b>Exact Age:</b> ${years} Years ${months} Months ${days} Days<br>
+    <b>Total Days Lived:</b> ${totalDays} days<br>
+    <b>Next Birthday:</b> ${daysLeft} days remaining 🎉<br>
+    <b>As On Date:</b> ${today.toDateString()}<br><br>
+
+    <b>✅ Eligible Jobs / Exams:</b><br>
+    ${eligible.length ? eligible.map(e=>"• "+e).join("<br>") : "• None"}<br><br>
+
+    <b>⏳ Eligible in Future:</b><br>
+    ${future.length ? future.map(f=>"• "+f).join("<br>") : "• None"}<br><br>
+
+    <b>❌ Not Eligible (Age):</b><br>
+    ${notEligible.length ? notEligible.map(n=>"• "+n).join("<br>") : "• None"}
+  `;
+}
+</script>
+
+</body>
+</html>

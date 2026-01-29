@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PAN & Aadhaar Utilities | Bharat Toolbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --primary:#16a34a;
+  --bg:#eef2ff;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+}
+*{box-sizing:border-box}
+
+body{
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  font-family:system-ui,-apple-system,Segoe UI;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+
+.card{
+  width:460px;
+  background:#fff;
+  padding:22px;
+  border-radius:22px;
+  box-shadow:0 25px 60px rgba(0,0,0,.18);
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+}
+
+.home{
+  background:#e0e7ff;
+  color:#1e3a8a;
+  padding:6px 14px;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+}
+
+h2{text-align:center;margin:10px 0}
+
+.notice{
+  background:#fef3c7;
+  color:#92400e;
+  padding:10px;
+  font-size:13px;
+  border-radius:12px;
+  margin:12px 0;
+}
+
+select,button{
+  width:100%;
+  padding:12px;
+  margin-top:12px;
+  border-radius:14px;
+  border:1px solid #c7d2fe;
+  font-size:15px;
+}
+
+button{
+  background:var(--primary);
+  color:white;
+  border:none;
+  font-weight:800;
+  cursor:pointer;
+}
+
+button.secondary{background:#0ea5e9}
+
+.result{
+  margin-top:16px;
+  background:#f1f5f9;
+  padding:16px;
+  border-radius:16px;
+  line-height:1.7;
+  display:none;
+}
+
+.tag{
+  display:inline-block;
+  font-size:11px;
+  padding:4px 10px;
+  background:#dcfce7;
+  color:#166534;
+  border-radius:999px;
+  margin-right:6px;
+}
+
+.footer{
+  text-align:center;
+  margin-top:14px;
+  font-size:12px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="top">
+    <a href="/" class="home">🏠 Home</a>
+    <div style="font-size:12px;color:#6b7280">🇮🇳 Bharat Toolbox</div>
+  </div>
+
+  <h2>🪪 PAN & Aadhaar Utilities</h2>
+
+  <div class="notice">
+    ⚠️ Info-only tool.  
+    We do NOT ask, store, or process PAN / Aadhaar / OTP.  
+    Redirects only to official Government websites.
+  </div>
+
+  <select id="tool">
+    <option value="">Select Service</option>
+
+    <option value="aadhaar_download">Download Aadhaar</option>
+    <option value="aadhaar_update">Aadhaar Update / Correction</option>
+    <option value="aadhaar_pvc">Order Aadhaar PVC Card</option>
+
+    <option value="pan_download">Download PAN Card (e-PAN)</option>
+    <option value="pan_correction">PAN Card Correction</option>
+    <option value="pan_link">Link PAN with Aadhaar</option>
+    <option value="pan_status">Check PAN–Aadhaar Link Status</option>
+  </select>
+
+  <button onclick="showInfo()">Show Official Steps</button>
+
+  <div class="result" id="out"></div>
+
+  <button class="secondary" onclick="openOfficial()">Open Official Website</button>
+
+  <div class="footer">
+    🔒 Govt Trusted • No Data Saved • 100% Safe
+  </div>
+
+</div>
+
+<script>
+const guides = {
+
+  aadhaar_download:{
+    title:"Download Aadhaar (UIDAI)",
+    steps:[
+      "UIDAI की official website खोलें",
+      "Download Aadhaar option चुनें",
+      "Aadhaar / VID + OTP verify करें",
+      "PDF डाउनलोड करें (password = DOB)"
+    ],
+    link:"https://myaadhaar.uidai.gov.in/genricDownloadAadhaar"
+  },
+
+  aadhaar_update:{
+    title:"Aadhaar Update / Correction",
+    steps:[
+      "myAadhaar portal पर login करें",
+      "Name / Address / DOB update करें",
+      "Valid proof upload करें",
+      "Status online track करें"
+    ],
+    link:"https://myaadhaar.uidai.gov.in"
+  },
+
+  aadhaar_pvc:{
+    title:"Order Aadhaar PVC Card",
+    steps:[
+      "UIDAI PVC card portal खोलें",
+      "Aadhaar / VID / EID डालें",
+      "₹50 fee pay करें",
+      "PVC card डाक से मिलेगा"
+    ],
+    link:"https://myaadhaar.uidai.gov.in/order-pvc-card"
+  },
+
+  pan_download:{
+    title:"Download PAN Card (e-PAN)",
+    steps:[
+      "Income Tax e-PAN portal खोलें",
+      "PAN number + DOB डालें",
+      "OTP verify करें",
+      "e-PAN PDF download करें"
+    ],
+    link:"https://www.incometax.gov.in/iec/foportal/e-pan"
+  },
+
+  pan_correction:{
+    title:"PAN Card Correction",
+    steps:[
+      "NSDL / UTI PAN portal खोलें",
+      "Correction form select करें",
+      "Documents upload करें",
+      "Corrected PAN receive करें"
+    ],
+    link:"https://www.pan.utiitsl.com/PANCORRECTION.aspx"
+  },
+
+  pan_link:{
+    title:"Link PAN with Aadhaar",
+    steps:[
+      "Income Tax portal खोलें",
+      "PAN से login करें",
+      "Link Aadhaar option चुनें",
+      "OTP verify करें"
+    ],
+    link:"https://www.incometax.gov.in/iec/foportal/"
+  },
+
+  pan_status:{
+    title:"Check PAN–Aadhaar Link Status",
+    steps:[
+      "Income Tax portal खोलें",
+      "Link Aadhaar Status option चुनें",
+      "PAN + Aadhaar details डालें",
+      "Status check करें"
+    ],
+    link:"https://www.incometax.gov.in/iec/foportal/"
+  }
+};
+
+function showInfo(){
+  const key=document.getElementById("tool").value;
+  const out=document.getElementById("out");
+
+  if(!key){
+    out.style.display="block";
+    out.innerHTML="❌ Please select a service.";
+    return;
+  }
+
+  const g=guides[key];
+  out.style.display="block";
+  out.innerHTML=`
+    <span class="tag">🇮🇳 Govt Guide</span>
+    <span class="tag">🔒 Secure</span><br><br>
+    <b>${g.title}</b><br><br>
+    ${g.steps.map(s=>"• "+s).join("<br>")}
+  `;
+}
+
+function openOfficial(){
+  const key=document.getElementById("tool").value;
+  if(!key){ alert("Select a service first"); return; }
+  window.open(guides[key].link,"_blank");
+}
+</script>
+
+</body>
+</html>
