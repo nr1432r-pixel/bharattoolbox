@@ -34,6 +34,14 @@ def home():
 # ======================
 # TOOL PAGES
 # ======================
+@app.route("/pan-aadhaar")
+def pan_aadhaar():
+    return render_template("pan-aadhaar.html")
+    
+@app.route("/age-calculator")
+def age_calculator():
+    return render_template("age-calculator.html")
+    
 @app.route("/name-meaning")
 def name_meaning():
     return render_template("name-meaning.html")
@@ -441,4 +449,5 @@ def instagram_download():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
