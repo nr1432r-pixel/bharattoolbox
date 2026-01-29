@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Birthday Countdown | Bharat Toolbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --primary:#22c55e;
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+}
+*{box-sizing:border-box}
+body{
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  font-family:system-ui,-apple-system,Segoe UI;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+.card{
+  width:380px;
+  background:var(--card);
+  padding:22px;
+  border-radius:20px;
+  box-shadow:0 25px 60px rgba(0,0,0,.18);
+  text-align:center;
+}
+.top{
+  display:flex;
+  justify-content:space-between;
+}
+.home{
+  background:#e0e7ff;
+  color:#1e3a8a;
+  padding:6px 14px;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+}
+h2{margin:12px 0}
+input,button{
+  width:100%;
+  padding:12px;
+  margin-top:12px;
+  border-radius:14px;
+  font-size:15px;
+  border:1px solid #c7d2fe;
+}
+button{
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  font-weight:800;
+  cursor:pointer;
+}
+button:active{transform:scale(.97)}
+.count{
+  margin-top:18px;
+  background:#f1f5f9;
+  padding:16px;
+  border-radius:16px;
+  display:none;
+}
+.timer{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:12px;
+}
+.box{
+  background:white;
+  border-radius:12px;
+  padding:10px;
+}
+.num{
+  font-size:22px;
+  font-weight:800;
+}
+.lbl{
+  font-size:11px;
+  color:var(--muted);
+}
+.big{
+  margin-top:14px;
+  font-size:18px;
+  font-weight:700;
+}
+.share{
+  margin-top:14px;
+  background:#0ea5e9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="top">
+    <a href="/" class="home">🏠 Home</a>
+  </div>
+
+  <h2>🎂 Birthday Countdown</h2>
+
+  <input type="date" id="dob">
+  <button onclick="start()">Start Countdown</button>
+
+  <div class="count" id="box">
+
+    <div class="timer">
+      <div class="box"><div class="num" id="d">0</div><div class="lbl">Days</div></div>
+      <div class="box"><div class="num" id="h">0</div><div class="lbl">Hours</div></div>
+      <div class="box"><div class="num" id="m">0</div><div class="lbl">Minutes</div></div>
+      <div class="box"><div class="num" id="s">0</div><div class="lbl">Seconds</div></div>
+    </div>
+
+    <div class="big" id="msg"></div>
+    <div class="big" id="age"></div>
+
+    <button class="share" onclick="share()">📤 Share Countdown</button>
+
+  </div>
+
+</div>
+
+<script>
+let timer;
+
+function start(){
+  clearInterval(timer);
+
+  const input=document.getElementById("dob").value;
+  if(!input){ alert("Select date first 🎯"); return; }
+
+  const birth=new Date(input);
+  const now=new Date();
+  let next=new Date(birth);
+  next.setFullYear(now.getFullYear());
+
+  if(next < now){
+    next.setFullYear(now.getFullYear()+1);
+  }
+
+  document.getElementById("box").style.display="block";
+
+  timer=setInterval(()=>{
+    const diff=next-now;
+    if(diff<=0){
+      document.getElementById("msg").innerHTML="🎉 HAPPY BIRTHDAY 🎉";
+      document.getElementById("age").innerHTML="Wish you great health & success!";
+      clearInterval(timer);
+      return;
+    }
+
+    const days=Math.floor(diff/86400000);
+    const hrs=Math.floor(diff/3600000)%24;
+    const min=Math.floor(diff/60000)%60;
+    const sec=Math.floor(diff/1000)%60;
+
+    d.innerText=days;
+    h.innerText=hrs;
+    m.innerText=min;
+    s.innerText=sec;
+
+    const turning=next.getFullYear()-birth.getFullYear();
+    msg.innerText=`🎊 ${days} days remaining`;
+    age.innerText=`🎈 Turning ${turning} years old`;
+  },1000);
+}
+
+function share(){
+  const text=`🎂 My birthday is coming!\nOnly ${d.innerText} days left 🎉`;
+  navigator.share
+    ? navigator.share({text})
+    : alert("Copy & share:\n\n"+text);
+}
+</script>
+
+</body>
+</html>

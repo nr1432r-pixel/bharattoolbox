@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Baby Name Meaning | Bharat Toolbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --primary:#4f46e5;
+  --bg:#eef2ff;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+}
+
+*{box-sizing:border-box}
+
+body{
+  font-family:system-ui,-apple-system,Segoe UI;
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* CARD */
+.card{
+  width:380px;
+  background:var(--card);
+  padding:22px;
+  border-radius:18px;
+  box-shadow:0 25px 60px rgba(0,0,0,.18);
+}
+
+/* TOP */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.home{
+  text-decoration:none;
+  font-size:13px;
+  padding:6px 12px;
+  border-radius:999px;
+  background:#e0e7ff;
+  color:#1e3a8a;
+  font-weight:600;
+}
+
+.brand{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* TITLE */
+h2{
+  text-align:center;
+  margin:12px 0 14px;
+}
+
+/* INPUT */
+input,select{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #c7d2fe;
+  font-size:15px;
+  margin-top:10px;
+}
+
+/* BUTTON */
+button{
+  width:100%;
+  margin-top:14px;
+  padding:13px;
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  border-radius:14px;
+  font-size:16px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+button:active{transform:scale(.98)}
+
+/* RESULT */
+.result{
+  margin-top:16px;
+  background:#f1f5f9;
+  padding:14px;
+  border-radius:12px;
+  display:none;
+  line-height:1.5;
+}
+
+.tag{
+  display:inline-block;
+  font-size:11px;
+  padding:4px 8px;
+  background:#dbeafe;
+  color:#1e40af;
+  border-radius:999px;
+  margin-right:6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="top">
+    <a href="/" class="home">🏠 Home</a>
+    <div class="brand">India Tool</div>
+  </div>
+
+  <h2>👶 Baby Name Finder</h2>
+
+  <input id="name" placeholder="Enter name (Nitesh)">
+  <select id="gender">
+    <option value="boy">Boy</option>
+    <option value="girl">Girl</option>
+  </select>
+
+  <button onclick="findMeaning()">Find Meaning</button>
+
+  <div class="result" id="result"></div>
+
+</div>
+
+<script>
+// 🔹 COMMON INDIAN NAME DATABASE
+const knownNames = {
+  nitesh:{
+    meaning:"भगवान शिव का एक नाम, नैतिक और अनुशासित व्यक्ति",
+    trait:"Intelligent, Honest, Leader"
+  },
+  aarav:{
+    meaning:"शांत, स्थिर और बुद्धिमान",
+    trait:"Calm, Focused, Peaceful"
+  },
+  aditya:{
+    meaning:"सूर्य देव, ऊर्जा और शक्ति का प्रतीक",
+    trait:"Powerful, Confident"
+  },
+  anaya:{
+    meaning:"करुणामयी और देखभाल करने वाली",
+    trait:"Caring, Loving"
+  },
+  riya:{
+    meaning:"संगीत और मधुर स्वभाव",
+    trait:"Creative, Graceful"
+  }
+};
+
+// 🔹 SMART GENERATOR (for unknown names)
+function smartMeaning(name){
+  const first = name[0].toUpperCase();
+  return {
+    meaning:`${first} अक्षर से शुरू होने वाला शुभ भारतीय नाम`,
+    trait:"Positive, Lucky, Ambitious"
+  };
+}
+
+function findMeaning(){
+  const input = document.getElementById("name").value.trim();
+  const gender = document.getElementById("gender").value;
+  const box = document.getElementById("result");
+
+  if(!input){
+    alert("Name likho pehle 🙂");
+    return;
+  }
+
+  const key = input.toLowerCase();
+  const data = knownNames[key] || smartMeaning(input);
+
+  box.style.display="block";
+  box.innerHTML=`
+    <div class="tag">${gender === "boy" ? "👦 Boy" : "👧 Girl"}</div>
+    <div class="tag">🇮🇳 Indian Name</div>
+    <br><br>
+
+    <b>Name:</b> ${input}<br>
+    <b>Meaning:</b> ${data.meaning}<br>
+    <b>Nature:</b> ${data.trait}<br>
+    <b>Lucky Letter:</b> ${input[0].toUpperCase()}<br>
+    <b>Lucky Days:</b> Monday, Thursday
+  `;
+}
+</script>
+
+</body>
+</html>
