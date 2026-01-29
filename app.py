@@ -34,6 +34,18 @@ def home():
 # ======================
 # TOOL PAGES
 # ======================
+@app.route("/name-meaning")
+def name_meaning():
+    return render_template("name-meaning.html")
+
+@app.route("/astrology")
+def astrology():
+    return render_template("astrology.html")
+
+@app.route("/birthday")
+def birthday():
+    return render_template("birthday.html")
+    
 @app.route("/PDF Tools")
 def PDF_Tools():
     return render_template("PDF Tools.html")
@@ -429,3 +441,4 @@ def instagram_download():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
