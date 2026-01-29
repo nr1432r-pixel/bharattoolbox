@@ -2,77 +2,98 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Government Form Helper | Bharat Toolbox</title>
+<title>Government & Job Form Helper | Bharat Toolbox</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body{
-  background:#fdf2f8;
+  background:linear-gradient(135deg,#fdf2f8,#eef2ff);
   font-family:system-ui,-apple-system,Segoe UI;
   display:flex;
   justify-content:center;
   align-items:center;
-  height:100vh;
+  min-height:100vh;
 }
-
 .card{
   background:#fff;
-  width:420px;
+  width:440px;
   padding:22px;
-  border-radius:18px;
-  box-shadow:0 25px 50px rgba(0,0,0,.15);
+  border-radius:20px;
+  box-shadow:0 30px 60px rgba(0,0,0,.2);
 }
-
 .top{
   display:flex;
   justify-content:space-between;
-  margin-bottom:10px;
 }
-
 .home{
-  text-decoration:none;
   background:#e0e7ff;
-  padding:6px 12px;
-  border-radius:8px;
+  padding:6px 14px;
+  border-radius:999px;
+  text-decoration:none;
   font-size:13px;
   font-weight:600;
   color:#1e3a8a;
 }
-
-h2{
-  text-align:center;
-  margin-bottom:12px;
-}
-
+h2{text-align:center;margin:12px 0}
 input{
   width:100%;
-  padding:12px;
+  padding:13px;
   font-size:15px;
-  border-radius:10px;
-  border:1px solid #fbcfe8;
+  border-radius:14px;
+  border:1px solid #c7d2fe;
 }
-
+.suggest{
+  font-size:12px;
+  color:#64748b;
+  margin-top:4px;
+}
 button{
   width:100%;
   margin-top:12px;
-  padding:12px;
+  padding:14px;
   background:#db2777;
   color:white;
   border:none;
-  border-radius:12px;
+  border-radius:16px;
   font-size:16px;
-  font-weight:600;
+  font-weight:700;
   cursor:pointer;
 }
-
-button:active{transform:scale(.97)}
-
 .output{
-  margin-top:15px;
+  margin-top:16px;
   font-size:15px;
-  line-height:1.6;
+  line-height:1.8;
+  background:#f1f5f9;
+  padding:16px;
+  border-radius:16px;
 }
-
+.tag{
+  display:inline-block;
+  font-size:11px;
+  padding:4px 10px;
+  background:#dbeafe;
+  color:#1e40af;
+  border-radius:999px;
+  margin-right:6px;
+}
+.link{
+  display:inline-block;
+  margin-top:8px;
+  font-size:13px;
+  color:#2563eb;
+  font-weight:600;
+  text-decoration:none;
+}
+.tools{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+}
+.tools button{
+  flex:1;
+  background:#0ea5e9;
+  font-size:13px;
+}
 .footer{
   text-align:center;
   margin-top:12px;
@@ -87,62 +108,126 @@ button:active{transform:scale(.97)}
 <div class="card">
 
   <div class="top">
-    <a class="home" href="/">🏠 Home</a>
+    <a href="/" class="home">🏠 Home</a>
     <div style="font-size:12px;color:#6b7280;">IN Bharat Toolbox</div>
   </div>
 
-  <h2>Government Form Helper</h2>
+  <h2>🧾 Government & Job Form Helper</h2>
 
-  <input id="query" placeholder="Type form name (PAN, Aadhaar, DL, Voter ID...)">
+  <input id="query" placeholder="Type anything (निवास प्रमाण पत्र, SSC Job...)">
+  <div class="suggest">Examples: PAN, Aadhaar, Income Cert, SSC, Railway, PM Kisan</div>
 
-  <button onclick="showSteps()">Show Steps</button>
+  <button onclick="showSteps()">Search & Explain</button>
 
   <div class="output" id="result"></div>
 
-  <div class="footer">Free • Smart • Simple</div>
+  <div class="footer">Free • Smart • India Only 🇮🇳</div>
+
 </div>
 
 <script>
-// 🔹 SMART FORM DATA (extend anytime)
+/* 🔹 MASTER FORM DATABASE (WITH ALIASES + LINKS) */
 const forms = {
-  pan: [
-    "Aadhaar must be linked",
-    "Photo & signature required",
-    "Apply on NSDL / UTI website"
-  ],
-  aadhaar: [
-    "Birth proof or address proof",
-    "Mobile number needed",
-    "Visit UIDAI centre"
-  ],
-  voter: [
-    "Age 18+ required",
-    "Address proof",
-    "Apply on NVSP portal"
-  ],
-  driving: [
-    "Learner license first",
-    "Medical certificate",
-    "Apply on Parivahan site"
-  ],
-  passport: [
-    "Birth proof",
-    "Address proof",
-    "Police verification",
-    "Apply on Passport Seva"
-  ]
+  pan:{
+    type:"ID",
+    alias:["pan card","पैन"],
+    link:"https://www.onlineservices.nsdl.com",
+    steps:[
+      "Aadhaar linking required",
+      "Photo & signature upload",
+      "Apply online on NSDL / UTI"
+    ]
+  },
+  aadhaar:{
+    type:"ID",
+    alias:["uid","आधार"],
+    link:"https://uidai.gov.in",
+    steps:[
+      "Birth or address proof needed",
+      "Mobile number mandatory",
+      "Visit UIDAI centre"
+    ]
+  },
+  residence:{
+    type:"Certificate",
+    alias:["domicile","निवास","residential"],
+    steps:[
+      "Address proof required",
+      "Apply on State e-District portal",
+      "Issued by SDM / Tehsil office"
+    ]
+  },
+  income:{
+    type:"Certificate",
+    alias:["income cert","आय"],
+    steps:[
+      "Income proof required",
+      "Apply on e-District portal",
+      "Used for scholarship & jobs"
+    ]
+  },
+  caste:{
+    type:"Certificate",
+    alias:["जाति"],
+    steps:[
+      "Community proof required",
+      "Apply via State portal",
+      "Used for reservation benefits"
+    ]
+  },
+  ssc:{
+    type:"Job / Exam",
+    alias:["staff selection"],
+    link:"https://ssc.nic.in",
+    steps:[
+      "Check eligibility",
+      "Online application",
+      "Exam → Result → Joining"
+    ]
+  },
+  railway:{
+    type:"Job",
+    alias:["rrb"],
+    steps:[
+      "Apply on RRB website",
+      "CBT exam",
+      "Medical & Document verification"
+    ]
+  },
+  pmkisan:{
+    type:"Scheme",
+    alias:["kisan","farmer"],
+    steps:[
+      "Farmer registration",
+      "Land verification",
+      "₹6000/year benefit"
+    ]
+  },
+  passport:{
+    type:"Document",
+    alias:["पासपोर्ट"],
+    link:"https://www.passportindia.gov.in",
+    steps:[
+      "Online form",
+      "Appointment",
+      "Police verification"
+    ]
+  }
 };
 
-// 🔹 SIMPLE AI MATCHING
+/* 🔹 SMART MATCH */
 function findForm(text){
   text = text.toLowerCase();
   for(let key in forms){
     if(text.includes(key)) return key;
+    for(let a of (forms[key].alias||[])){
+      if(text.includes(a)) return key;
+    }
   }
   return null;
 }
 
-// 🔹 MAIN
+/* 🔹 MAIN FUNCTION */
 function showSteps(){
   const q = document.getElementById("query").value.trim();
   const out = document.getElementById("result");
@@ -151,12 +236,40 @@ function showSteps(){
   const key = findForm(q);
 
   if(!key){
-    out.innerHTML = "❌ Form not found.<br>Try: PAN, Aadhaar, Passport, Driving License, Voter ID";
+    out.innerHTML = `
+      ❌ <b>Form not recognised</b><br><br>
+      Try typing like:<br>
+      PAN, Aadhaar, Residence Certificate, SSC Job, Railway, Passport, PM Kisan
+    `;
     return;
   }
 
-  out.innerHTML = "✅ <b>" + key.toUpperCase() + " FORM STEPS</b><br><br>" +
-    forms[key].map(s=>"• "+s).join("<br>");
+  const f = forms[key];
+
+  out.innerHTML = `
+    <span class="tag">📂 ${f.type}</span>
+    <span class="tag">🇮🇳 India</span><br><br>
+
+    <b>${key.toUpperCase()} – How to Apply</b><br><br>
+    ${f.steps.map(s=>"• "+s).join("<br>")}
+    ${f.link ? `<br><a class="link" href="${f.link}" target="_blank">🔗 Official Website</a>` : ""}
+
+    <div class="tools">
+      <button onclick="copyText()">📋 Copy</button>
+      <button onclick="shareText()">📤 Share</button>
+    </div>
+  `;
+}
+
+/* 🔹 COPY + SHARE */
+function copyText(){
+  navigator.clipboard.writeText(result.innerText);
+  alert("Copied!");
+}
+function shareText(){
+  navigator.share
+    ? navigator.share({text:result.innerText})
+    : alert("Copy & share manually");
 }
 </script>
 
