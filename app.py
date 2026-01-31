@@ -54,6 +54,10 @@ def astrology():
 def birthday():
     return render_template("birthday.html")
     
+@app.route("/result-helper")
+def result_helper():
+    return render_template("result-helper.html") 
+    
 @app.route("/PDF Tools")
 def PDF_Tools():
     return render_template("PDF Tools.html")
@@ -449,5 +453,6 @@ def instagram_download():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
