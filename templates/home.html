@@ -30,8 +30,6 @@
 
 <style>
 :root{
-  --bg:#eef2ff;
-  --card:#ffffff;
   --primary:#4f46e5;
   --primary-dark:#3730a3;
   --text:#0f172a;
@@ -41,12 +39,12 @@
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-  font-family:system-ui, -apple-system, Segoe UI, Roboto;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
   background:linear-gradient(135deg,#eef2ff,#f8fafc);
   color:var(--text);
 }
 
-/* APP WRAPPER */
+/* APP */
 .app{
   max-width:1200px;
   margin:20px auto;
@@ -63,18 +61,8 @@ body{
   align-items:center;
   margin-bottom:25px;
 }
-
-.brand{
-  font-size:20px;
-  font-weight:800;
-}
-
-.top-actions{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
+.brand{font-size:20px;font-weight:800}
+.top-actions{display:flex;gap:12px}
 .download-btn{
   background:var(--primary);
   color:#fff;
@@ -84,60 +72,82 @@ body{
   font-size:14px;
   font-weight:600;
 }
-
 .download-btn:hover{background:var(--primary-dark)}
-
-.menu-btn{
-  font-size:22px;
-  cursor:pointer;
-}
+.menu-btn{font-size:22px;cursor:pointer}
 
 /* HEADER */
-.header{
-  text-align:center;
-  margin-bottom:30px;
-}
-
-.header h1{
-  font-size:34px;
-  font-weight:800;
-}
-
-.header p{
-  margin-top:8px;
-  font-size:14px;
-  color:var(--muted);
-}
+.header{text-align:center;margin-bottom:34px}
+.header h1{font-size:34px;font-weight:800}
+.header p{margin-top:8px;font-size:14px;color:var(--muted)}
 
 /* GRID */
 .tools{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
+  gap:20px;
 }
 
-/* CARD */
+/* TOOL CARD (UPGRADED LOOK) */
 .tool{
-  background:#fff;
-  border-radius:16px;
-  padding:22px;
+  position:relative;
+  background:linear-gradient(135deg,#ffffff,#f1f5ff);
+  border-radius:18px;
+  padding:24px 18px;
   text-align:center;
   text-decoration:none;
   color:var(--text);
-  box-shadow:0 8px 20px rgba(0,0,0,.08);
-  transition:.25s;
+  border:1px solid rgba(79,70,229,.12);
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  transition:.35s ease;
+  overflow:hidden;
+}
+.tool::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);
+  opacity:0;
+  transition:.4s;
+}
+.tool:hover::before{opacity:1}
+.tool:hover{
+  transform:translateY(-8px) scale(1.03);
+  box-shadow:0 22px 55px rgba(0,0,0,.18);
 }
 
-.tool:hover{transform:translateY(-6px)}
+/* ICON */
+.icon{
+  width:56px;
+  height:56px;
+  margin:0 auto 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:14px;
+  font-size:28px;
+  color:#fff;
+  background:linear-gradient(135deg,#6366f1,#818cf8);
+  box-shadow:0 8px 22px rgba(99,102,241,.5);
+}
 
-.icon{font-size:34px;margin-bottom:10px}
+/* auto color variation */
+.tool:nth-child(4n+1) .icon{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.tool:nth-child(4n+2) .icon{background:linear-gradient(135deg,#f97316,#fb923c)}
+.tool:nth-child(4n+3) .icon{background:linear-gradient(135deg,#0ea5e9,#38bdf8)}
 
-.tool h3{font-size:16px;font-weight:700;margin-bottom:4px}
-.tool span{font-size:13px;color:var(--muted)}
+.tool h3{
+  font-size:16px;
+  font-weight:800;
+  margin-bottom:4px;
+}
+.tool span{
+  font-size:13px;
+  color:#475569;
+}
 
 /* FOOTER */
 .footer{
-  margin-top:30px;
+  margin-top:35px;
   text-align:center;
   font-size:13px;
   color:#64748b;
@@ -156,9 +166,8 @@ body{
   <div class="topbar">
     <div class="brand">🇮🇳 Bharat Toolbox</div>
     <div class="top-actions">
-      <a class="download-btn"
-         href="https://drive.google.com/uc?export=download&id=1tkeqcUoHbEmQFKJ7dkNXJu9saz3z6bz7">
-         ⬇ Download App
+      <a class="download-btn" href="https://drive.google.com/uc?export=download&id=1tkeqcUoHbEmQFKJ7dkNXJu9saz3z6bz7">
+        ⬇ Download App
       </a>
       <div class="menu-btn">☰</div>
     </div>
@@ -288,4 +297,5 @@ body{
 
 </body>
 </html>
+
 
