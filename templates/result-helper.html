@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>10th / 12th Result Helper – Bharat Toolbox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  font-family:system-ui, -apple-system, Segoe UI, Roboto;
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+}
+.box{
+  max-width:520px;
+  margin:40px auto;
+  background:#fff;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 15px 40px rgba(0,0,0,.12);
+}
+h2{text-align:center;margin-bottom:5px}
+p{text-align:center;color:#64748b;font-size:14px}
+
+input,select,button{
+  width:100%;
+  padding:12px;
+  margin-top:12px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-size:15px;
+}
+
+button{
+  background:#4f46e5;
+  color:#fff;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+}
+
+button:hover{background:#3730a3}
+
+.result{
+  margin-top:20px;
+  background:#f1f5f9;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.links a{
+  display:block;
+  margin-top:12px;
+  background:#e0e7ff;
+  padding:12px;
+  border-radius:10px;
+  text-decoration:none;
+  color:#1e293b;
+  font-weight:700;
+}
+
+.note{
+  margin-top:15px;
+  font-size:12px;
+  color:#64748b;
+  text-align:center;
+}
+
+.badge{
+  background:#dcfce7;
+  color:#166534;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+  display:inline-block;
+  margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <div class="badge">🔒 Official & Safe Tool</div>
+  <h2>📊 10th / 12th Result Helper</h2>
+  <p>All boards • All years • Auto system</p>
+
+  <form onsubmit="calculateResult(event)">
+    
+    <!-- BOARD -->
+    <select id="board" required>
+      <option value="">Select Board</option>
+      <option value="cbse">CBSE Board</option>
+      <option value="up">UP Board</option>
+      <option value="bihar">Bihar Board</option>
+      <option value="mp">MP Board</option>
+    </select>
+
+    <!-- YEAR -->
+    <select id="year" required></select>
+
+    <!-- MARKS -->
+    <input type="number" id="obtained"
+      placeholder="Marks Obtained (Example: 387)"
+      required>
+
+    <input type="number" id="total"
+      placeholder="Total Marks (Example: 500)"
+      value="500"
+      required>
+
+    <button type="submit">Calculate Result</button>
+  </form>
+
+  <div id="output"></div>
+
+  <div class="note">
+    ⚠️ Hum result store ya publish nahi karte.<br>
+    Aapko sirf official board websites par bheja jata hai.
+  </div>
+</div>
+
+<script>
+// ✅ OFFICIAL WORKING LINKS
+const boards = {
+  cbse:{
+    current:"https://results.cbse.nic.in/",
+    past:"https://cbseit.in/cbse/web/dads/frmRegistration.aspx"
+  },
+  up:{
+    current:"https://results.upmsp.edu.in/",
+    past:"https://upmsp.edu.in/Results.aspx"
+  },
+  bihar:{
+    current:"https://results.biharboardonline.com/",
+    past:"https://biharboardonline.bihar.gov.in/"
+  },
+  mp:{
+    current:"https://mpresults.nic.in/",
+    past:"https://mpbse.nic.in/mpresults.aspx"
+  }
+};
+
+// 🔁 AUTO YEARS (future-proof)
+const yearSelect = document.getElementById("year");
+const currentYear = new Date().getFullYear();
+
+let o = document.createElement("option");
+o.value = currentYear;
+o.textContent = currentYear + " (Current)";
+yearSelect.appendChild(o);
+
+for(let i=1;i<=15;i++){
+  let y = currentYear - i;
+  let opt = document.createElement("option");
+  opt.value = y;
+  opt.textContent = y;
+  yearSelect.appendChild(opt);
+}
+
+// 🧠 RESULT LOGIC
+function calculateResult(e){
+  e.preventDefault();
+
+  let board = document.getElementById("board").value;
+  let year = parseInt(document.getElementById("year").value);
+  let obtained = parseFloat(document.getElementById("obtained").value);
+  let total = parseFloat(document.getElementById("total").value);
+
+  if(obtained > total){
+    alert("Marks obtained total marks se zyada nahi ho sakta");
+    return;
+  }
+
+  let percent = ((obtained / total) * 100).toFixed(2);
+
+  let division =
+    percent >= 60 ? "First Division" :
+    percent >= 45 ? "Second Division" :
+    percent >= 33 ? "Third Division" :
+    "Fail";
+
+  let link =
+    year === currentYear
+      ? boards[board].current
+      : boards[board].past;
+
+  let btnText =
+    year === currentYear
+      ? "🔗 Check Official Result"
+      : "📄 View Previous Year Result";
+
+  document.getElementById("output").innerHTML = `
+    <div class="result">
+      <h3>✅ Result Summary</h3>
+      <p><b>Percentage:</b> ${percent}%</p>
+      <p><b>Division:</b> ${division}</p>
+
+      <div class="links">
+        <a href="${link}" target="_blank" rel="nofollow noopener">
+          ${btnText}
+        </a>
+      </div>
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html>
