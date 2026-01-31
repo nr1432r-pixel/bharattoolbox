@@ -9,15 +9,44 @@
 body{
   font-family:system-ui, -apple-system, Segoe UI, Roboto;
   background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  margin:0;
 }
+
+/* ===== TOP HEADER ===== */
+.top{
+  max-width:520px;
+  margin:20px auto 10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.home-btn{
+  background:#e0e7ff;
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:600;
+  color:#1e293b;
+  text-decoration:none;
+}
+
+.brand{
+  font-size:14px;
+  font-weight:700;
+  color:#475569;
+}
+
+/* ===== CARD ===== */
 .box{
   max-width:520px;
-  margin:40px auto;
+  margin:10px auto 40px;
   background:#fff;
   padding:25px;
   border-radius:16px;
   box-shadow:0 15px 40px rgba(0,0,0,.12);
 }
+
 h2{text-align:center;margin-bottom:5px}
 p{text-align:center;color:#64748b;font-size:14px}
 
@@ -80,14 +109,19 @@ button:hover{background:#3730a3}
 
 <body>
 
+<!-- ===== HEADER ===== -->
+<div class="top">
+  <a href="/" class="home-btn">🏠 Home</a>
+  <div class="brand">🇮🇳 Bharat Toolbox</div>
+</div>
+
+<!-- ===== TOOL CARD ===== -->
 <div class="box">
   <div class="badge">🔒 Official & Safe Tool</div>
   <h2>📊 10th / 12th Result Helper</h2>
   <p>All boards • All years • Auto system</p>
 
   <form onsubmit="calculateResult(event)">
-    
-    <!-- BOARD -->
     <select id="board" required>
       <option value="">Select Board</option>
       <option value="cbse">CBSE Board</option>
@@ -96,10 +130,8 @@ button:hover{background:#3730a3}
       <option value="mp">MP Board</option>
     </select>
 
-    <!-- YEAR -->
     <select id="year" required></select>
 
-    <!-- MARKS -->
     <input type="number" id="obtained"
       placeholder="Marks Obtained (Example: 387)"
       required>
@@ -121,7 +153,6 @@ button:hover{background:#3730a3}
 </div>
 
 <script>
-// ✅ OFFICIAL WORKING LINKS
 const boards = {
   cbse:{
     current:"https://results.cbse.nic.in/",
@@ -141,7 +172,7 @@ const boards = {
   }
 };
 
-// 🔁 AUTO YEARS (future-proof)
+// AUTO YEARS
 const yearSelect = document.getElementById("year");
 const currentYear = new Date().getFullYear();
 
@@ -158,12 +189,11 @@ for(let i=1;i<=15;i++){
   yearSelect.appendChild(opt);
 }
 
-// 🧠 RESULT LOGIC
 function calculateResult(e){
   e.preventDefault();
 
-  let board = document.getElementById("board").value;
-  let year = parseInt(document.getElementById("year").value);
+  let board = boardSelect.value;
+  let year = parseInt(yearSelect.value);
   let obtained = parseFloat(document.getElementById("obtained").value);
   let total = parseFloat(document.getElementById("total").value);
 
@@ -180,30 +210,29 @@ function calculateResult(e){
     percent >= 33 ? "Third Division" :
     "Fail";
 
-  let link =
-    year === currentYear
-      ? boards[board].current
-      : boards[board].past;
+  let link = year === currentYear
+    ? boards[board].current
+    : boards[board].past;
 
-  let btnText =
-    year === currentYear
-      ? "🔗 Check Official Result"
-      : "📄 View Previous Year Result";
+  let btnText = year === currentYear
+    ? "🔗 Check Official Result"
+    : "📄 View Previous Year Result";
 
   document.getElementById("output").innerHTML = `
     <div class="result">
       <h3>✅ Result Summary</h3>
       <p><b>Percentage:</b> ${percent}%</p>
       <p><b>Division:</b> ${division}</p>
-
       <div class="links">
-        <a href="${link}" target="_blank" rel="nofollow noopener">
+        <a href="${link}" target="_blank" rel="noopener">
           ${btnText}
         </a>
       </div>
     </div>
   `;
 }
+
+const boardSelect = document.getElementById("board");
 </script>
 
 </body>
