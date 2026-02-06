@@ -77,7 +77,11 @@ def instagram_video_downloader():
 @app.route("/Password Generator")
 def password_generator():
     return render_template("Password Generator.html")
-
+    
+@app.route("/video-downloader")
+def video_downloader():
+    return render_template("video-downloader.html")
+    
 @app.route("/QR Code Generator")
 def qr_code_generator():
     return render_template("QR Code Generator.html")
@@ -453,13 +457,45 @@ def instagram_download():
     except Exception as e:
         print("INSTAGRAM DOWNLOAD ERROR:", e)
         return jsonify({"error": "Download failed"}), 500
+        
 
+@app.route("/video-download", methods=["POST"])
+def video_download():
+    data = request.get_json(force=True)
+    url = data.get("url")
+    fid = data.get("format")
 
+    if not url or not fid:
+        return jsonify({"error": "Missing data"}), 400
+
+    out_name = f"{uuid.uuid4()}.mp4"
+    out_path = os.path.join(OUTPUT_FOLDER, out_name)
+
+    try:
+        subprocess.run([
+            "yt-dlp",
+            "-f", f"{fid}+bestaudio/best",
+            "--merge-output-format", "mp4",
+            "-o", out_path,
+            url
+        ], check=True)
+
+        return send_file(
+            out_path,
+            as_attachment=True,
+            download_name="video.mp4"
+        )
+
+    except Exception as e:
+        print("DOWNLOAD ERROR:", e)
+        return jsonify({"error": "Download failed"}), 500
+# ======================
 # ======================
 # RUN
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
