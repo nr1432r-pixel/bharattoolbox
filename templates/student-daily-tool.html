@@ -8,15 +8,18 @@
 <style>
 :root{
   --primary:#4f46e5;
+  --card:#f8fafc;
   --green:#16a34a;
+  --green-light:#dcfce7;
   --red:#dc2626;
+  --red-light:#fee2e2;
 }
 *{box-sizing:border-box}
 
 body{
   margin:0;
   font-family:system-ui,Segoe UI;
-  background:linear-gradient(135deg,#eef2ff,#fce7f3);
+  background:linear-gradient(135deg,#c7d2fe,#fbcfe8);
   min-height:100vh;
   display:flex;
   justify-content:center;
@@ -25,43 +28,56 @@ body{
 
 /* TOP BAR */
 .topbar{
-  position:sticky;
-  top:0;
-  z-index:20;
+  position:sticky; top:0; z-index:20;
   background:#fff;
-  width:100%;
-  max-width:440px;
+  width:100%; max-width:440px;
   padding:10px 14px;
   border-radius:18px;
   box-shadow:0 10px 30px rgba(0,0,0,.12);
   margin-bottom:10px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  display:flex; justify-content:space-between; align-items:center;
 }
 .topbar button{
   border:none;
-  background:var(--primary);
+  background:linear-gradient(135deg,#6366f1,#4f46e5);
   color:#fff;
-  padding:8px 14px;
+  padding:8px 16px;
   border-radius:20px;
-  font-weight:600;
+  font-weight:800;
 }
-.topbar span{font-weight:800;color:var(--primary)}
+.topbar span{font-weight:900;color:var(--primary)}
 
 .container{width:100%;max-width:440px}
 
+/* CARD */
 .card{
-  background:#fff;
+  background:linear-gradient(180deg,#ffffff,var(--card));
   padding:18px;
   border-radius:22px;
-  box-shadow:0 18px 45px rgba(0,0,0,.16);
+  box-shadow:0 18px 45px rgba(0,0,0,.15);
   margin-bottom:16px;
 }
 
-h1{text-align:center;color:var(--primary)}
-.sub{text-align:center;font-size:13px;color:#555;margin-bottom:14px}
+/* TOOL HEADER */
+.tool-head{
+  margin:-18px -18px 14px -18px;
+  padding:12px 16px;
+  border-radius:22px 22px 14px 14px;
+  font-weight:900;
+  color:#fff;
+  font-size:15px;
+}
 
+/* COLORS */
+.percent{background:linear-gradient(135deg,#0ea5e9,#38bdf8)}
+.cgpa{background:linear-gradient(135deg,#6366f1,#4f46e5)}
+.attendance{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.timer-h{background:linear-gradient(135deg,#f59e0b,#f97316)}
+
+h1{text-align:center;color:var(--primary)}
+.sub{text-align:center;font-size:13px;color:#475569;margin-bottom:14px}
+
+/* MENU */
 .menu{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -70,51 +86,69 @@ h1{text-align:center;color:var(--primary)}
 .menu button{
   border:none;
   padding:14px;
-  border-radius:28px;
+  border-radius:30px;
+  font-weight:800;
   background:#e5e7eb;
-  font-weight:700;
 }
 .menu button.active{
-  background:var(--primary);
+  background:linear-gradient(135deg,#6366f1,#4f46e5);
   color:#fff;
 }
 
+/* INPUT */
 input{
   width:100%;
   padding:14px;
   margin:8px 0;
   border-radius:16px;
-  border:1px solid #ddd;
+  border:2px solid #e5e7eb;
+  background:#f8fafc;
+  font-size:14px;
+}
+input:focus{
+  outline:none;
+  border-color:var(--primary);
+  background:#fff;
 }
 
+/* BUTTON */
 button.action{
   width:100%;
-  margin-top:6px;
   padding:14px;
   border-radius:30px;
   border:none;
-  background:var(--primary);
+  background:linear-gradient(135deg,#6366f1,#4f46e5);
   color:#fff;
-  font-weight:700;
+  font-weight:900;
+  margin-top:6px;
 }
 
 .tool{display:none}
 
+/* RESULT */
 .result{
   margin-top:12px;
-  padding:14px;
-  border-radius:18px;
+  padding:16px;
+  border-radius:20px;
   text-align:center;
-  font-weight:800;
+  font-weight:900;
 }
-.good{background:#dcfce7;color:#166534}
-.bad{background:#fee2e2;color:#991b1b}
+.good{
+  background:linear-gradient(135deg,var(--green-light),#f0fdf4);
+  color:#14532d;
+}
+.bad{
+  background:linear-gradient(135deg,var(--red-light),#fff1f2);
+  color:#7f1d1d;
+}
 
+/* TIMER */
 .timer{
-  font-size:40px;
+  font-size:42px;
   font-weight:900;
   text-align:center;
   margin:12px 0;
+  color:#f97316;
 }
 
 /* BOTTOM NAV */
@@ -126,8 +160,8 @@ button.action{
   background:#fff;
   width:calc(100% - 20px);
   max-width:440px;
-  border-radius:28px;
-  box-shadow:0 14px 40px rgba(0,0,0,.2);
+  border-radius:32px;
+  box-shadow:0 16px 40px rgba(0,0,0,.25);
   padding:10px;
   display:flex;
   justify-content:space-around;
@@ -135,7 +169,7 @@ button.action{
 .bottom button{
   border:none;
   background:none;
-  font-size:20px;
+  font-size:22px;
 }
 </style>
 </head>
@@ -160,28 +194,35 @@ button.action{
   </div>
 </div>
 
+<!-- Percentage -->
 <div class="card tool" id="percent">
+  <div class="tool-head percent">📊 Percentage Calculator</div>
   <input id="om" placeholder="Marks Obtained">
   <input id="tm" placeholder="Total Marks">
   <button class="action" onclick="calcPercent()">Calculate</button>
   <div id="pres"></div>
 </div>
 
+<!-- CGPA -->
 <div class="card tool" id="cgpa">
+  <div class="tool-head cgpa">🎯 CGPA to Percentage</div>
   <input id="cg" placeholder="CGPA (0–10)">
   <button class="action" onclick="calcCGPA()">Convert</button>
   <div id="cres"></div>
 </div>
 
-<!-- UPDATED ATTENDANCE -->
+<!-- Attendance -->
 <div class="card tool" id="attendance">
+  <div class="tool-head attendance">📅 Attendance Predictor</div>
   <input id="att" placeholder="Classes Attended">
   <input id="totc" placeholder="Total Classes">
   <button class="action" onclick="calcAttendance()">Predict</button>
   <div id="ares"></div>
 </div>
 
+<!-- Timer -->
 <div class="card tool" id="timer">
+  <div class="tool-head timer-h">⏱ Study Timer</div>
   <input id="studyMin" placeholder="Study Minutes (25)">
   <div class="timer" id="time">00:00</div>
   <button class="action" onclick="startTimer()">▶ Start</button>
@@ -204,27 +245,42 @@ function openTool(id){
 openTool("percent");
 
 function calcPercent(){
-  pres.innerHTML=`<div class="result good">${((om.value/tm.value)*100).toFixed(2)}%</div>`;
+  pres.innerHTML=
+   `<div class="result good">${((om.value/tm.value)*100).toFixed(2)}%</div>`;
 }
 function calcCGPA(){
-  cres.innerHTML=`<div class="result good">${(cg.value*9.5).toFixed(2)}%</div>`;
+  cres.innerHTML=
+   `<div class="result good">${(cg.value*9.5).toFixed(2)}%</div>`;
+}
+function calcAttendance(){
+  let a=+att.value, t=+totc.value;
+  let p=(a/t)*100;
+  let need75=p>=75?0:Math.ceil((0.75*t-a)/0.25);
+  let need65=p>=65?0:Math.ceil((0.65*t-a)/0.35);
+
+  ares.innerHTML=
+   `<div class="result ${p>=75?'good':'bad'}">
+    📊 ${p.toFixed(2)}%<br>
+    🎯 75% → ${need75?need75+' classes':'Safe'}<br>
+    📌 65% → ${need65?need65+' classes':'Above'}
+   </div>`;
 }
 
-/* 🔥 ADVANCED ATTENDANCE (75% + 65%) */
-function calcAttendance(){
-  let a=+att.value,t=+totc.value;
-  let p=(a/t)*100;
-
-  let need75 = p>=75 ? 0 : Math.ceil((0.75*t - a)/0.25);
-  let need65 = p>=65 ? 0 : Math.ceil((0.65*t - a)/0.35);
-
-  ares.innerHTML = `
-    <div class="result ${p>=75?'good':'bad'}">
-      📊 Current: ${p.toFixed(2)}%<br><br>
-      🎯 For 75%: ${need75>0 ? need75+' classes':'Already safe'}<br>
-      📌 For 65%: ${need65>0 ? need65+' classes':'Already above'}
-    </div>
-  `;
+/* Timer */
+let sec=0, interval;
+function startTimer(){
+  if(sec===0) sec=(+studyMin.value||25)*60;
+  clearInterval(interval);
+  interval=setInterval(()=>{
+    sec--;
+    time.innerText=
+      String(Math.floor(sec/60)).padStart(2,'0')+":"+
+      String(sec%60).padStart(2,'0');
+    if(sec<=0){
+      clearInterval(interval);
+      alert("🎉 Time Up!");
+    }
+  },1000);
 }
 </script>
 
