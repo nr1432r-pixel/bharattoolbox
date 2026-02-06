@@ -10,12 +10,60 @@ import edge_tts
 import subprocess
 from flask import Flask, render_template, request, jsonify
 import requests, cv2, os
+import json
+from datetime import datetime
+from flask import Flask, render_template, request, jsonify, send_from_directory, send_file, session
+from pdf2docx import Converter
+from docx2pdf import convert
+from pypdf import PdfReader, PdfWriter
+import os, uuid, asyncio, requests, json, random, subprocess, cv2
+from datetime import datetime
+import edge_tts
+from flask import Flask, render_template, request, jsonify, send_from_directory, send_file, session
+from werkzeug.security import generate_password_hash, check_password_hash
+from pdf2docx import Converter
+from docx2pdf import convert
+from pypdf import PdfReader, PdfWriter
+import os, uuid, json, random, subprocess, cv2, requests, asyncio
+from datetime import datetime
+import edge_tts
+from flask import Flask, render_template, request, jsonify, send_from_directory, send_file, session
+from werkzeug.security import generate_password_hash, check_password_hash
+from pdf2docx import Converter
+from docx2pdf import convert
+from pypdf import PdfReader, PdfWriter
+import os, uuid, json, random, subprocess, cv2, requests, asyncio
+from datetime import datetime
+import edge_tts
 
+from flask import Flask, render_template, request, jsonify, send_from_directory, send_file, session
+from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
+import os, json, uuid, subprocess, requests, cv2, asyncio
+from pdf2docx import Converter
+from docx2pdf import convert
+from pypdf import PdfReader, PdfWriter
+import edge_tts
+
+from flask import Flask, render_template, request, jsonify, send_from_directory, send_file, session
+from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
+import os, json, uuid, subprocess, requests, cv2, asyncio
+
+# ================= APP =================
 app = Flask(__name__, static_folder="static")
+app.secret_key = "bharat_chat_super_secret_key_2026"
 
-# ======================
-# FOLDERS
-# ======================
+# ================= DATABASE =================
+CHAT_DB = "chat_db.json"
+USERS_DB = "users_db.json"
+
+for db in [CHAT_DB, USERS_DB]:
+    if not os.path.exists(db):
+        with open(db, "w") as f:
+            json.dump([], f)
+
+# ================= FOLDERS =================
 UPLOAD_FOLDER = "uploads"
 OUTPUT_FOLDER = "outputs"
 AUDIO_FOLDER = os.path.join("static", "audio")
@@ -24,16 +72,27 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 os.makedirs(AUDIO_FOLDER, exist_ok=True)
 
-# ======================
-# HOME
-# ======================
+# ================= HOME =================
 @app.route("/")
 def home():
     return render_template("home.html")
 
-# ======================
-# TOOL PAGES
-# ======================
+@app.route("/student-daily-tool")
+def student_daily_tool():
+    return render_template("student-daily-tool.html")
+
+@app.route("/money-calculator")
+def money_calculator():
+    return render_template("money-calculator.html")  
+
+@app.route("/video-downloader")
+def video_downloader():
+    return render_template("video-downloader.html")
+
+@app.route("/valentine")
+def valentine():
+    return render_template("valentine.html")
+    
 @app.route("/pan-aadhaar")
 def pan_aadhaar():
     return render_template("pan-aadhaar.html")
@@ -45,7 +104,8 @@ def age_calculator():
 @app.route("/name-meaning")
 def name_meaning():
     return render_template("name-meaning.html")
-
+# ======================  
+    
 @app.route("/astrology")
 def astrology():
     return render_template("astrology.html")
@@ -53,10 +113,6 @@ def astrology():
 @app.route("/birthday")
 def birthday():
     return render_template("birthday.html")
-    
-@app.route("/result-helper")
-def result_helper():
-    return render_template("result-helper.html") 
     
 @app.route("/PDF Tools")
 def PDF_Tools():
@@ -77,11 +133,7 @@ def instagram_video_downloader():
 @app.route("/Password Generator")
 def password_generator():
     return render_template("Password Generator.html")
-    
-@app.route("/video-downloader")
-def video_downloader():
-    return render_template("video-downloader.html")
-    
+
 @app.route("/QR Code Generator")
 def qr_code_generator():
     return render_template("QR Code Generator.html")
@@ -98,7 +150,11 @@ def translator_voice():
 def unit_converter():
     return render_template("Unit Converter.html")
 
-
+# ---------------- RESULT HELPER ----------------
+# ---------------- RESULT HELPER ----------------
+@app.route("/result-helper")
+def result_helper():
+    return render_template("result-helper.html")
 # ---------------- TOOL PAGES ----------------
 
 from flask import Flask, render_template, request, jsonify
@@ -147,13 +203,7 @@ def qr_page():
 def govt_page():
     return render_template("govt.html")
 
-@app.route("/student-daily-tool")
-def student_daily_tool():
-    return render_template("student-daily-tool.html")
-    
-@app.route("/money-calculator")
-def money_calculator():
-    return render_template("money-calculator.html") 
+
     
 # ---------------- 1️⃣ HINGLISH → HINDI ----------------
 @app.route("/hinglish-convert", methods=["POST"])
@@ -457,7 +507,50 @@ def instagram_download():
     except Exception as e:
         print("INSTAGRAM DOWNLOAD ERROR:", e)
         return jsonify({"error": "Download failed"}), 500
-        
+
+# ===============================
+# 🌐 UNIVERSAL VIDEO DOWNLOADER
+# ===============================
+@app.route("/video-info", methods=["POST"])
+def video_info():
+    data = request.get_json(force=True)
+    url = data.get("url")
+
+    if not url:
+        return jsonify({"error": "No URL"}), 400
+
+    try:
+        cmd = [
+            "yt-dlp",
+            "-J",
+            url
+        ]
+        result = subprocess.run(
+            cmd, capture_output=True, text=True, timeout=30
+        )
+
+        info = json.loads(result.stdout)
+
+        formats = []
+        for f in info.get("formats", []):
+            if f.get("ext") == "mp4" and f.get("height"):
+                formats.append({
+                    "id": f["format_id"],
+                    "quality": f"{f['height']}p",
+                    "size": round((f.get("filesize",0) or 0)/1048576,2)
+                })
+
+        return jsonify({
+            "title": info.get("title"),
+            "thumbnail": info.get("thumbnail"),
+            "formats": formats
+        })
+
+    except Exception as e:
+        print("VIDEO INFO ERROR:", e)
+        return jsonify({"error": "Failed"}), 500
+
+
 @app.route("/video-download", methods=["POST"])
 def video_download():
     data = request.get_json(force=True)
@@ -489,15 +582,8 @@ def video_download():
         print("DOWNLOAD ERROR:", e)
         return jsonify({"error": "Download failed"}), 500
 # ======================
-# ======================
 # RUN
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
-
-
-
 
