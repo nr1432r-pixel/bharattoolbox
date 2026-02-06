@@ -147,6 +147,10 @@ def govt_page():
 def student_daily_tool():
     return render_template("student-daily-tool.html")
     
+@app.route("/money-calculator")
+def money_calculator():
+    return render_template("money-calculator.html") 
+    
 # ---------------- 1️⃣ HINGLISH → HINDI ----------------
 @app.route("/hinglish-convert", methods=["POST"])
 def hinglish_convert():
@@ -456,6 +460,7 @@ def instagram_download():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
