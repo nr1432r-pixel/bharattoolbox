@@ -3,6 +3,237 @@
 <head>
 <meta charset="UTF-8">
 <title>Student Daily Tool 🎓</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --primary:#4f46e5;
+  --green:#16a34a;
+  --red:#dc2626;
+}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,Segoe UI;
+  background:linear-gradient(135deg,#eef2ff,#fce7f3);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:10px 10px 90px;
+}
+
+/* TOP BAR */
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:#fff;
+  width:100%;
+  max-width:440px;
+  padding:10px 14px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  margin-bottom:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.topbar button{
+  border:none;
+  background:var(--primary);
+  color:#fff;
+  padding:8px 14px;
+  border-radius:20px;
+  font-weight:600;
+}
+.topbar span{font-weight:800;color:var(--primary)}
+
+.container{width:100%;max-width:440px}
+
+.card{
+  background:#fff;
+  padding:18px;
+  border-radius:22px;
+  box-shadow:0 18px 45px rgba(0,0,0,.16);
+  margin-bottom:16px;
+}
+
+h1{text-align:center;color:var(--primary)}
+.sub{text-align:center;font-size:13px;color:#555;margin-bottom:14px}
+
+.menu{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.menu button{
+  border:none;
+  padding:14px;
+  border-radius:28px;
+  background:#e5e7eb;
+  font-weight:700;
+}
+.menu button.active{
+  background:var(--primary);
+  color:#fff;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  margin:8px 0;
+  border-radius:16px;
+  border:1px solid #ddd;
+}
+
+button.action{
+  width:100%;
+  margin-top:6px;
+  padding:14px;
+  border-radius:30px;
+  border:none;
+  background:var(--primary);
+  color:#fff;
+  font-weight:700;
+}
+
+.tool{display:none}
+
+.result{
+  margin-top:12px;
+  padding:14px;
+  border-radius:18px;
+  text-align:center;
+  font-weight:800;
+}
+.good{background:#dcfce7;color:#166534}
+.bad{background:#fee2e2;color:#991b1b}
+
+.timer{
+  font-size:40px;
+  font-weight:900;
+  text-align:center;
+  margin:12px 0;
+}
+
+/* BOTTOM NAV */
+.bottom{
+  position:fixed;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#fff;
+  width:calc(100% - 20px);
+  max-width:440px;
+  border-radius:28px;
+  box-shadow:0 14px 40px rgba(0,0,0,.2);
+  padding:10px;
+  display:flex;
+  justify-content:space-around;
+}
+.bottom button{
+  border:none;
+  background:none;
+  font-size:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="topbar">
+  <button onclick="location.href='/'">← Home</button>
+  <span>🇮🇳 Bharat Toolbox</span>
+</div>
+
+<div class="card">
+  <h1>🎓 Student Daily Tool</h1>
+  <div class="sub">Daily exam • Smart brain saver</div>
+  <div class="menu">
+    <button onclick="openTool('percent')">📊 %</button>
+    <button onclick="openTool('cgpa')">🎯 CGPA</button>
+    <button onclick="openTool('attendance')">📅 Attendance</button>
+    <button onclick="openTool('timer')">⏱ Timer</button>
+  </div>
+</div>
+
+<div class="card tool" id="percent">
+  <input id="om" placeholder="Marks Obtained">
+  <input id="tm" placeholder="Total Marks">
+  <button class="action" onclick="calcPercent()">Calculate</button>
+  <div id="pres"></div>
+</div>
+
+<div class="card tool" id="cgpa">
+  <input id="cg" placeholder="CGPA (0–10)">
+  <button class="action" onclick="calcCGPA()">Convert</button>
+  <div id="cres"></div>
+</div>
+
+<!-- UPDATED ATTENDANCE -->
+<div class="card tool" id="attendance">
+  <input id="att" placeholder="Classes Attended">
+  <input id="totc" placeholder="Total Classes">
+  <button class="action" onclick="calcAttendance()">Predict</button>
+  <div id="ares"></div>
+</div>
+
+<div class="card tool" id="timer">
+  <input id="studyMin" placeholder="Study Minutes (25)">
+  <div class="timer" id="time">00:00</div>
+  <button class="action" onclick="startTimer()">▶ Start</button>
+</div>
+
+</div>
+
+<div class="bottom">
+  <button onclick="openTool('percent')">📊</button>
+  <button onclick="openTool('cgpa')">🎯</button>
+  <button onclick="openTool('attendance')">📅</button>
+  <button onclick="openTool('timer')">⏱</button>
+</div>
+
+<script>
+function openTool(id){
+  document.querySelectorAll('.tool').forEach(t=>t.style.display='none');
+  document.getElementById(id).style.display='block';
+}
+openTool("percent");
+
+function calcPercent(){
+  pres.innerHTML=`<div class="result good">${((om.value/tm.value)*100).toFixed(2)}%</div>`;
+}
+function calcCGPA(){
+  cres.innerHTML=`<div class="result good">${(cg.value*9.5).toFixed(2)}%</div>`;
+}
+
+/* 🔥 ADVANCED ATTENDANCE (75% + 65%) */
+function calcAttendance(){
+  let a=+att.value,t=+totc.value;
+  let p=(a/t)*100;
+
+  let need75 = p>=75 ? 0 : Math.ceil((0.75*t - a)/0.25);
+  let need65 = p>=65 ? 0 : Math.ceil((0.65*t - a)/0.35);
+
+  ares.innerHTML = `
+    <div class="result ${p>=75?'good':'bad'}">
+      📊 Current: ${p.toFixed(2)}%<br><br>
+      🎯 For 75%: ${need75>0 ? need75+' classes':'Already safe'}<br>
+      📌 For 65%: ${need65>0 ? need65+' classes':'Already above'}
+    </div>
+  `;
+}
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Daily Tool 🎓</title>
 
 <style>
 :root{
@@ -259,4 +490,5 @@ function resetTimer(){
 </script>
 
 </body>
+
 </html>
