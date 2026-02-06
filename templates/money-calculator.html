@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Money Calculator 🧮</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --primary:#4f46e5;
+  --green:#16a34a;
+  --green-light:#dcfce7;
+  --card:#f8fafc;
+}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,Segoe UI;
+  background:linear-gradient(135deg,#c7d2fe,#fbcfe8);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:10px 10px 90px;
+}
+
+/* TOP BAR */
+.topbar{
+  position:sticky; top:0; z-index:20;
+  background:#fff;
+  width:100%; max-width:450px;
+  padding:10px 14px;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+  margin-bottom:10px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.topbar button{
+  border:none;
+  background:linear-gradient(135deg,#6366f1,#4f46e5);
+  color:#fff;
+  padding:8px 16px;
+  border-radius:20px;
+  font-weight:700;
+}
+.topbar span{font-weight:900;color:var(--primary)}
+
+.container{width:100%;max-width:450px}
+
+/* CARD */
+.card{
+  background:linear-gradient(180deg,#ffffff,var(--card));
+  padding:18px;
+  border-radius:22px;
+  box-shadow:0 18px 45px rgba(0,0,0,.15);
+  margin-bottom:16px;
+}
+
+/* TOOL HEADER */
+.tool-head{
+  margin:-18px -18px 14px -18px;
+  padding:12px 16px;
+  border-radius:22px 22px 14px 14px;
+  font-weight:900;
+  color:#fff;
+  font-size:15px;
+}
+.gst{background:linear-gradient(135deg,#6366f1,#4f46e5)}
+.emi{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.discount{background:linear-gradient(135deg,#fb923c,#f97316)}
+.sip{background:linear-gradient(135deg,#38bdf8,#0ea5e9)}
+.lump{background:linear-gradient(135deg,#a855f7,#9333ea)}
+
+h1{text-align:center;color:var(--primary);margin-bottom:4px}
+.sub{text-align:center;font-size:13px;color:#475569;margin-bottom:14px}
+
+/* MENU */
+.menu{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+.menu button{
+  border:none;
+  padding:14px;
+  border-radius:30px;
+  font-weight:800;
+  background:#e5e7eb;
+}
+.menu button.active{
+  background:linear-gradient(135deg,#6366f1,#4f46e5);
+  color:#fff;
+}
+
+/* INPUT */
+input{
+  width:100%;
+  padding:14px;
+  margin:8px 0;
+  border-radius:16px;
+  border:2px solid #e5e7eb;
+  background:#f8fafc;
+  font-size:14px;
+}
+input:focus{outline:none;border-color:var(--primary);background:#fff}
+
+/* ACTION */
+button.action{
+  width:100%;
+  padding:14px;
+  border-radius:30px;
+  border:none;
+  background:linear-gradient(135deg,#6366f1,#4f46e5);
+  color:#fff;
+  font-weight:900;
+  margin-top:6px;
+}
+
+.tool{display:none}
+
+/* RESULT */
+.result{
+  margin-top:12px;
+  padding:16px;
+  border-radius:20px;
+  background:linear-gradient(135deg,var(--green-light),#f0fdf4);
+  color:#14532d;
+  text-align:center;
+  font-weight:900;
+}
+
+/* BOTTOM NAV */
+.bottom{
+  position:fixed;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#fff;
+  width:calc(100% - 20px);
+  max-width:450px;
+  border-radius:32px;
+  box-shadow:0 16px 40px rgba(0,0,0,.25);
+  padding:10px;
+  display:flex;
+  justify-content:space-around;
+}
+.bottom button{
+  border:none;
+  background:none;
+  font-size:22px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="topbar">
+  <button onclick="location.href='/'">← Home</button>
+  <span>Money Calculator</span>
+</div>
+
+<div class="card">
+  <h1>🧮 Money Calculator</h1>
+  <div class="sub">GST • EMI • Discount • SIP • Lumpsum</div>
+  <div class="menu">
+    <button onclick="openTool('gst')">🧾 GST</button>
+    <button onclick="openTool('emi')">💸 EMI</button>
+    <button onclick="openTool('discount')">🏷 Discount</button>
+    <button onclick="openTool('sip')">📈 SIP</button>
+    <button onclick="openTool('lump')">🏦 Lumpsum</button>
+  </div>
+</div>
+
+<!-- GST -->
+<div class="card tool" id="gst">
+  <div class="tool-head gst">🧾 GST Calculator</div>
+  <input id="gstAmount" placeholder="Amount (₹)">
+  <input id="gstRate" placeholder="GST % (e.g. 18)">
+  <button class="action" onclick="calcGST()">Calculate</button>
+  <div id="gstRes"></div>
+</div>
+
+<!-- EMI -->
+<div class="card tool" id="emi">
+  <div class="tool-head emi">💸 Loan EMI Calculator</div>
+  <input id="loan" placeholder="Loan Amount (₹)">
+  <input id="rate" placeholder="Interest % (Annual)">
+  <input id="years" placeholder="Loan Years">
+  <button class="action" onclick="calcEMI()">Calculate</button>
+  <div id="emiRes"></div>
+</div>
+
+<!-- DISCOUNT -->
+<div class="card tool" id="discount">
+  <div class="tool-head discount">🏷 Discount Calculator</div>
+  <input id="price" placeholder="Original Price">
+  <input id="off" placeholder="Discount %">
+  <button class="action" onclick="calcDiscount()">Calculate</button>
+  <div id="discRes"></div>
+</div>
+
+<!-- SIP -->
+<div class="card tool" id="sip">
+  <div class="tool-head sip">📈 SIP Calculator</div>
+  <input id="sipAmt" placeholder="Monthly SIP Amount">
+  <input id="sipRate" placeholder="Expected Return %">
+  <input id="sipYear" placeholder="Years">
+  <button class="action" onclick="calcSIP()">Calculate</button>
+  <div id="sipRes"></div>
+</div>
+
+<!-- LUMPSUM -->
+<div class="card tool" id="lump">
+  <div class="tool-head lump">🏦 Lumpsum Investment</div>
+  <input id="lAmt" placeholder="Investment Amount">
+  <input id="lRate" placeholder="Return %">
+  <input id="lYear" placeholder="Years">
+  <button class="action" onclick="calcLump()">Calculate</button>
+  <div id="lRes"></div>
+</div>
+
+</div>
+
+<div class="bottom">
+  <button onclick="openTool('gst')">🧾</button>
+  <button onclick="openTool('emi')">💸</button>
+  <button onclick="openTool('discount')">🏷</button>
+  <button onclick="openTool('sip')">📈</button>
+  <button onclick="openTool('lump')">🏦</button>
+</div>
+
+<script>
+function openTool(id){
+  document.querySelectorAll('.tool').forEach(t=>t.style.display='none');
+  document.getElementById(id).style.display='block';
+}
+
+/* GST */
+function calcGST(){
+  let a=+gstAmount.value,r=+gstRate.value;
+  if(!a||!r) return;
+  let gst=(a*r/100);
+  gstRes.innerHTML=
+   `<div class="result">GST ₹${gst.toFixed(2)}<br>Total ₹${(a+gst).toFixed(2)}</div>`;
+}
+
+/* EMI */
+function calcEMI(){
+  let p=+loan.value,r=+rate.value/1200,n=+years.value*12;
+  let emi=p*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  let total=emi*n;
+  let interest=total-p;
+  emiRes.innerHTML=
+   `<div class="result">EMI ₹${emi.toFixed(0)}<br>Interest ₹${interest.toFixed(0)}<br>Total ₹${total.toFixed(0)}</div>`;
+}
+
+/* Discount */
+function calcDiscount(){
+  let p=+price.value,d=+off.value;
+  let save=p*d/100;
+  discRes.innerHTML=
+   `<div class="result">Pay ₹${(p-save).toFixed(2)}<br>Save ₹${save.toFixed(2)}</div>`;
+}
+
+/* SIP */
+function calcSIP(){
+  let m=+sipAmt.value,r=+sipRate.value/1200,n=+sipYear.value*12;
+  let fv=m*((Math.pow(1+r,n)-1)/r)*(1+r);
+  sipRes.innerHTML=`<div class="result">Final ₹${fv.toFixed(0)}</div>`;
+}
+
+/* Lumpsum */
+function calcLump(){
+  let p=+lAmt.value,r=+lRate.value/100,t=+lYear.value;
+  let fv=p*Math.pow(1+r,t);
+  lRes.innerHTML=`<div class="result">Final ₹${fv.toFixed(0)}</div>`;
+}
+
+openTool("gst");
+</script>
+
+</body>
+</html>
