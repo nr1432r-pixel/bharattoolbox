@@ -143,7 +143,10 @@ def qr_page():
 def govt_page():
     return render_template("govt.html")
 
-
+@app.route("/student-daily-tool")
+def student_daily_tool():
+    return render_template("student-daily-tool.html")
+    
 # ---------------- 1️⃣ HINGLISH → HINDI ----------------
 @app.route("/hinglish-convert", methods=["POST"])
 def hinglish_convert():
@@ -453,6 +456,7 @@ def instagram_download():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
