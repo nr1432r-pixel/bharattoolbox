@@ -199,7 +199,6 @@ function closePopup(){
 
 function download(option){
   closePopup();
-  document.getElementById("loading").style.display="block";
 
   fetch("/instagram-download",{
     method:"POST",
@@ -214,14 +213,12 @@ function download(option){
     return res.blob();
   })
   .then(blob=>{
-    document.getElementById("loading").style.display="none";
     const a=document.createElement("a");
     a.href=URL.createObjectURL(blob);
     a.download = option==="audio" ? "instagram.mp3" : "instagram.mp4";
     a.click();
   })
   .catch(()=>{
-    document.getElementById("loading").style.display="none";
     alert("Download failed (private / login required)");
   });
 }
