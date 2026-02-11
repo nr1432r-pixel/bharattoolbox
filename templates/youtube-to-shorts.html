@@ -1,9 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>YouTube → AI Smart Shorts PRO</title>
+
+<title>YouTube AI Smart Shorts Generator – Create Shorts Automatically | Bharat Toolbox</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="AI Smart Shorts Generator tool to automatically create YouTube Shorts clips, suggested titles and trending hashtags from YouTube videos. Fast, secure and easy-to-use online tool.">
+
+<meta name="keywords" content="youtube shorts generator, ai shorts creator, youtube short clip maker, shorts title generator, youtube hashtag generator, ai youtube tools india">
+
+<meta name="author" content="Bharat Toolbox">
+
+<link rel="canonical" href="https://www.bharttollbox.in/ai-shorts-generator">
+
+<!-- Open Graph -->
+<meta property="og:title" content="YouTube AI Smart Shorts Generator – Bharat Toolbox">
+<meta property="og:description" content="Automatically generate YouTube Shorts clips, titles and hashtags using AI.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.bharttollbox.in/ai-shorts-generator">
+<meta property="og:image" content="https://www.bharttollbox.in/static/ai-shorts-preview.jpg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="YouTube AI Smart Shorts Generator">
+<meta name="twitter:description" content="Create smart YouTube Shorts with AI instantly.">
+<meta name="twitter:image" content="https://www.bharttollbox.in/static/ai-shorts-preview.jpg">
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "AI Smart Shorts Generator",
+ "url": "https://www.bharttollbox.in/ai-shorts-generator",
+ "applicationCategory": "UtilityApplication",
+ "operatingSystem": "All",
+ "description": "Tool to generate AI-based YouTube Shorts clips, titles and hashtags automatically."
+}
+</script>
 
 <style>
 body{
@@ -199,8 +235,6 @@ clearInterval(timer);
 status.innerHTML="🎉 Shorts Ready!";
 progressBar.style.width="100%";
 
-/* TITLE + HASHTAG SECTION */
-
 meta.innerHTML=`
 <div class="section">
 <b>📝 Suggested Title:</b><br>
@@ -214,8 +248,6 @@ meta.innerHTML=`
 <div class="copy-btn" onclick="copyText('hashText')">Copy Hashtags</div>
 </div>
 `;
-
-/* SHORT FILES */
 
 p.files.forEach(link=>{
 result.innerHTML+=`
