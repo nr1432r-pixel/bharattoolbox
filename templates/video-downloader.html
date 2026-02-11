@@ -153,48 +153,42 @@ Users are responsible for how they use this tool.
 let VIDEO_URL = "";
 
 async function getInfo(){
-  try{
-    const info = document.getElementById("info");
-    VIDEO_URL = document.getElementById("url").value.trim();
+  const info = document.getElementById("info");
+  VIDEO_URL = document.getElementById("url").value.trim();
 
-    if(!VIDEO_URL){
-      alert("Paste video link first");
-      return;
-    }
-
-    info.innerHTML="⏳ Fetching video info...";
-
-    const res = await fetch("/video-info",{
-      method:"POST",
-      headers:{ "Content-Type":"application/json" },
-      body:JSON.stringify({ url: VIDEO_URL })
-    });
-
-    const data = await res.json();
-
-    if(data.error){
-      info.innerHTML="❌ Failed to fetch video";
-      return;
-    }
-
-    let html = `<h4>${data.title}</h4>`;
-    if(data.thumbnail){
-      html += `<img src="${data.thumbnail}" style="width:100%;border-radius:14px;margin-bottom:10px">`;
-    }
-
-    data.formats.forEach(f=>{
-      html += `
-        <div class="format" onclick="startDownload('${f.id}')">
-          ⬇ ${f.quality} ${f.size?`(${f.size}MB)`:""}
-        </div>
-      `;
-    });
-
-    info.innerHTML = html;
-
-  }catch(err){
-    document.getElementById("info").innerHTML="❌ Server error";
+  if(!VIDEO_URL){
+    alert("Paste video link first");
+    return;
   }
+
+  info.innerHTML="⏳ Fetching video info...";
+
+  const res = await fetch("/video-info",{
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({ url: VIDEO_URL })
+  });
+
+  const data = await res.json();
+  if(data.error){
+    info.innerHTML="❌ Failed to fetch video";
+    return;
+  }
+
+  let html = `<h4>${data.title}</h4>`;
+  if(data.thumbnail){
+    html += `<img src="${data.thumbnail}" style="width:100%;border-radius:14px;margin-bottom:10px">`;
+  }
+
+  data.formats.forEach(f=>{
+    html += `
+      <div class="format" onclick="startDownload('${f.id}')">
+        ⬇ ${f.quality} ${f.size?`(${f.size}MB)`:""}
+      </div>
+    `;
+  });
+
+  info.innerHTML = html;
 }
 
 async function startDownload(format){
