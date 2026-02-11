@@ -582,8 +582,226 @@ def video_download():
         print("DOWNLOAD ERROR:", e)
         return jsonify({"error": "Download failed"}), 500
 # ======================
+# ===============================
+# 🎬 YOUTUBE → SMART SHORTS TOOL (DUAL MODE)
+# ===============================
+
+import subprocess
+import uuid
+import os
+import threading
+import json
+import random
+import shutil
+from flask import request, jsonify, render_template, send_from_directory
+
+UPLOAD_FOLDER = "uploads"
+OUTPUT_FOLDER = "outputs"
+
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+
+SHORTS_PROGRESS = {}
+
+HOOK_WORDS = ["🔥", "🚀", "💰", "⚡", "😱", "🎯"]
+COMMON_TAGS = ["#shorts", "#viral", "#reels", "#trending"]
+
+# Detect if Chrome exists (Local Ultra HD Mode)
+ULTRA_MODE = shutil.which("chrome") is not None or shutil.which("google-chrome") is not None
+
+
+# ===============================
+# PAGE
+# ===============================
+@app.route("/youtube-to-shorts")
+def youtube_to_shorts():
+    return render_template("youtube-to-shorts.html")
+
+
+# ===============================
+# GENERATE SHORTS
+# ===============================
+@app.route("/generate-shorts", methods=["POST"])
+def generate_shorts():
+
+    data = request.get_json()
+    url = data.get("url")
+
+    if not url:
+        return jsonify({"error": "No URL"}), 400
+
+    job_id = str(uuid.uuid4())
+
+    SHORTS_PROGRESS[job_id] = {
+        "status": "Starting...",
+        "progress": 0,
+        "files": [],
+        "title": "",
+        "hashtags": []
+    }
+
+    def process():
+
+        try:
+            video_id = str(uuid.uuid4())
+            input_path = os.path.join(UPLOAD_FOLDER, f"{video_id}.mp4")
+            output_folder = os.path.join(OUTPUT_FOLDER, video_id)
+            os.makedirs(output_folder, exist_ok=True)
+
+            # =====================
+            # 1️⃣ GET METADATA
+            # =====================
+            SHORTS_PROGRESS[job_id]["status"] = "Fetching info..."
+
+            meta = subprocess.run(["yt-dlp", "-J", url], stdout=subprocess.PIPE)
+            info = json.loads(meta.stdout.decode())
+            title = info.get("title", "Amazing Video")
+
+            emoji = random.choice(HOOK_WORDS)
+            short_title = emoji + " " + title[:60]
+
+            words = title.lower().split()
+            tags = []
+            for w in words[:6]:
+                clean = ''.join(c for c in w if c.isalnum())
+                if len(clean) > 3:
+                    tags.append("#" + clean)
+
+            hashtags = list(set(tags + COMMON_TAGS))[:8]
+
+            SHORTS_PROGRESS[job_id]["title"] = short_title
+            SHORTS_PROGRESS[job_id]["hashtags"] = hashtags
+
+            # =====================
+            # 2️⃣ DOWNLOAD
+            # =====================
+            SHORTS_PROGRESS[job_id]["status"] = "Downloading..."
+
+            try:
+                if ULTRA_MODE:
+                    # 🟢 ULTRA HD LOCAL MODE
+                    subprocess.run([
+                        "yt-dlp",
+                        "--cookies-from-browser", "chrome",
+                        "-f", "bestvideo+bestaudio/best",
+                        "--merge-output-format", "mp4",
+                        "-o", input_path,
+                        url
+                    ], check=True)
+                else:
+                    # 🟡 RENDER SAFE MODE (360p)
+                    subprocess.run([
+                        "yt-dlp",
+                        "-f", "18",
+                        "-o", input_path,
+                        url
+                    ], check=True)
+
+            except:
+                # Fallback 360p
+                subprocess.run([
+                    "yt-dlp",
+                    "-f", "18",
+                    "-o", input_path,
+                    url
+                ], check=True)
+
+            SHORTS_PROGRESS[job_id]["progress"] = 25
+
+            # =====================
+            # 3️⃣ GET DURATION
+            # =====================
+            probe = subprocess.run([
+                "ffprobe",
+                "-v", "error",
+                "-show_entries", "format=duration",
+                "-of", "default=noprint_wrappers=1:nokey=1",
+                input_path
+            ], stdout=subprocess.PIPE)
+
+            duration = float(probe.stdout.decode().strip())
+
+            clip_length = 25 if duration <= 1500 else 240
+            total = int(duration // clip_length)
+
+            if clip_length == 25:
+                total = min(total, 12)
+            else:
+                total = min(total, 6)
+
+            if total == 0:
+                total = 1
+
+            # =====================
+            # 4️⃣ CREATE SHORTS (HD OUTPUT)
+            # =====================
+            for i in range(total):
+
+                SHORTS_PROGRESS[job_id]["status"] = f"Creating {i+1}/{total}"
+
+                start = i * clip_length
+                out_file = os.path.join(output_folder, f"short_{i+1}.mp4")
+
+                subprocess.run([
+                    "ffmpeg",
+                    "-ss", str(start),
+                    "-t", str(clip_length),
+                    "-i", input_path,
+                    "-vf",
+                    "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920",
+                    "-c:v", "libx264",
+                    "-preset", "medium",
+                    "-crf", "20",
+                    "-c:a", "aac",
+                    "-b:a", "128k",
+                    "-y",
+                    out_file
+                ], check=True)
+
+                SHORTS_PROGRESS[job_id]["files"].append(
+                    f"/outputs/{video_id}/short_{i+1}.mp4"
+                )
+
+                SHORTS_PROGRESS[job_id]["progress"] = int(
+                    25 + ((i+1)/total)*75
+                )
+
+            SHORTS_PROGRESS[job_id]["status"] = "done"
+            SHORTS_PROGRESS[job_id]["progress"] = 100
+
+        except Exception as e:
+            SHORTS_PROGRESS[job_id]["status"] = "error"
+            SHORTS_PROGRESS[job_id]["progress"] = 0
+            print("ERROR:", e)
+
+    threading.Thread(target=process).start()
+
+    return jsonify({"job_id": job_id})
+
+
+# ===============================
+# PROGRESS
+# ===============================
+@app.route("/shorts-progress/<job_id>")
+def shorts_progress(job_id):
+    return jsonify(SHORTS_PROGRESS.get(job_id, {
+        "status": "unknown",
+        "progress": 0,
+        "files": [],
+        "title": "",
+        "hashtags": []
+    }))
+
+
+# ===============================
+# SERVE FILES
+# ===============================
+@app.route("/outputs/<path:filename>")
+def serve_output(filename):
+    return send_from_directory("outputs", filename)
 # RUN
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
