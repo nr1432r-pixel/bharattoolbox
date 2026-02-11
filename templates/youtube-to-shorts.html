@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>YouTube → AI Smart Shorts PRO</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  font-family:system-ui;
+  background:linear-gradient(135deg,#7c3aed,#ec4899);
+  padding:20px;
+}
+
+.card{
+  max-width:430px;
+  margin:auto;
+  background:rgba(255,255,255,.15);
+  backdrop-filter:blur(20px);
+  padding:22px;
+  border-radius:22px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  color:#fff;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.home{
+  background:#fff;
+  color:#7c3aed;
+  padding:6px 14px;
+  border-radius:18px;
+  text-decoration:none;
+  font-weight:800;
+}
+
+h2{text-align:center;margin-top:10px}
+
+input{
+  width:100%;
+  padding:14px;
+  border-radius:14px;
+  border:none;
+  margin:16px 0;
+  font-weight:600;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:28px;
+  font-weight:900;
+  background:#fff;
+  color:#7c3aed;
+  cursor:pointer;
+}
+
+.progress-box{display:none;margin-top:18px}
+
+.progress-wrap{
+  background:rgba(255,255,255,.3);
+  height:14px;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#22c55e,#16a34a);
+  box-shadow:0 0 20px #22c55e;
+  transition:width .4s ease;
+}
+
+#status{
+  margin-top:10px;
+  font-weight:800;
+  font-size:14px;
+}
+
+.section{
+  margin-top:18px;
+  background:rgba(255,255,255,.2);
+  padding:12px;
+  border-radius:14px;
+}
+
+.copy-btn{
+  margin-top:8px;
+  background:#fff;
+  color:#7c3aed;
+  padding:8px;
+  border-radius:10px;
+  font-weight:800;
+  cursor:pointer;
+  text-align:center;
+}
+
+.short{
+  background:#fff;
+  color:#7c3aed;
+  padding:12px;
+  border-radius:14px;
+  margin-top:12px;
+  text-align:center;
+  font-weight:800;
+  cursor:pointer;
+}
+
+video{
+  width:100%;
+  margin-top:12px;
+  border-radius:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="topbar">
+<a href="/" class="home">← Home</a>
+<div style="font-weight:900;">🎬 Bharat Toolbox</div>
+</div>
+
+<h2>AI Smart Shorts Generator</h2>
+
+<input id="url" placeholder="Paste YouTube link">
+
+<button onclick="generate()">Generate Smart Shorts</button>
+
+<div class="progress-box" id="progressBox">
+<div class="progress-wrap">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+</div>
+
+<div id="status"></div>
+<div id="meta"></div>
+<div id="result"></div>
+
+</div>
+
+<script>
+async function generate(){
+
+const url=document.getElementById("url").value.trim();
+const status=document.getElementById("status");
+const result=document.getElementById("result");
+const meta=document.getElementById("meta");
+const progressBar=document.getElementById("progressBar");
+const progressBox=document.getElementById("progressBox");
+
+if(!url){ alert("Paste video link"); return; }
+
+result.innerHTML="";
+meta.innerHTML="";
+progressBox.style.display="block";
+progressBar.style.width="0%";
+status.innerHTML="🚀 Initializing...";
+
+const res=await fetch("/generate-shorts",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({url:url})
+});
+
+const data=await res.json();
+const job=data.job_id;
+let startTime=Date.now();
+
+const timer=setInterval(async()=>{
+
+const r=await fetch(`/shorts-progress/${job}`);
+const p=await r.json();
+
+let percent=p.progress||0;
+progressBar.style.width=percent+"%";
+
+const elapsed=(Date.now()-startTime)/1000;
+let eta="Calculating...";
+if(percent>5){
+eta=Math.round((elapsed/percent)*(100-percent))+" sec";
+}
+
+status.innerHTML=
+`📊 ${percent}% <br>
+⚙ ${p.status}<br>
+⏳ ETA: ${eta}`;
+
+if(p.status==="done"){
+clearInterval(timer);
+status.innerHTML="🎉 Shorts Ready!";
+progressBar.style.width="100%";
+
+/* TITLE + HASHTAG SECTION */
+
+meta.innerHTML=`
+<div class="section">
+<b>📝 Suggested Title:</b><br>
+<span id="titleText">${p.title}</span>
+<div class="copy-btn" onclick="copyText('titleText')">Copy Title</div>
+</div>
+
+<div class="section">
+<b>🏷 Hashtags:</b><br>
+<span id="hashText">${p.hashtags.join(" ")}</span>
+<div class="copy-btn" onclick="copyText('hashText')">Copy Hashtags</div>
+</div>
+`;
+
+/* SHORT FILES */
+
+p.files.forEach(link=>{
+result.innerHTML+=`
+<video controls src="${link}"></video>
+<div class="short" onclick="window.open('${link}','_blank')">
+⬇ Download
+</div>`;
+});
+}
+
+if(p.status==="error"){
+clearInterval(timer);
+status.innerHTML="❌ Processing failed";
+}
+
+},1000);
+}
+
+function copyText(id){
+const text=document.getElementById(id).innerText;
+navigator.clipboard.writeText(text);
+alert("Copied!");
+}
+</script>
+
+</body>
+</html>
