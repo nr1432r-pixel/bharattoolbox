@@ -2,8 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Money Calculator 🧮</title>
+<title>Money Calculator – GST, EMI, SIP & Investment Calculator | Bharat Toolbox</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Free Money Calculator for GST calculation, Loan EMI, Discount, SIP investment and Lumpsum returns. Easy and accurate financial calculator online.">
+
+<meta name="keywords" content="gst calculator india, emi calculator online, sip calculator india, discount calculator, lumpsum investment calculator, finance calculator tool">
+
+<link rel="canonical" href="https://www.bharttollbox.in/money-calculator">
+
+<meta property="og:title" content="Money Calculator – GST, EMI, SIP & Investment Tools">
+<meta property="og:description" content="All-in-one finance calculator: calculate GST, EMI, SIP returns, discount and investment growth instantly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.bharttollbox.in/money-calculator">
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebPage",
+ "name": "Money Calculator",
+ "url": "https://www.bharttollbox.in/money-calculator",
+ "description": "Financial calculator tool including GST, EMI, discount, SIP and lumpsum investment calculator."
+}
+</script>
 
 <style>
 :root{
@@ -158,7 +179,7 @@ button.action{
 
 <div class="topbar">
   <button onclick="location.href='/'">← Home</button>
-  <span>🇮🇳 Bharat Toolbox</span>
+  <span>Money Calculator</span>
 </div>
 
 <div class="card">
@@ -220,7 +241,13 @@ button.action{
   <button class="action" onclick="calcLump()">Calculate</button>
   <div id="lRes"></div>
 </div>
-
+<div style="margin-top:20px;font-size:13px;color:#475569;text-align:center;line-height:1.6">
+<p>
+Use this free money calculator to calculate GST amount, EMI for loans, discount price,
+SIP returns and lumpsum investment growth. This tool is useful for business owners,
+students, investors and anyone managing personal finance. No data is stored.
+</p>
+</div>
 </div>
 
 <div class="bottom">
@@ -235,6 +262,15 @@ button.action{
 function openTool(id){
   document.querySelectorAll('.tool').forEach(t=>t.style.display='none');
   document.getElementById(id).style.display='block';
+
+  document.querySelectorAll('.menu button').forEach(btn=>btn.classList.remove('active'));
+
+  const btns = document.querySelectorAll('.menu button');
+  btns.forEach(btn=>{
+    if(btn.getAttribute('onclick') === "openTool('"+id+"')"){
+      btn.classList.add('active');
+    }
+  });
 }
 
 /* GST */
@@ -249,9 +285,12 @@ function calcGST(){
 /* EMI */
 function calcEMI(){
   let p=+loan.value,r=+rate.value/1200,n=+years.value*12;
+  if(!p || !r || !n) return;
+
   let emi=p*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
   let total=emi*n;
   let interest=total-p;
+
   emiRes.innerHTML=
    `<div class="result">EMI ₹${emi.toFixed(0)}<br>Interest ₹${interest.toFixed(0)}<br>Total ₹${total.toFixed(0)}</div>`;
 }
@@ -267,6 +306,8 @@ function calcDiscount(){
 /* SIP */
 function calcSIP(){
   let m=+sipAmt.value,r=+sipRate.value/1200,n=+sipYear.value*12;
+  if(!m || !r || !n) return;
+
   let fv=m*((Math.pow(1+r,n)-1)/r)*(1+r);
   sipRes.innerHTML=`<div class="result">Final ₹${fv.toFixed(0)}</div>`;
 }
@@ -282,5 +323,4 @@ openTool("gst");
 </script>
 
 </body>
-
 </html>
