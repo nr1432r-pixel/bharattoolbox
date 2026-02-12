@@ -14,10 +14,10 @@
 
 <link rel="icon" href="/static/favicon.png" type="image/png">
 
-<!-- ================= GOOGLE ADSENSE ================= -->
+<!-- ================= GOOGLE ADSENSE (HEAD) ================= -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6009208782223800"
      crossorigin="anonymous"></script>
-<!-- ================================================= -->
+<!-- ========================================================= -->
 
 <style>
 :root{
@@ -42,7 +42,6 @@ body{
   border-radius:18px;
   padding:24px;
   box-shadow:0 20px 50px rgba(0,0,0,.12);
-  min-height:80vh;
 }
 
 .topbar{
@@ -52,24 +51,11 @@ body{
   margin-bottom:25px;
 }
 
-.brand a{
-  font-size:20px;
-  font-weight:800;
-  text-decoration:none;
-  color:var(--text);
-}
-
 .footer{
   margin-top:35px;
   text-align:center;
   font-size:13px;
   color:#64748b;
-}
-
-/* AD spacing */
-.ad-space{
-  margin:25px 0;
-  text-align:center;
 }
 </style>
 
@@ -81,33 +67,45 @@ body{
 
 <div class="app">
 
-  <!-- ================= TOPBAR ================= -->
   <div class="topbar">
-    <div class="brand">
-      <a href="/">🇮🇳 Bharat Toolbox</a>
+    <div style="font-weight:800">
+      <a href="/" style="text-decoration:none;color:inherit;">
+        🇮🇳 Bharat Toolbox
+      </a>
     </div>
   </div>
 
-  <!-- ================= TOP AD ================= -->
-  <div class="ad-space">
-    {% block top_ad %}
-    <!-- Optional Top Ad -->
-    {% endblock %}
+  <!-- ===== TOP AD ===== -->
+  <div style="margin:20px 0;text-align:center;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-6009208782223800"
+           data-ad-slot="YOUR_SLOT_ID"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
   </div>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
-  <!-- ================= PAGE CONTENT ================= -->
+  <!-- ===== PAGE CONTENT ===== -->
   {% block content %}{% endblock %}
 
-  <!-- ================= BOTTOM AD ================= -->
-  <div class="ad-space">
-    {% block bottom_ad %}
-    <!-- Optional Bottom Ad -->
-    {% endblock %}
+  <!-- ===== BOTTOM AD ===== -->
+  <div style="margin:30px 0;text-align:center;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-6009208782223800"
+           data-ad-slot="YOUR_SLOT_ID"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
   </div>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
-  <!-- ================= FOOTER ================= -->
   <div class="footer">
-    ©️ 2026 Bharat Toolbox • Made in India 🇮🇳
+    © 2026 Bharat Toolbox • Made in India 🇮🇳
   </div>
 
 </div>
