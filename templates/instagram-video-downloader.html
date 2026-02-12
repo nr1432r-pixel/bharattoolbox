@@ -25,7 +25,7 @@
  "description": "Tool to download Instagram videos, reels and audio in MP4 or MP3 format."
 }
 </script>
-
+ 
 <style>
 :root{
   --primary:#4f46e5;
@@ -149,22 +149,17 @@ button:hover{opacity:.9}
     <div class="brand">IN Bharat Toolbox</div>
   </div>
 
-  <h1>Free Instagram Video & Reel Downloader</h1>
+  <h1>📥 Instagram Downloader</h1>
   <p>Download Reel / Video / Audio</p>
 
   <input type="url" id="urlInput" placeholder="Paste Instagram link">
 
   <button onclick="openPopup()">Download</button>
- <div style="margin-top:18px;font-size:13px;color:#475569;line-height:1.6;text-align:center">
-<p>
-Use this free Instagram downloader to download reels, videos and audio in high quality.
-Simply paste the Instagram link and download instantly in MP4 or MP3 format.
-No login required and no data stored.
-</p>
-</div>
- <div style="font-size:11px;margin-top:6px;color:#64748b;">
-For personal use only. We do not host any copyrighted content.
-</div>
+ <div id="loading" style="display:none;margin-top:10px;font-size:13px;color:#4f46e5;">
+Processing...
+ </div>
+
+  <div class="footer">Fast • Secure • Free</div>
 </div>
 
 <!-- POPUP -->
