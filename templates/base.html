@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+{% block seo %}
+<title>Bharat Toolbox – Free Online Tools</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Bharat Toolbox provides free online tools like PDF tools, calculators, downloaders & more.">
+<meta name="keywords" content="bharat toolbox, online tools india, pdf tools, calculator, downloader">
+<meta name="author" content="Bharat Toolbox">
+<link rel="canonical" href="https://www.bharttollbox.in/">
+{% endblock %}
+
+<link rel="icon" href="/static/favicon.png" type="image/png">
+
+<!-- ================= GOOGLE ADSENSE ================= -->
+<script async
+ src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6009208782223800"
+ crossorigin="anonymous"></script>
+<!-- ================================================= -->
+
+<style>
+:root{
+  --primary:#4f46e5;
+  --primary-dark:#3730a3;
+  --text:#0f172a;
+  --muted:#64748b;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
+  background:linear-gradient(135deg,#eef2ff,#f8fafc);
+  color:var(--text);
+}
+
+.app{
+  max-width:1200px;
+  margin:20px auto;
+  background:#fff;
+  border-radius:18px;
+  padding:24px;
+  box-shadow:0 20px 50px rgba(0,0,0,.12);
+  min-height:80vh;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.brand a{
+  font-size:20px;
+  font-weight:800;
+  text-decoration:none;
+  color:var(--text);
+}
+
+.footer{
+  margin-top:35px;
+  text-align:center;
+  font-size:13px;
+  color:#64748b;
+}
+
+/* AD spacing */
+.ad-space{
+  margin:25px 0;
+  text-align:center;
+}
+</style>
+
+{% block extra_head %}{% endblock %}
+
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- ================= TOPBAR ================= -->
+  <div class="topbar">
+    <div class="brand">
+      <a href="/">🇮🇳 Bharat Toolbox</a>
+    </div>
+  </div>
+
+  <!-- ================= TOP AD ================= -->
+  <div class="ad-space">
+    {% block top_ad %}
+    <!-- Optional Top Ad -->
+    {% endblock %}
+  </div>
+
+  <!-- ================= PAGE CONTENT ================= -->
+  {% block content %}{% endblock %}
+
+  <!-- ================= BOTTOM AD ================= -->
+  <div class="ad-space">
+    {% block bottom_ad %}
+    <!-- Optional Bottom Ad -->
+    {% endblock %}
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="footer">
+    ©️ 2026 Bharat Toolbox • Made in India 🇮🇳
+  </div>
+
+</div>
+
+</body>
+</html>
