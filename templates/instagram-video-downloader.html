@@ -1,196 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Free Instagram Video & Reel Downloader Online | Bharat Toolbox</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Free Instagram Downloader to download reels, videos and audio in MP4 or MP3 format. Fast and secure online tool. No login required.">
-<meta name="keywords" content="instagram video downloader, reel downloader, instagram mp4 download, instagram audio downloader, download instagram reel online">
-
-<link rel="canonical" href="https://www.bharttollbox.in/instagram-downloader">
-
-<meta property="og:title" content="Instagram Downloader – Download Reels & Videos">
-<meta property="og:description" content="Download Instagram reels, videos and audio in high quality MP4 or MP3 format instantly.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.bharttollbox.in/instagram-downloader">
-
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "WebApplication",
- "name": "Instagram Downloader",
- "url": "https://www.bharttollbox.in/instagram-downloader",
- "applicationCategory": "UtilityApplication",
- "operatingSystem": "All",
- "description": "Tool to download Instagram videos, reels and audio in MP4 or MP3 format."
-}
-</script>
- 
-<style>
-:root{
-  --primary:#4f46e5;
-  --bg:#eef2ff;
-  --card:#ffffff;
-  --text:#0f172a;
-  --muted:#64748b;
-}
-
-*{box-sizing:border-box}
-
-body{
-  background:linear-gradient(135deg,#eef2ff,#f8fafc);
-  font-family:system-ui,-apple-system,Segoe UI;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* CARD */
-.card{
-  width:360px;
-  background:var(--card);
-  padding:22px;
-  border-radius:18px;
-  box-shadow:0 25px 50px rgba(0,0,0,.15);
-  text-align:center;
-}
-
-/* TOP */
-.top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:10px;
-}
-.home-btn{
-  text-decoration:none;
-  font-size:13px;
-  padding:6px 12px;
-  border-radius:999px;
-  background:#e0e7ff;
-  color:#1e3a8a;
-  font-weight:600;
-}
-.brand{
-  font-size:12px;
-  color:var(--muted);
-}
-
-h1{
-  margin:8px 0 4px;
-}
-p{
-  font-size:14px;
-  color:var(--muted);
-}
-
-input{
-  width:100%;
-  padding:10px;
-  margin:14px 0;
-  border-radius:10px;
-  border:1px solid #c7d2fe;
-}
-
-/* BUTTON */
-button{
-  width:100%;
-  padding:12px;
-  background:var(--primary);
-  color:white;
-  border:none;
-  border-radius:12px;
-  font-size:15px;
-  cursor:pointer;
-  font-weight:600;
-}
-button:hover{opacity:.9}
-
-/* OVERLAY */
-.overlay{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.45);
-  justify-content:center;
-  align-items:center;
-  z-index:999;
-}
-.popup{
-  background:white;
-  padding:20px;
-  width:260px;
-  border-radius:14px;
-  text-align:center;
-}
-.popup h3{margin-bottom:12px}
-.popup button{margin-top:10px}
-.cancel{
-  background:#e5e7eb;
-  color:#111;
-}
-
-.footer{
-  margin-top:12px;
-  font-size:12px;
-  color:var(--muted);
-}
-</style>
-</head>
-
-<body>
-
-<div class="card">
-
-  <!-- TOP -->
-  <div class="top">
-    <a href="/" class="home-btn">🏠 Home</a>
-    <div class="brand">IN Bharat Toolbox</div>
-  </div>
-
-  <h1>📥 Instagram Downloader</h1>
-  <p>Download Reel / Video / Audio</p>
-
-  <input type="url" id="urlInput" placeholder="Paste Instagram link">
-
-  <button onclick="openPopup()">Download</button>
- <div id="loading" style="display:none;margin-top:10px;font-size:13px;color:#4f46e5;">
-Processing...
- </div>
-
-  <div class="footer">Fast • Secure • Free</div>
-</div>
-
-<!-- POPUP -->
-<div id="overlay" class="overlay">
-  <div class="popup">
-    <h3>Select Format</h3>
-
-    <button onclick="download('video')">🎥 Download Video</button>
-    <button onclick="download('audio')">🎵 Download Audio</button>
-
-    <button class="cancel" onclick="closePopup()">Cancel</button>
-  </div>
-</div>
-
-<script>
-const overlay = document.getElementById("overlay");
-const urlInput = document.getElementById("urlInput");
-
-function openPopup(){
-  if(!urlInput.value.trim()){
-    alert("Paste Instagram link first");
-    return;
-  }
-  overlay.style.display="flex";
-}
-function closePopup(){
-  overlay.style.display="none";
-}
-
 function download(option){
   closePopup();
+  document.getElementById("loading").style.display="block";
 
   fetch("/instagram-download",{
     method:"POST",
@@ -205,16 +15,14 @@ function download(option){
     return res.blob();
   })
   .then(blob=>{
+    document.getElementById("loading").style.display="none";
     const a=document.createElement("a");
     a.href=URL.createObjectURL(blob);
     a.download = option==="audio" ? "instagram.mp3" : "instagram.mp4";
     a.click();
   })
   .catch(()=>{
+    document.getElementById("loading").style.display="none";
     alert("Download failed (private / login required)");
   });
 }
-</script>
-
-</body>
-</html>
