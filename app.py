@@ -77,6 +77,94 @@ os.makedirs(AUDIO_FOLDER, exist_ok=True)
 def home():
     return render_template("home.html")
 
+# ================= CHAT PAGE =================
+@app.route("/bharat-chat")
+def bharat_chat():
+    return render_template("bharat-chat.html")
+
+# ================= AUTH =================
+@app.route("/signup", methods=["POST"])
+def signup():
+    data = request.json
+    mobile = data["mobile"]
+    password = generate_password_hash(data["password"])
+
+    users = json.load(open(USERS_DB))
+    if any(u["mobile"] == mobile for u in users):
+        return jsonify({"error": "Mobile already exists"}), 400
+
+    users.append({"mobile": mobile, "password": password})
+    json.dump(users, open(USERS_DB, "w"), indent=2)
+    return jsonify({"success": True})
+
+@app.route("/login", methods=["POST"])
+def login():
+    data = request.json
+    mobile = data["mobile"]
+    password = data["password"]
+
+    users = json.load(open(USERS_DB))
+    user = next((u for u in users if u["mobile"] == mobile), None)
+
+    if not user or not check_password_hash(user["password"], password):
+        return jsonify({"error": "Invalid login"}), 401
+
+    session["user"] = mobile
+    return jsonify({"success": True})
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return jsonify({"success": True})
+
+# ================= CHAT =================
+@app.route("/send-message", methods=["POST"])
+def send_message():
+    if "user" not in session:
+        return jsonify({"error": "Login required"}), 401
+
+    data = request.json
+    chat = json.load(open(CHAT_DB))
+
+    msg = {
+        "sender": session["user"],
+        "receiver": data["receiver"],
+        "message": data["message"],
+        "time": datetime.now().strftime("%d %b %I:%M %p")
+    }
+    chat.append(msg)
+    json.dump(chat, open(CHAT_DB, "w"), indent=2)
+    return jsonify({"success": True})
+
+@app.route("/get-messages/<uid>")
+def get_messages(uid):
+    if "user" not in session:
+        return jsonify([])
+
+    chat = json.load(open(CHAT_DB))
+    return jsonify([
+        m for m in chat
+        if uid in (m["sender"], m["receiver"])
+    ])
+
+# YAHAN SE TUMHARA PEHLE WALA TOOL CODE AS-IT-IS RAHEGA
+# (PDF, Voice, Insta, Translator, etc.)
+# =========================================================
+
+# ================= RUN =================
+# ======================
+# 🔹 Yahan se tumhara existing code SAME rahega
+# 🔹 Kuch delete nahi kiya gaya
+# ======================
+# HOME
+# =====================
+
+# ======================
+# TOOL PAGES
+# ======================
+# ======================
+# 💖 VALENTINE TOOL
+# ======================
 @app.route("/student-daily-tool")
 def student_daily_tool():
     return render_template("student-daily-tool.html")
@@ -203,7 +291,20 @@ def qr_page():
 def govt_page():
     return render_template("govt.html")
 
+# ======================
+# SPEED TEST
+# ======================
+@app.route("/speed-test")
+def speed_test():
+    return render_template("speed-test.html")
 
+
+# ======================
+# IP CHECKER
+# ======================
+@app.route("/ip-checker")
+def ip_checker():
+    return render_template("ip-checker.html")
     
 # ---------------- 1️⃣ HINGLISH → HINDI ----------------
 @app.route("/hinglish-convert", methods=["POST"])
@@ -581,7 +682,14 @@ def video_download():
     except Exception as e:
         print("DOWNLOAD ERROR:", e)
         return jsonify({"error": "Download failed"}), 500
-# ======================
+# ===============================
+# ===============================
+# ===============================
+# ===============================
+# ===============================
+# ===============================
+# ===============================
+# ===============================
 # ===============================
 # 🎬 YOUTUBE → SMART SHORTS TOOL (DUAL MODE)
 # ===============================
@@ -799,9 +907,7 @@ def shorts_progress(job_id):
 @app.route("/outputs/<path:filename>")
 def serve_output(filename):
     return send_from_directory("outputs", filename)
-# RUN
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
-
 
