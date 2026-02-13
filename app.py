@@ -169,6 +169,10 @@ def get_messages(uid):
 def student_daily_tool():
     return render_template("student-daily-tool.html")
 
+@app.route("/railway-super-tool")
+def railway_super_tool():
+    return render_template("railway-super-tool.html")
+
 @app.route("/money-calculator")
 def money_calculator():
     return render_template("money-calculator.html")  
@@ -910,4 +914,5 @@ def serve_output(filename):
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
