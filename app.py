@@ -51,11 +51,16 @@ from datetime import datetime
 import os, json, uuid, subprocess, requests, cv2, asyncio
 from flask import Response
 from flask import Flask, render_template, request, jsonify, send_from_directory, send_file, session, Response
+from flask import redirect
 
 # ================= APP =================
 app = Flask(__name__, static_folder="static")
 app.secret_key = "bharat_chat_super_secret_key_2026"
 
+@app.before_request
+def force_non_www():
+    if request.host.startswith("www."):
+        return redirect(request.url.replace("www.", "", 1), code=301)
 # ================= DATABASE =================
 CHAT_DB = "chat_db.json"
 USERS_DB = "users_db.json"
@@ -934,10 +939,23 @@ def sitemap():
     <priority>1.0</priority>
   </url>
 </urlset>""", mimetype="application/xml")
-    
+
+@app.route("/sitemap.xml", methods=["GET"])
+def sitemap():
+    xml = """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>https://bharttollbox.in/</loc>
+      <lastmod>2026-02-18</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+   </url>
+</urlset>"""
+    return Response(xml, content_type="application/xml; charset=utf-8")
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
