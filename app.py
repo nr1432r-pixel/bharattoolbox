@@ -930,16 +930,6 @@ def robots():
         mimetype="text/plain"
     )
 
-@app.route("/sitemap.xml")
-def sitemap():
-    return Response("""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://bharttollbox.in/</loc>
-    <priority>1.0</priority>
-  </url>
-</urlset>""", mimetype="application/xml")
-
 @app.route("/sitemap.xml", methods=["GET"])
 def sitemap():
     xml = """<?xml version="1.0" encoding="UTF-8"?>
@@ -955,6 +945,7 @@ def sitemap():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
