@@ -911,8 +911,31 @@ def shorts_progress(job_id):
 @app.route("/outputs/<path:filename>")
 def serve_output(filename):
     return send_from_directory("outputs", filename)
+
+# ======================
+# SEO FILES
+# ======================
+
+@app.route("/robots.txt")
+def robots():
+    return Response(
+        "User-agent: *\nAllow: /\n\nSitemap: https://bharttollbox.in/sitemap.xml",
+        mimetype="text/plain"
+    )
+
+@app.route("/sitemap.xml")
+def sitemap():
+    return Response("""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://bharttollbox.in/</loc>
+    <priority>1.0</priority>
+  </url>
+</urlset>""", mimetype="application/xml")
+    
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
