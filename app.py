@@ -1076,6 +1076,11 @@ def serve_output(filename):
 
 # ======================
 # SEO FILES
+@app.route('/ads.txt')
+def ads():
+    return "google.com, pub-6009208782223800, DIRECT, f08c47fec0942fa0", 200, {
+        'Content-Type': 'text/plain'
+    }
 # ======================
 @app.route('/ads.txt')
 def ads():
@@ -1103,6 +1108,7 @@ def sitemap():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
