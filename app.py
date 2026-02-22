@@ -62,6 +62,8 @@ from flask import send_file
 from io import BytesIO
 
 from pypdf import PdfReader, PdfWriter
+from PIL import Image
+import io
 
 
 # ================= APP =================
@@ -1101,6 +1103,7 @@ def sitemap():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
