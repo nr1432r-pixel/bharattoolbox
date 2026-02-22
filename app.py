@@ -54,7 +54,6 @@ from flask import Flask, render_template, request, jsonify, send_from_directory,
 from flask import redirect
 
 from flask import send_file
-from pdf2image import convert_from_bytes
 import zipfile
 
 
@@ -1103,6 +1102,7 @@ def sitemap():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
