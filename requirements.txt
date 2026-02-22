@@ -7,6 +7,8 @@ click==8.1.7
 edge-tts
 yt-dlp
 
+pdf2image==1.17.0
+
 Pillow==10.4.0
 pypdf==4.2.0
 pdf2docx
@@ -15,3 +17,4 @@ docx2pdf
 qrcode
 requests
 python-dateutil
+
