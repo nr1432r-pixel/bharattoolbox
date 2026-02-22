@@ -55,6 +55,11 @@ from flask import redirect
 
 from flask import send_file
 import zipfile
+from pdf2image import convert_from_bytes
+import tempfile
+import zipfile
+from flask import send_file
+from io import BytesIO
 
 
 # ================= APP =================
@@ -772,39 +777,34 @@ def image_to_jpg():
 
 
 
-import fitz  # PyMuPDF
-import io
-import zipfile
-from flask import send_file, request
-
 @app.route("/pdf-to-png", methods=["POST"])
 def pdf_to_png():
-
     file = request.files["file"]
-
-    if file.filename == "":
-        return "No PDF selected"
+    
+    if not file:
+        return "No file uploaded"
 
     pdf_bytes = file.read()
-    pdf = fitz.open(stream=pdf_bytes, filetype="pdf")
 
-    zip_buffer = io.BytesIO()
+    images = convert_from_bytes(pdf_bytes)
 
-    with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zf:
-        for page_number in range(len(pdf)):
-            page = pdf[page_number]
-            pix = page.get_pixmap()
-            img_bytes = pix.tobytes("png")
-            zf.writestr(f"page_{page_number+1}.png", img_bytes)
+    zip_buffer = BytesIO()
+    with zipfile.ZipFile(zip_buffer, "a") as zip_file:
+        for i, img in enumerate(images):
+            img_buffer = BytesIO()
+            img.save(img_buffer, format="PNG")
+            img_buffer.seek(0)
+            zip_file.writestr(f"page_{i+1}.png", img_buffer.read())
 
     zip_buffer.seek(0)
 
     return send_file(
         zip_buffer,
-        download_name="pdf_pages.zip",
+        mimetype="application/zip",
         as_attachment=True,
-        mimetype="application/zip"
+        download_name="converted_pages.zip"
     )
+    
 # RESIZE IMAGE (ANY KB)
 # -----------------------
 @app.route("/resize-image", methods=["POST"])
@@ -1102,6 +1102,7 @@ def sitemap():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
