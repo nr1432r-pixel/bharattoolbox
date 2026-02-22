@@ -61,6 +61,8 @@ import zipfile
 from flask import send_file
 from io import BytesIO
 
+from pypdf import PdfReader, PdfWriter
+
 
 # ================= APP =================
 app = Flask(__name__, static_folder="static")
@@ -710,9 +712,6 @@ def video_download():
 # 📁 PDF & IMAGE EXTRA TOOLS (ADD ONLY)
 # ==========================================
 
-from PIL import Image
-from PyPDF2 import PdfReader, PdfWriter
-import io
 
 
 # -----------------------
@@ -1102,6 +1101,7 @@ def sitemap():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
