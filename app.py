@@ -53,6 +53,11 @@ from flask import Response
 from flask import Flask, render_template, request, jsonify, send_from_directory, send_file, session, Response
 from flask import redirect
 
+from flask import send_file
+from pdf2image import convert_from_bytes
+import zipfile
+
+
 # ================= APP =================
 app = Flask(__name__, static_folder="static")
 app.secret_key = "bharat_chat_super_secret_key_2026"
@@ -697,6 +702,156 @@ def video_download():
 # ===============================
 # ===============================
 # ===============================
+
+# 📁 PDF & IMAGE EXTRA TOOLS (ADD ONLY)
+# ==========================================
+
+from PIL import Image
+from PyPDF2 import PdfReader, PdfWriter
+import io
+
+
+# -----------------------
+# IMAGE → PDF (Multi)
+# -----------------------
+@app.route("/image-to-pdf", methods=["POST"])
+def image_to_pdf():
+
+    files = request.files.getlist("file")
+    images = []
+
+    for file in files:
+        if file.filename == "":
+            continue
+        img = Image.open(file).convert("RGB")
+        images.append(img)
+
+    if not images:
+        return "No image selected"
+
+    output = io.BytesIO()
+
+    # 🔥 IMPORTANT: format="PDF" add karna zaroori hai
+    images[0].save(
+        output,
+        format="PDF",
+        save_all=True,
+        append_images=images[1:]
+    )
+
+    output.seek(0)
+
+    return send_file(
+        output,
+        download_name="converted.pdf",
+        as_attachment=True
+    )
+
+
+# -----------------------
+
+@app.route("/image-to-jpg", methods=["POST"])
+def image_to_jpg():
+
+    file = request.files["file"]
+
+    if file.filename == "":
+        return "No file selected"
+
+    img = Image.open(file).convert("RGB")
+
+    output = io.BytesIO()
+    img.save(output, format="JPEG", quality=95)
+    output.seek(0)
+
+    return send_file(
+        output,
+        download_name="converted.jpg",   # 👈 IMPORTANT
+        as_attachment=True,
+        mimetype="image/jpeg"
+    )
+
+
+
+import fitz  # PyMuPDF
+import io
+import zipfile
+from flask import send_file, request
+
+@app.route("/pdf-to-png", methods=["POST"])
+def pdf_to_png():
+
+    file = request.files["file"]
+
+    if file.filename == "":
+        return "No PDF selected"
+
+    pdf_bytes = file.read()
+    pdf = fitz.open(stream=pdf_bytes, filetype="pdf")
+
+    zip_buffer = io.BytesIO()
+
+    with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zf:
+        for page_number in range(len(pdf)):
+            page = pdf[page_number]
+            pix = page.get_pixmap()
+            img_bytes = pix.tobytes("png")
+            zf.writestr(f"page_{page_number+1}.png", img_bytes)
+
+    zip_buffer.seek(0)
+
+    return send_file(
+        zip_buffer,
+        download_name="pdf_pages.zip",
+        as_attachment=True,
+        mimetype="application/zip"
+    )
+# RESIZE IMAGE (ANY KB)
+# -----------------------
+@app.route("/resize-image", methods=["POST"])
+def resize_image():
+
+    file = request.files["file"]
+    target_kb = int(request.form["target_kb"])
+
+    img = Image.open(file).convert("RGB")
+    output = io.BytesIO()
+
+    for quality in range(95, 5, -5):
+        output.seek(0)
+        output.truncate()
+        img.save(output, format="JPEG", quality=quality)
+        size_kb = len(output.getvalue()) / 1024
+        if size_kb <= target_kb:
+            break
+
+    output.seek(0)
+
+    return send_file(output,
+                     download_name="resized.jpg",
+                     as_attachment=True)
+
+
+# -----------------------
+# RESIZE PDF (Basic)
+# -----------------------
+@app.route("/resize-pdf", methods=["POST"])
+def resize_pdf():
+
+    file = request.files["file"]
+    reader = PdfReader(file)
+    writer = PdfWriter()
+
+    for page in reader.pages:
+        writer.add_page(page)
+
+    output = io.BytesIO()
+    writer.write(output)
+    output.seek(0)
+
+    return send_file(output,
+                     download_name="resized.pdf",
+                     as_attachment=True)
 # ===============================
 # ===============================
 # ===============================
@@ -948,6 +1103,7 @@ def sitemap():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
