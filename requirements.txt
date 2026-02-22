@@ -9,9 +9,8 @@ click==8.1.7
 Pillow==10.4.0
 pypdf==4.2.0
 pdf2docx==0.5.8
-docx2pdf==0.1.8
 
-PyMuPDF==1.23.21
+pymupdf==1.23.3
 
 qrcode==7.4.2
 requests==2.31.0
