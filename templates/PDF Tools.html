@@ -207,7 +207,6 @@ h1{font-size:20px}
 
 <div class="tabs">
 <button class="active" onclick="showTool('pdf2word',this)">PDF→Word</button>
-<button onclick="showTool('word2pdf',this)">Word→PDF</button>
 <button onclick="showTool('compress',this)">Compress PDF</button>
 <button onclick="showTool('merge',this)">Merge PDF</button>
 <button onclick="showTool('imagepdf',this)">Image→PDF</button>
@@ -217,86 +216,62 @@ h1{font-size:20px}
 <button onclick="showTool('pdf2png',this)">PDF→PNG</button>
 </div>
 
-<!-- Keep your tool forms same here -->
-<!-- PDF TO WORD -->
 <div class="tool" id="pdf2word" style="display:block;">
-<form action="/pdf-to-word" method="POST" enctype="multipart/form-data">
+<form action="/pdf-to-word" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
 <input type="file" name="file" accept=".pdf" required>
 <button type="submit">Convert to Word</button>
 </form>
 </div>
 
-<!-- WORD TO PDF -->
-<div class="tool" id="word2pdf">
-<form action="/word-to-pdf" method="POST" enctype="multipart/form-data">
-<input type="file" name="file" accept=".doc,.docx" required>
-<button type="submit">Convert to PDF</button>
-</form>
-</div>
-
-<!-- COMPRESS PDF -->
 <div class="tool" id="compress">
-<form action="/compress-pdf" method="POST" enctype="multipart/form-data">
+<form action="/compress-pdf" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
 <input type="file" name="file" accept=".pdf" required>
 <button type="submit">Compress PDF</button>
 </form>
 </div>
 
-<!-- MERGE PDF -->
 <div class="tool" id="merge">
-<form action="/merge-pdf" method="POST" enctype="multipart/form-data">
-<input type="file" name="files" accept=".pdf" multiple required>
+<form action="/merge-pdf" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+<input type="file" name="files" multiple required>
 <button type="submit">Merge PDFs</button>
 </form>
 </div>
 
-<!-- IMAGE TO PDF -->
 <div class="tool" id="imagepdf">
-<form action="/image-to-pdf" method="POST" enctype="multipart/form-data">
-<input type="file" name="file" accept=".jpg,.jpeg,.png" multiple required>
+<form action="/image-to-pdf" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+<input type="file" name="file" multiple required>
 <button type="submit">Convert Images to PDF</button>
 </form>
 </div>
 
-<!-- RESIZE IMAGE -->
 <div class="tool" id="resizeimg">
-<form action="/resize-image" method="POST" enctype="multipart/form-data">
-<input type="file" name="file" accept=".jpg,.jpeg,.png" required>
-<input type="number" name="target_kb" placeholder="Enter Target KB (e.g 20)" required>
+<form action="/resize-image" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+<input type="file" name="file" required>
+<input type="number" name="target_kb" placeholder="Target KB (e.g 20)" required>
 <button type="submit">Resize Image</button>
 </form>
 </div>
 
-<!-- RESIZE PDF -->
 <div class="tool" id="resizepdf">
-<form action="/resize-pdf" method="POST" enctype="multipart/form-data">
-<input type="file" name="file" accept=".pdf" required>
-<input type="number" name="target_kb" placeholder="Enter Target KB (e.g 100)" required>
+<form action="/resize-pdf" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+<input type="file" name="file" required>
+<input type="number" name="target_kb" placeholder="Target KB (e.g 100)" required>
 <button type="submit">Resize PDF</button>
 </form>
 </div>
 
- <!-- Image to JPG -->
 <div class="tool" id="img2jpg">
-  <form action="/image-to-jpg" method="POST" enctype="multipart/form-data">
-    
-    <input type="file" name="file" accept="image/png,image/webp,image/jpeg" required>
-
-    <button type="submit">Convert to JPG</button>
-
-  </form>
+<form action="/image-to-jpg" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+<input type="file" name="file" required>
+<button type="submit">Convert to JPG</button>
+</form>
 </div>
 
-
-<!-- PDF to PNG -->
 <div class="tool" id="pdf2png">
-  <form action="/pdf-to-png" method="POST" enctype="multipart/form-data">
-    
-    <input type="file" name="file" accept="application/pdf" required>
-
-    <button type="submit">Convert All Pages to PNG</button>
-
-  </form>
+<form action="/pdf-to-png" method="POST" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+<input type="file" name="file" required>
+<button type="submit">Convert to PNG</button>
+</form>
 </div>
 
 <div class="footer">
@@ -405,5 +380,3 @@ alert("File conversion failed.");
 
 </body>
 </html>
-
-
