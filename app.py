@@ -430,19 +430,6 @@ def pdf_to_word():
 # =========================================================
 # WORD TO PDF
 # =========================================================
-@app.route("/word-to-pdf", methods=["POST"])
-def word_to_pdf():
-    file = request.files.get("file")
-    if not file:
-        return "No file uploaded", 400
-
-    docx_path = os.path.join(UPLOAD_FOLDER, f"{uuid.uuid4()}.docx")
-    pdf_path = os.path.join(OUTPUT_FOLDER, f"{uuid.uuid4()}.pdf")
-
-    file.save(docx_path)
-    convert(docx_path, pdf_path)
-
-    return send_file(pdf_path, as_attachment=True, download_name="converted.pdf")
 
 # =========================================================
 # MERGE PDF
@@ -1108,6 +1095,7 @@ def sitemap():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
