@@ -1069,9 +1069,7 @@ def ads():
         'Content-Type': 'text/plain'
     }
 # ======================
-@app.route('/ads.txt')
-def ads():
-    return send_from_directory('static', 'ads.txt')
+
 
 @app.route("/robots.txt")
 def robots():
@@ -1095,6 +1093,7 @@ def sitemap():
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
