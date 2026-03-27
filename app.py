@@ -1070,6 +1070,12 @@ def ads():
     }
 # ======================
 
+@app.route('/app-ads.txt')
+def app_ads():
+    return "google.com, pub-6009208782223800, DIRECT, f08c47fec0942fa0", 200, {
+        'Content-Type': 'text/plain'
+    }
+
 
 @app.route("/robots.txt")
 def robots():
