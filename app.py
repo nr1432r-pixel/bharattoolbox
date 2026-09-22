@@ -329,6 +329,24 @@ def speed_test():
 @app.route("/ip-checker")
 def ip_checker():
     return render_template("ip-checker.html")
+
+# =========================
+# SPINCASH PRO OAUTH PAGES
+# =========================
+
+@app.route("/spincash-pro")
+def spincash_pro():
+    return render_template("spincash-pro.html")
+
+
+@app.route("/spincash-pro/privacy-policy")
+def spincash_pro_privacy():
+    return render_template("spincash-pro-privacy.html")
+
+
+@app.route("/spincash-pro/terms")
+def spincash_pro_terms():
+    return render_template("spincash-pro-terms.html")
     
 # ---------------- 1️⃣ HINGLISH → HINDI ----------------
 @app.route("/hinglish-convert", methods=["POST"])
