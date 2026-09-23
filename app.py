@@ -1253,16 +1253,78 @@ def robots():
 
 @app.route("/sitemap.xml", methods=["GET"])
 def sitemap():
+
+    urls = [
+        "/",
+        "/bharat-chat",
+
+        "/student-daily-tool",
+        "/railway-super-tool",
+        "/money-calculator",
+        "/video-downloader",
+        "/valentine",
+        "/pan-aadhaar",
+        "/age-calculator",
+        "/name-meaning",
+        "/astrology",
+        "/birthday",
+        "/PDF Tools",
+        "/Image Tools",
+        "/Advanced Scientific Calculator",
+        "/instagram-video-downloader",
+        "/Password Generator",
+        "/QR Code Generator",
+        "/Text Tools",
+        "/Translator + Voice",
+        "/Unit Converter",
+        "/result-helper",
+        "/hinglish-ai",
+        "/hashtag",
+        "/petrol",
+        "/qr",
+        "/govt",
+        "/speed-test",
+        "/ip-checker",
+        "/youtube-to-shorts",
+
+        "/spincash",
+        "/spincash/privacy-policy",
+        "/spincash/terms",
+
+        "/spincash-pro",
+        "/spincash-pro/privacy-policy",
+        "/spincash-pro/terms",
+
+        "/rollcash",
+        "/rollcash/privacy-policy",
+        "/rollcash/terms",
+
+        "/ncert",
+        "/ncert/privacy-policy",
+        "/ncert/terms",
+
+        "/bharat-toolbox",
+        "/bharat-toolbox/privacy-policy",
+        "/bharat-toolbox/terms",
+    ]
+
     xml = """<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-   <url>
-      <loc>https://bharttollbox.in/</loc>
-      <lastmod>2026-02-18</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>1.0</priority>
-   </url>
-</urlset>"""
-    return Response(xml, content_type="application/xml; charset=utf-8")
+"""
+
+    for path in urls:
+        xml += f"""    <url>
+        <loc>https://bharttollbox.in{path}</loc>
+    </url>
+"""
+
+    xml += """</urlset>"""
+
+    return Response(
+        xml,
+        content_type="application/xml; charset=utf-8"
+    )
+    
 # ======================
 if __name__ == "__main__":
     app.run(debug=True)
