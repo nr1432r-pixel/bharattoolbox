@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#08783c">
+
+    <title>Terms of Service – RollCash</title>
+
+    <meta name="description"
+          content="Terms of Service for RollCash. Please read these terms carefully before using the RollCash application.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                "Inter",
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 50% -10%,
+                    rgba(17, 166, 87, 0.13),
+                    transparent 35%
+                ),
+                #f7faf8;
+
+            color: #172019;
+
+            line-height: 1.7;
+
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(255, 255, 255, 0.90);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid rgba(10, 93, 47, 0.08);
+        }
+
+        .nav-inner {
+            width: min(1120px, calc(100% - 36px));
+
+            min-height: 74px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        /* =====================================================
+           BRAND
+        ===================================================== */
+
+        .brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            color: #172019;
+        }
+
+        .brand-logo {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 13px;
+
+            object-fit: cover;
+
+            box-shadow:
+                0 8px 20px rgba(5, 108, 53, 0.18);
+        }
+
+        .brand-name {
+            font-size: 19px;
+
+            font-weight: 900;
+
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name span {
+            color: #078844;
+        }
+
+
+        /* =====================================================
+           BACK BUTTON
+        ===================================================== */
+
+        .back-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 10px 15px;
+
+            border-radius: 11px;
+
+            background: #edf8f1;
+
+            border: 1px solid #d8eee0;
+
+            color: #087b3e;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            transition: 0.25s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+
+            background: #e2f5e9;
+
+            box-shadow:
+                0 8px 20px rgba(8, 125, 62, 0.10);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            position: relative;
+
+            padding: 70px 20px 45px;
+
+            text-align: center;
+
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 430px;
+            height: 430px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(10, 155, 76, 0.13),
+                    transparent 70%
+                );
+
+            left: 50%;
+
+            top: -300px;
+
+            transform: translateX(-50%);
+        }
+
+        .hero-content {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 760px;
+
+            margin: auto;
+        }
+
+
+        /* =====================================================
+           BADGE
+        ===================================================== */
+
+        .badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 8px 14px;
+
+            border-radius: 999px;
+
+            background: #e7f8ee;
+
+            border: 1px solid #d2eddd;
+
+            color: #087c3f;
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            letter-spacing: 0.8px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 20px;
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #0ca256;
+
+            box-shadow:
+                0 0 0 5px rgba(12, 162, 86, 0.10);
+        }
+
+
+        /* =====================================================
+           HERO TITLE
+        ===================================================== */
+
+        .hero h1 {
+            font-size:
+                clamp(38px, 6vw, 58px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2.5px;
+
+            font-weight: 900;
+
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            background:
+                linear-gradient(
+                    135deg,
+                    #087c3f,
+                    #10a95a,
+                    #c9971b
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+        }
+
+        .hero-description {
+            max-width: 680px;
+
+            margin: auto;
+
+            color: #6c7871;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+        }
+
+        .last-updated {
+            margin-top: 14px;
+
+            color: #8a948e;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .content {
+            width: min(920px, calc(100% - 36px));
+
+            margin:
+                15px auto 80px;
+        }
+
+
+        /* =====================================================
+           INTRO
+        ===================================================== */
+
+        .intro-card {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087c3e,
+                    #10a65a
+                );
+
+            color: white;
+
+            padding: 32px;
+
+            border-radius: 24px;
+
+            margin-bottom: 18px;
+
+            box-shadow:
+                0 20px 45px rgba(8, 119, 59, 0.16);
+        }
+
+        .intro-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 230px;
+            height: 230px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.08);
+
+            right: -80px;
+
+            top: -120px;
+        }
+
+        .intro-card h2 {
+            position: relative;
+
+            z-index: 2;
+
+            font-size: 21px;
+
+            margin-bottom: 10px;
+        }
+
+        .intro-card p {
+            position: relative;
+
+            z-index: 2;
+
+            color:
+                rgba(255,255,255,0.86);
+
+            font-size: 14px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =====================================================
+           TERMS CARD
+        ===================================================== */
+
+        .terms-card {
+            background: white;
+
+            border:
+                1px solid #e2e9e5;
+
+            border-radius: 21px;
+
+            padding: 30px;
+
+            margin-bottom: 15px;
+
+            box-shadow:
+                0 9px 28px rgba(25, 55, 38, 0.045);
+        }
+
+        .terms-card h2 {
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            color: #17251d;
+
+            font-size: 20px;
+
+            letter-spacing: -0.3px;
+
+            margin-bottom: 13px;
+        }
+
+        .number {
+            width: 32px;
+            height: 32px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #e7f8ee;
+
+            color: #087d40;
+
+            font-size: 12px;
+
+            font-weight: 900;
+        }
+
+        .terms-card p {
+            color: #637069;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+            margin-bottom: 12px;
+        }
+
+        .terms-card p:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* =====================================================
+           BULLET LIST
+        ===================================================== */
+
+        .bullet-list {
+            padding-left: 21px;
+
+            margin-top: 10px;
+        }
+
+        .bullet-list li {
+            color: #637069;
+
+            font-size: 14px;
+
+            line-height: 1.75;
+
+            margin: 7px 0;
+        }
+
+
+        /* =====================================================
+           NOTICE BOX
+        ===================================================== */
+
+        .notice {
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5fbf7,
+                    #fffdf4
+                );
+
+            border:
+                1px solid #dcebe1;
+
+            border-left:
+                4px solid #0a9149;
+
+            border-radius: 15px;
+
+            padding: 18px;
+
+            margin-top: 16px;
+        }
+
+        .notice strong {
+            display: block;
+
+            color: #1e3026;
+
+            font-size: 13px;
+
+            margin-bottom: 5px;
+        }
+
+        .notice p {
+            margin: 0;
+
+            color: #68746d;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .contact-card {
+            background:
+                linear-gradient(
+                    135deg,
+                    #087c3f,
+                    #12a65b
+                );
+
+            border: none;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 40px 30px;
+
+            border-radius: 24px;
+
+            margin-top: 22px;
+
+            box-shadow:
+                0 22px 45px rgba(8, 119, 59, 0.16);
+        }
+
+        .contact-card h2 {
+            color: white;
+
+            justify-content: center;
+
+            font-size: 24px;
+
+            margin-bottom: 9px;
+        }
+
+        .contact-card .number {
+            display: none;
+        }
+
+        .contact-card p {
+            max-width: 580px;
+
+            margin:
+                0 auto 18px;
+
+            color:
+                rgba(255,255,255,0.84);
+        }
+
+        .email-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 12px 18px;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: #087c3f;
+
+            font-size: 13px;
+
+            font-weight: 900;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.10);
+
+            transition: 0.25s ease;
+        }
+
+        .email-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 14px 30px rgba(0,0,0,0.15);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: white;
+
+            border-top:
+                1px solid #e1e8e3;
+
+            padding: 30px 20px;
+        }
+
+        .footer-inner {
+            width: min(920px, 100%);
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .footer-brand {
+            font-size: 16px;
+
+            font-weight: 900;
+        }
+
+        .footer-brand span {
+            color: #078844;
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: flex-end;
+
+            gap: 16px;
+        }
+
+        .footer-links a {
+            color: #68736d;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #087d40;
+        }
+
+        .copyright {
+            margin-top: 6px;
+
+            color: #929b96;
+
+            font-size: 10px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            .nav-inner {
+                min-height: 66px;
+            }
+
+            .brand-logo {
+                width: 41px;
+                height: 41px;
+            }
+
+            .brand-name {
+                font-size: 17px;
+            }
+
+            .back-button {
+                padding: 9px 11px;
+
+                font-size: 11px;
+            }
+
+            .hero {
+                padding:
+                    50px 18px 35px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+
+                letter-spacing: -1.8px;
+            }
+
+            .content {
+                width:
+                    min(100% - 28px, 920px);
+            }
+
+            .terms-card {
+                padding: 22px 19px;
+
+                border-radius: 18px;
+            }
+
+            .terms-card h2 {
+                font-size: 18px;
+            }
+
+            .intro-card {
+                padding: 24px 21px;
+
+                border-radius: 19px;
+            }
+
+            .contact-card {
+                padding:
+                    32px 20px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .footer-links {
+                justify-content: flex-start;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="nav-inner">
+
+        <a href="/rollcash" class="brand">
+
+            <img
+                src="{{ url_for('static', filename='images/rollcash.png') }}"
+                alt="RollCash Logo"
+                class="brand-logo"
+            >
+
+            <div class="brand-name">
+                Roll<span>Cash</span>
+            </div>
+
+        </a>
+
+
+        <a
+            href="/rollcash"
+            class="back-button"
+        >
+            ← Back to RollCash
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+
+            <span class="badge-dot"></span>
+
+            Terms & Conditions
+
+        </div>
+
+
+        <h1>
+            Terms of
+            <span>Service</span>
+        </h1>
+
+
+        <p class="hero-description">
+
+            Please read these Terms of Service carefully before
+            using the RollCash application. By accessing or using
+            the Service, you agree to these terms.
+
+        </p>
+
+
+        <div class="last-updated">
+            Last Updated: September 23, 2026
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTENT
+===================================================== -->
+
+<main class="content">
+
+
+    <!-- INTRO -->
+
+    <section class="intro-card">
+
+        <h2>
+            Welcome to RollCash
+        </h2>
+
+        <p>
+
+            These Terms of Service govern your access to and use
+            of the RollCash application and related services.
+            Please read these terms carefully. If you do not agree
+            with these terms, please do not use the Service.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 01 -->
+
+    <section class="terms-card">
+
+        <h2>
+
+            <span class="number">
+                01
+            </span>
+
+            Acceptance of Terms
+
+        </h2>
+
+
+        <p>
+
+            By downloading, accessing, or using RollCash, you
+            acknowledge that you have read, understood, and agree
+            to be bound by these Terms of Service and our
+            Privacy Policy.
+
+        </p>
+
+
+        <p>
+
+            If you do not agree with any part of these terms,
+            you should stop using the application.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 02 -->
+
+    <section class="terms-card">
+
+        <h2>
+
+            <span class="number">
+                02
+            </span>
+
+            Eligibility
+
+        </h2>
+
+
+        <p>
+
+            You must meet the applicable age and legal requirements
+            in your jurisdiction to use RollCash.
+
+        </p>
+
+
+        <p>
+
+            You are responsible for ensuring that your use of the
+            Service complies with all applicable laws, regulations,
+            and platform requirements.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 03 -->
+
+    <section class="terms-card">
+
+        <h2>
+
+            <span class="number">
+                03
+            </span>
+
+            User Account
+
+        </h2>
+
+
+        <p>
+
+            Certain features of RollCash may require you to create
+            or access an account.
+
+        </p>
+
+
+        <p>
+            You agree to:
+        </p>
+
+
+        <ul class="bullet-list">
+
+            <li>
+                Provide accurate information when required.
+            </li>
+
+            <li>
+                Keep your account credentials secure.
+            </li>
+
+            <li>
+                Not knowingly allow unauthorized access to your account.
+            </li>
+
+            <li>
+                Notify us if you believe your account has been
+                accessed without authorization.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+
+    <!-- 04 -->
+
+    <section class="terms-card">
+
+        <h2>
+
+            <span class="number">
+                04
+            </span>
+
+            RollCash Rewards
+
+        </h2>
+
+
+        <p>
+
+            RollCash may provide reward-related features within
+            the application. The availability, amount, eligibility,
+            and conditions of any reward may depend on the specific
+            feature or promotion.
+
+        </p>
+
+
+        <p>
+
+            Rewards, points, bonuses, or other in-app benefits
+            may be subject to applicable limits, eligibility
+            requirements, verification, expiration rules, or
+            other conditions displayed within the application.
+
+        </p>
+
+
+        <div class="notice">
+
+            <strong>
+                Reward Information
+            </strong>
+
+            <p>
+
+                Rewards are subject to the rules and conditions
+                applicable to the relevant RollCash feature.
+                Please review the information presented inside
+                the application before participating.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 05 -->
+
+    <section class="terms-card">
+
+        <h2>
+
+            <span class="number">
+                05
+            </span>
+
+            Prohibited Activities
+
+        </h2>
+
+
+        <p>
+            You agree not to use RollCash to:
+        </p>
+
+
+        <ul class="bullet-list">
+
+            <li>
+                Violate applicable laws or regulations.
+            </li>
+
+            <li>
+                Attempt to gain unauthorized access to the
+                Service or another user's account.
+            </li>
+
+            <li>
+                Interfere with or disrupt the operation of
+                the application.
+            </li>
+
+            <li>
+                Use automated methods, bots, scripts, or
+                unauthorized tools to manipulate the Service.
+            </li>
+
+            <li>
+                Provide false or misleading information for
+                the purpose of obtaining rewards or benefits.
+            </li>
+
+            <li>
+                Attempt to exploit bugs, vulnerabilities,
+                or technical issues in the application.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+
+    <!-- 06 -->
+
+    <section class="terms-card">
+
+        <h2>
+
+            <span class="number">
+                06
+            </span>
+
+            Advertisements and Third-Party Services
+
+        </h2>
+
+
+        <p>
+
+            RollCash may display advertisements provided by
+            third-party advertising services, including Google
+            AdMob.
+
+        </p>
+
+
+        <p>
+
+            Third-party services may operate under their own
+            terms and privacy policies. Your interactions with
+            third-party services may therefore be subject to
+            those providers' respective policies.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 07 -->
+
+    <section class="terms-card">
+
+        <h2>
+
+            <span class="number">
+                07
+            </span>
+
+            Intellectual Property
+
+        </h2>
+
+
+        <p>
+
+            Unless otherwise stated, RollCash and its original
+            content, design, graphics, logos, trademarks, text,
+            software, and other materials are owned by or
+            appropriately licensed to RollCash.
+
+        </p>
+
+
+        <p>
+
+            You may not copy, reproduce, modify, distribute,
+            sell, or create derivative works from our content
+            without appropriate authorization.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 08 -->
+
+    <section class="terms-card">
+
+        <h2>
+
+            <span class="number">
+                08
+            </span>
+
+            Service Availability
+
+        </h2>
+
+
+        <p>
+
+            We aim to keep RollCash available and functioning
+            properly, but we do not guarantee that the Service
+            will always be uninterrupted, error-free, or
+            continuously available.
+
+        </p>
+
+
+        <p>
+
+            The Service may occasionally be unavailable due to
+            maintenance, updates, technical problems, security
+            issues, or circumstances beyond our reasonable control.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 09 -->
+
+    <section class="terms-card">
+
+        <h2>
+
+            <span class="number">
+                09
+            </span>
+
+            Changes to the Service
+
+        </h2>
+
+
+        <p>
+
+            We may modify, update, suspend, or discontinue
+            features of RollCash from time to time.
+
+        </p>
+
+
+        <p>
+
+            We may also release updates or changes that are
+            necessary to improve functionality, security,
+            performance, or compliance with applicable
+            requirements.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 10 -->
+
+    <section class="terms-card">
+
+        <h2>
+
+            <span class="number">
+                10
+            </span>
+
+            Account Suspension or Termination
+
+        </h2>
+
+
+        <p>
+
+            We may restrict, suspend, or terminate access to
+            an account or the Service when we reasonably believe
+            that a user has violated these Terms, applicable
+            rules, or engaged in activity that may compromise
+            the security or integrity of the Service.
+
+        </p>
+
+
+        <p>
+
+            Where appropriate, we may also take action to
+            protect users, the Service, or our systems from
+            abuse or unauthorized activity.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 11 -->
+
+    <section class="terms-card">
+
+        <h2>
+
+            <span class="number">
+                11
+            </span>
+
+            Disclaimer
+
+        </h2>
+
+
+        <p>
+
+            RollCash is provided on an "as is" and "as available"
+            basis to the extent permitted by applicable law.
+
+        </p>
+
+
+        <p>
+
+            We do not guarantee that the application will always
+            operate without errors or interruptions, or that every
+            feature will always be available.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 12 -->
+
+    <section class="terms-card">
+
+        <h2>
+
+            <span class="number">
+                12
+            </span>
+
+            Limitation of Liability
+
+        </h2>
+
+
+        <p>
+
+            To the maximum extent permitted by applicable law,
+            RollCash and its operators will not be responsible
+            for losses or damages arising from the use or
+            inability to use the Service, except where such
+            limitation is prohibited by law.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 13 -->
+
+    <section class="terms-card">
+
+        <h2>
+
+            <span class="number">
+                13
+            </span>
+
+            Privacy
+
+        </h2>
+
+
+        <p>
+
+            Your use of RollCash is also governed by our
+            Privacy Policy, which explains how information
+            may be collected, used, and protected.
+
+        </p>
+
+
+        <div class="notice">
+
+            <strong>
+                Privacy Policy
+            </strong>
+
+            <p>
+
+                You can read the RollCash Privacy Policy using
+                the link provided below.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 14 -->
+
+    <section class="terms-card">
+
+        <h2>
+
+            <span class="number">
+                14
+            </span>
+
+            Changes to These Terms
+
+        </h2>
+
+
+        <p>
+
+            We may update these Terms of Service from time to
+            time. Changes will be posted on this page together
+            with an updated "Last Updated" date.
+
+        </p>
+
+
+        <p>
+
+            Your continued use of RollCash after updated terms
+            are posted means that you acknowledge the updated
+            terms to the extent permitted by applicable law.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- CONTACT -->
+
+    <section class="contact-card">
+
+        <h2>
+            Contact Us
+        </h2>
+
+
+        <p>
+
+            If you have questions or concerns regarding these
+            Terms of Service, please contact us.
+
+        </p>
+
+
+        <a
+            href="mailto:nr1432r@gmail.com"
+            class="email-button"
+        >
+            ✉ nr1432r@gmail.com
+        </a>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-inner">
+
+
+        <div>
+
+            <div class="footer-brand">
+                Roll<span>Cash</span>
+            </div>
+
+            <div class="copyright">
+                © 2026 RollCash. All rights reserved.
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="/rollcash">
+                Home
+            </a>
+
+            <a href="/rollcash/privacy-policy">
+                Privacy Policy
+            </a>
+
+            <a href="/rollcash/terms">
+                Terms of Service
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
