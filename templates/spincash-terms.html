@@ -1,1 +1,1990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Terms of Service – SpinCash</title>
+
+    <meta
+        name="description"
+        content="Read the SpinCash Terms of Service and understand the rules and conditions for using the SpinCash application."
+    >
+
+    <style>
+        :root {
+            --green-dark: #07351f;
+            --green: #0b8f48;
+            --green-2: #19a957;
+            --green-light: #eaf9f0;
+
+            --gold: #f2b51d;
+            --gold-light: #fff7dc;
+
+            --text: #14231b;
+            --text-soft: #55645b;
+            --muted: #7b8981;
+
+            --bg: #f7faf8;
+            --white: #ffffff;
+
+            --border: #e2ece6;
+
+            --shadow:
+                0 18px 50px rgba(8, 66, 36, 0.07);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(17, 155, 78, 0.06),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at top right,
+                    rgba(242, 181, 29, 0.05),
+                    transparent 25%
+                ),
+                var(--bg);
+
+            color: var(--text);
+            line-height: 1.75;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: 0 auto;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(255,255,255,0.90);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+
+            border-bottom: 1px solid rgba(226,236,230,0.95);
+        }
+
+        .nav {
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            color: var(--green-dark);
+
+            font-size: 20px;
+            font-weight: 850;
+        }
+
+        .brand-logo {
+            width: 46px;
+            height: 46px;
+
+            object-fit: cover;
+            border-radius: 13px;
+
+            box-shadow:
+                0 10px 25px rgba(5, 69, 35, 0.14);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+        }
+
+        .nav-links a {
+            color: var(--text-soft);
+
+            font-size: 14px;
+            font-weight: 650;
+
+            transition: 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        .contact-btn {
+            padding: 10px 16px;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--green),
+                    #08743d
+                );
+
+            color: white !important;
+
+            box-shadow:
+                0 9px 22px rgba(9, 138, 67, 0.18);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .page-hero {
+            padding: 75px 0 42px;
+        }
+
+        .hero-card {
+            position: relative;
+            overflow: hidden;
+
+            padding: 50px;
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff 0%,
+                    #f0fbf4 100%
+                );
+
+            border: 1px solid var(--border);
+
+            box-shadow: var(--shadow);
+        }
+
+        .hero-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+            height: 260px;
+
+            top: -120px;
+            right: -80px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(26, 168, 87, 0.12),
+                    transparent 68%
+                );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 7px 12px;
+            margin-bottom: 18px;
+
+            border-radius: 999px;
+
+            background: var(--green-light);
+
+            border: 1px solid #d2efdc;
+
+            color: var(--green-dark);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: var(--green);
+        }
+
+        h1 {
+            font-size: clamp(38px, 5vw, 58px);
+
+            line-height: 1.05;
+
+            letter-spacing: -1.8px;
+
+            color: #102219;
+
+            margin-bottom: 15px;
+        }
+
+        .hero-description {
+            max-width: 760px;
+
+            color: var(--text-soft);
+
+            font-size: 17px;
+        }
+
+        .last-updated {
+            display: inline-flex;
+
+            margin-top: 22px;
+
+            padding: 9px 13px;
+
+            border-radius: 10px;
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            color: var(--muted);
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content-section {
+            padding: 18px 0 90px;
+        }
+
+        .content-layout {
+            display: grid;
+
+            grid-template-columns: 250px minmax(0, 1fr);
+
+            gap: 25px;
+
+            align-items: start;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            position: sticky;
+            top: 100px;
+
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 19px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 10px 35px rgba(5, 68, 34, 0.045);
+        }
+
+        .sidebar-title {
+            font-size: 13px;
+            font-weight: 800;
+
+            color: var(--green-dark);
+
+            margin-bottom: 14px;
+        }
+
+        .toc {
+            display: grid;
+            gap: 6px;
+        }
+
+        .toc a {
+            display: block;
+
+            padding: 9px 10px;
+
+            border-radius: 9px;
+
+            color: var(--text-soft);
+
+            font-size: 12px;
+            font-weight: 650;
+
+            transition: 0.2s ease;
+        }
+
+        .toc a:hover {
+            background: var(--green-light);
+            color: var(--green-dark);
+        }
+
+        /* =========================
+           TERMS CARD
+        ========================= */
+
+        .terms-card {
+            background: white;
+
+            border: 1px solid var(--border);
+
+            border-radius: 24px;
+
+            padding: 42px;
+
+            box-shadow: var(--shadow);
+        }
+
+        .intro-box {
+            padding: 22px;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #effaf3,
+                    #fffaf0
+                );
+
+            border: 1px solid #e3eee6;
+
+            margin-bottom: 35px;
+        }
+
+        .intro-box p {
+            margin: 0;
+
+            color: var(--text-soft);
+
+            font-size: 15px;
+        }
+
+        .terms-section {
+            scroll-margin-top: 105px;
+
+            padding: 4px 0 32px;
+        }
+
+        .terms-section + .terms-section {
+            border-top: 1px solid #edf2ee;
+
+            padding-top: 30px;
+        }
+
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 32px;
+            height: 32px;
+
+            margin-right: 9px;
+
+            border-radius: 9px;
+
+            background: var(--green-light);
+
+            color: var(--green-dark);
+
+            font-size: 12px;
+            font-weight: 850;
+        }
+
+        h2 {
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+
+            font-size: 22px;
+
+            color: #14251b;
+
+            margin-bottom: 14px;
+        }
+
+        p {
+            color: var(--text-soft);
+
+            font-size: 15px;
+
+            margin-bottom: 14px;
+        }
+
+        ul {
+            margin: 10px 0 18px 21px;
+        }
+
+        li {
+            color: var(--text-soft);
+
+            font-size: 15px;
+
+            margin-bottom: 9px;
+
+            padding-left: 4px;
+        }
+
+        li::marker {
+            color: var(--green);
+        }
+
+        .rule-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 12px;
+
+            margin-top: 17px;
+        }
+
+        .rule-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+
+            padding: 15px;
+
+            background: #fbfdfc;
+
+            border: 1px solid var(--border);
+
+            border-radius: 13px;
+        }
+
+        .rule-icon {
+            width: 35px;
+            height: 35px;
+
+            flex: 0 0 35px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 10px;
+
+            background: var(--green-light);
+
+            font-size: 16px;
+        }
+
+        .rule-card strong {
+            display: block;
+
+            color: #263a30;
+
+            font-size: 14px;
+
+            margin-bottom: 2px;
+        }
+
+        .rule-card span {
+            color: var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+        .warning-box {
+            margin-top: 20px;
+
+            padding: 19px;
+
+            border-radius: 14px;
+
+            background: var(--gold-light);
+
+            border: 1px solid #f4e3ad;
+        }
+
+        .warning-box strong {
+            color: #6b5310;
+
+            font-size: 14px;
+        }
+
+        .warning-box p {
+            margin-top: 7px;
+            margin-bottom: 0;
+
+            color: #78651f;
+
+            font-size: 13px;
+        }
+
+        .contact-box {
+            margin-top: 8px;
+
+            padding: 22px;
+
+            border-radius: 16px;
+
+            background: #f8fbf9;
+
+            border: 1px solid var(--border);
+        }
+
+        .email-link {
+            display: inline-block;
+
+            margin-top: 4px;
+
+            color: var(--green);
+
+            font-weight: 800;
+        }
+
+        .bottom-links {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 40px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #edf2ee;
+        }
+
+        .bottom-link {
+            padding: 11px 15px;
+
+            border-radius: 10px;
+
+            background: #f5f8f6;
+
+            border: 1px solid var(--border);
+
+            color: var(--green-dark);
+
+            font-size: 13px;
+
+            font-weight: 750;
+        }
+
+        .bottom-link:hover {
+            background: var(--green-light);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #062e1b;
+
+            color: rgba(255,255,255,0.72);
+
+            padding: 35px 0;
+        }
+
+        .footer-top {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 25px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            color: white;
+
+            font-weight: 800;
+        }
+
+        .footer-logo {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 10px;
+
+            object-fit: cover;
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 18px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.70);
+
+            font-size: 13px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+
+            margin-top: 23px;
+
+            padding-top: 20px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.10);
+
+            font-size: 12px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .content-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+
+                top: auto;
+            }
+
+            .toc {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .rule-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .nav {
+                min-height: 70px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .page-hero {
+                padding: 40px 0 25px;
+            }
+
+            .hero-card {
+                padding: 30px 22px;
+
+                border-radius: 22px;
+            }
+
+            h1 {
+                font-size: 36px;
+
+                letter-spacing: -1.2px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .terms-card {
+                padding: 25px 20px;
+
+                border-radius: 19px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            p,
+            li {
+                font-size: 14px;
+            }
+
+            .toc {
+                grid-template-columns: 1fr;
+            }
+
+            .rule-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="container nav">
+
+        <a href="/spincash" class="brand">
+
+            <img
+                src="{{ url_for('static', filename='images/spincash.png') }}"
+                alt="SpinCash Logo"
+                class="brand-logo"
+            >
+
+            <span>SpinCash</span>
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="/spincash">
+                Home
+            </a>
+
+            <a href="/spincash/privacy-policy">
+                Privacy Policy
+            </a>
+
+            <a href="/spincash/terms">
+                Terms
+            </a>
+
+            <a
+                href="mailto:nr1432r@gmail.com"
+                class="contact-btn"
+            >
+                Contact
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="page-hero">
+
+    <div class="container">
+
+        <div class="hero-card">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+
+                    <span class="eyebrow-dot"></span>
+
+                    SpinCash Legal
+
+                </div>
+
+
+                <h1>
+                    Terms of Service
+                </h1>
+
+
+                <p class="hero-description">
+
+                    These Terms explain the rules, conditions and
+                    responsibilities that apply when you access or
+                    use the SpinCash mobile application and related
+                    services.
+
+                </p>
+
+
+                <div class="last-updated">
+
+                    Last Updated:
+                    September 23, 2026
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTENT
+========================= -->
+
+<section class="content-section">
+
+    <div class="container content-layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-title">
+                On this page
+            </div>
+
+            <div class="toc">
+
+                <a href="#acceptance">
+                    Acceptance
+                </a>
+
+                <a href="#account">
+                    Account
+                </a>
+
+                <a href="#google">
+                    Google Sign-In
+                </a>
+
+                <a href="#coins">
+                    Coins & Rewards
+                </a>
+
+                <a href="#activities">
+                    Earning Activities
+                </a>
+
+                <a href="#ads">
+                    Advertisements
+                </a>
+
+                <a href="#referral">
+                    Referral Program
+                </a>
+
+                <a href="#withdrawals">
+                    Withdrawals
+                </a>
+
+                <a href="#prohibited">
+                    Prohibited Activities
+                </a>
+
+                <a href="#suspension">
+                    Suspension
+                </a>
+
+                <a href="#third-party">
+                    Third-Party Services
+                </a>
+
+                <a href="#availability">
+                    Service Availability
+                </a>
+
+                <a href="#changes">
+                    Changes
+                </a>
+
+                <a href="#privacy">
+                    Privacy
+                </a>
+
+                <a href="#contact">
+                    Contact
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- TERMS -->
+
+        <article class="terms-card">
+
+
+            <div class="intro-box">
+
+                <p>
+
+                    Please read these Terms of Service carefully before
+                    using SpinCash. By accessing or using the application,
+                    you acknowledge that you have read and understood
+                    these Terms and agree to comply with them.
+
+                </p>
+
+            </div>
+
+
+            <!-- 01 -->
+
+            <section
+                class="terms-section"
+                id="acceptance"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        01
+                    </span>
+
+                    Acceptance of Terms
+
+                </h2>
+
+
+                <p>
+
+                    These Terms of Service ("Terms") govern your access
+                    to and use of the SpinCash mobile application and
+                    related services.
+
+                </p>
+
+
+                <p>
+
+                    If you do not agree with these Terms, you should
+                    not access or use SpinCash.
+
+                </p>
+
+            </section>
+
+
+            <!-- 02 -->
+
+            <section
+                class="terms-section"
+                id="account"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        02
+                    </span>
+
+                    Account Registration
+
+                </h2>
+
+
+                <p>
+
+                    Certain features of SpinCash may require you to
+                    create or access an account.
+
+                </p>
+
+
+                <p>
+
+                    You agree to provide accurate information and
+                    to keep your account information reasonably
+                    up to date.
+
+                </p>
+
+
+                <p>
+
+                    You are responsible for activity carried out
+                    through your account and should take reasonable
+                    steps to protect access to your account.
+
+                </p>
+
+            </section>
+
+
+            <!-- 03 -->
+
+            <section
+                class="terms-section"
+                id="google"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        03
+                    </span>
+
+                    Google Sign-In
+
+                </h2>
+
+
+                <p>
+
+                    SpinCash may provide Google Sign-In as an
+                    authentication method.
+
+                </p>
+
+
+                <p>
+
+                    When using Google Sign-In, your use of Google's
+                    services may also be subject to Google's applicable
+                    terms and policies.
+
+                </p>
+
+
+                <p>
+
+                    SpinCash may receive basic information made
+                    available through the authentication process,
+                    such as your name, email address and profile
+                    picture, as described in our
+                    <a
+                        href="/spincash/privacy-policy"
+                        style="color: var(--green); font-weight: 750;"
+                    >
+                        Privacy Policy
+                    </a>.
+
+                </p>
+
+            </section>
+
+
+            <!-- 04 -->
+
+            <section
+                class="terms-section"
+                id="coins"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        04
+                    </span>
+
+                    Coins and Rewards
+
+                </h2>
+
+
+                <p>
+
+                    SpinCash may provide coins or other reward units
+                    for eligible activities available through the
+                    application.
+
+                </p>
+
+
+                <div class="rule-grid">
+
+                    <div class="rule-card">
+
+                        <span class="rule-icon">
+                            🪙
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Reward Units
+                            </strong>
+
+                            <span>
+                                Coins are subject to the applicable
+                                in-app rules and limits.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="rule-card">
+
+                        <span class="rule-icon">
+                            📋
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Eligibility
+                            </strong>
+
+                            <span>
+                                Rewards may depend on activity,
+                                eligibility and other conditions.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="rule-card">
+
+                        <span class="rule-icon">
+                            🚫
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                No Unauthorized Transfer
+                            </strong>
+
+                            <span>
+                                Coins may not be sold or transferred
+                                outside permitted features.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="rule-card">
+
+                        <span class="rule-icon">
+                            🛡️
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Fraud Prevention
+                            </strong>
+
+                            <span>
+                                Improperly obtained rewards may be
+                                reviewed or invalidated.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- 05 -->
+
+            <section
+                class="terms-section"
+                id="activities"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        05
+                    </span>
+
+                    Earning Activities
+
+                </h2>
+
+
+                <p>
+
+                    SpinCash may provide different activities through
+                    which eligible users can earn coins or rewards.
+
+                </p>
+
+
+                <p>
+                    These may include:
+                </p>
+
+
+                <ul>
+
+                    <li>
+                        Spin-based activities.
+                    </li>
+
+                    <li>
+                        Advertisement-based activities.
+                    </li>
+
+                    <li>
+                        Referral activities.
+                    </li>
+
+                    <li>
+                        Other supported in-app activities.
+                    </li>
+
+                </ul>
+
+
+                <p>
+
+                    The availability of any particular activity is
+                    not guaranteed and may vary because of technical,
+                    eligibility, advertising or other operational
+                    conditions.
+
+                </p>
+
+            </section>
+
+
+            <!-- 06 -->
+
+            <section
+                class="terms-section"
+                id="ads"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        06
+                    </span>
+
+                    Advertisements
+
+                </h2>
+
+
+                <p>
+
+                    SpinCash may display advertisements through
+                    third-party advertising services, including
+                    Google AdMob and Unity Ads.
+
+                </p>
+
+
+                <p>
+
+                    Users must interact with advertisements honestly.
+                    Artificial, automated or fraudulent interactions
+                    intended to generate rewards are prohibited.
+
+                </p>
+
+
+                <div class="warning-box">
+
+                    <strong>
+                        Important
+                    </strong>
+
+                    <p>
+
+                        Do not use bots, scripts, modified applications,
+                        automated tools or other unauthorized methods
+                        to manipulate advertisements or reward activity.
+
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- 07 -->
+
+            <section
+                class="terms-section"
+                id="referral"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        07
+                    </span>
+
+                    Referral Program
+
+                </h2>
+
+
+                <p>
+
+                    SpinCash may offer referral features that allow
+                    eligible users to receive rewards for qualifying
+                    referrals.
+
+                </p>
+
+
+                <p>
+
+                    Referral rewards are subject to the conditions,
+                    limits and eligibility requirements shown in the
+                    application.
+
+                </p>
+
+
+                <p>
+
+                    Fake accounts, self-referrals, automated referrals,
+                    misleading invitations and other attempts to abuse
+                    the referral system are prohibited.
+
+                </p>
+
+            </section>
+
+
+            <!-- 08 -->
+
+            <section
+                class="terms-section"
+                id="withdrawals"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        08
+                    </span>
+
+                    Withdrawals
+
+                </h2>
+
+
+                <p>
+
+                    Eligible users may be able to request withdrawals
+                    after meeting the applicable requirements.
+
+                </p>
+
+
+                <p>
+                    Withdrawal requirements may include:
+                </p>
+
+
+                <ul>
+
+                    <li>
+                        Minimum eligible balance.
+                    </li>
+
+                    <li>
+                        Account eligibility.
+                    </li>
+
+                    <li>
+                        Applicable verification requirements.
+                    </li>
+
+                    <li>
+                        Compliance with reward and security rules.
+                    </li>
+
+                </ul>
+
+
+                <p>
+
+                    Processing times may vary depending on the
+                    withdrawal method, verification requirements,
+                    technical conditions and other factors.
+
+                </p>
+
+
+                <p>
+
+                    A withdrawal request may be reviewed for
+                    eligibility, fraud, abuse or violation of these
+                    Terms before processing.
+
+                </p>
+
+            </section>
+
+
+            <!-- 09 -->
+
+            <section
+                class="terms-section"
+                id="prohibited"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        09
+                    </span>
+
+                    Prohibited Activities
+
+                </h2>
+
+
+                <p>
+                    You must not:
+                </p>
+
+
+                <ul>
+
+                    <li>
+                        Use SpinCash for unlawful or fraudulent purposes.
+                    </li>
+
+                    <li>
+                        Create multiple accounts to abuse rewards,
+                        promotions or referral systems.
+                    </li>
+
+                    <li>
+                        Use bots, scripts, automation or modified
+                        applications to manipulate the Service.
+                    </li>
+
+                    <li>
+                        Manipulate or artificially generate
+                        advertisement activity.
+                    </li>
+
+                    <li>
+                        Exploit bugs or technical errors to obtain
+                        unauthorized rewards.
+                    </li>
+
+                    <li>
+                        Attempt to access another user's account.
+                    </li>
+
+                    <li>
+                        Interfere with the operation or security
+                        of the application.
+                    </li>
+
+                    <li>
+                        Provide false or misleading information.
+                    </li>
+
+                </ul>
+
+            </section>
+
+
+            <!-- 10 -->
+
+            <section
+                class="terms-section"
+                id="suspension"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        10
+                    </span>
+
+                    Account Suspension or Termination
+
+                </h2>
+
+
+                <p>
+
+                    We may suspend, restrict or terminate access to
+                    an account where we reasonably determine that a
+                    user has violated these Terms, engaged in fraudulent
+                    or abusive activity, or created a security or
+                    operational risk.
+
+                </p>
+
+
+                <p>
+
+                    Where appropriate, rewards or balances associated
+                    with fraudulent, abusive or prohibited activity
+                    may be reviewed or invalidated.
+
+                </p>
+
+            </section>
+
+
+            <!-- 11 -->
+
+            <section
+                class="terms-section"
+                id="third-party"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        11
+                    </span>
+
+                    Third-Party Services
+
+                </h2>
+
+
+                <p>
+
+                    SpinCash may depend on third-party services to
+                    provide authentication, cloud infrastructure,
+                    analytics, advertising and other functionality.
+
+                </p>
+
+
+                <p>
+                    These services may include:
+                </p>
+
+
+                <div class="rule-grid">
+
+                    <div class="rule-card">
+
+                        <span class="rule-icon">
+                            🔑
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Google Sign-In
+                            </strong>
+
+                            <span>
+                                Authentication service
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="rule-card">
+
+                        <span class="rule-icon">
+                            ☁️
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Firebase
+                            </strong>
+
+                            <span>
+                                Authentication and cloud services
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="rule-card">
+
+                        <span class="rule-icon">
+                            📢
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Google AdMob
+                            </strong>
+
+                            <span>
+                                Advertising service
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="rule-card">
+
+                        <span class="rule-icon">
+                            🎮
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Unity Ads
+                            </strong>
+
+                            <span>
+                                Advertising service
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- 12 -->
+
+            <section
+                class="terms-section"
+                id="availability"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        12
+                    </span>
+
+                    Service Availability
+
+                </h2>
+
+
+                <p>
+
+                    We aim to keep SpinCash available and functional,
+                    but we do not guarantee that the application will
+                    always be uninterrupted, error-free or available
+                    on every device.
+
+                </p>
+
+
+                <p>
+
+                    The Service may become temporarily unavailable
+                    due to maintenance, updates, technical problems,
+                    network issues, third-party service outages or
+                    other circumstances.
+
+                </p>
+
+            </section>
+
+
+            <!-- 13 -->
+
+            <section
+                class="terms-section"
+                id="changes"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        13
+                    </span>
+
+                    Changes to the Service and Terms
+
+                </h2>
+
+
+                <p>
+
+                    We may modify, add, suspend or remove features
+                    from SpinCash from time to time.
+
+                </p>
+
+
+                <p>
+
+                    This may include changes to earning activities,
+                    rewards, referral programs, withdrawal methods,
+                    limits or other application functionality.
+
+                </p>
+
+
+                <p>
+
+                    We may also update these Terms from time to time.
+                    Updated Terms will be published on this page with
+                    a revised "Last Updated" date.
+
+                </p>
+
+            </section>
+
+
+            <!-- 14 -->
+
+            <section
+                class="terms-section"
+                id="privacy"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        14
+                    </span>
+
+                    Privacy
+
+                </h2>
+
+
+                <p>
+
+                    Your use of SpinCash is also governed by our
+                    Privacy Policy, which explains how information
+                    is collected, used, stored and processed.
+
+                </p>
+
+
+                <p>
+
+                    Read the Privacy Policy here:
+
+                </p>
+
+
+                <p>
+
+                    <a
+                        href="/spincash/privacy-policy"
+                        style="
+                            color: var(--green);
+                            font-weight: 800;
+                        "
+                    >
+                        SpinCash Privacy Policy →
+                    </a>
+
+                </p>
+
+            </section>
+
+
+            <!-- 15 -->
+
+            <section
+                class="terms-section"
+                id="contact"
+            >
+
+                <h2>
+
+                    <span class="section-number">
+                        15
+                    </span>
+
+                    Contact Us
+
+                </h2>
+
+
+                <p>
+
+                    If you have questions regarding these Terms of
+                    Service, please contact us.
+
+                </p>
+
+
+                <div class="contact-box">
+
+                    <strong>
+                        SpinCash
+                    </strong>
+
+                    <br>
+
+                    Email:
+
+                    <a
+                        href="mailto:nr1432r@gmail.com"
+                        class="email-link"
+                    >
+                        nr1432r@gmail.com
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- BOTTOM -->
+
+            <div class="bottom-links">
+
+                <a
+                    href="/spincash"
+                    class="bottom-link"
+                >
+                    ← SpinCash Home
+                </a>
+
+
+                <a
+                    href="/spincash/privacy-policy"
+                    class="bottom-link"
+                >
+                    Privacy Policy →
+                </a>
+
+            </div>
+
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-top">
+
+            <a
+                href="/spincash"
+                class="footer-brand"
+            >
+
+                <img
+                    src="{{ url_for('static', filename='images/spincash.png') }}"
+                    alt="SpinCash"
+                    class="footer-logo"
+                >
+
+                <span>
+                    SpinCash
+                </span>
+
+            </a>
+
+
+            <div class="footer-links">
+
+                <a href="/spincash">
+                    Home
+                </a>
+
+                <a href="/spincash/privacy-policy">
+                    Privacy Policy
+                </a>
+
+                <a href="/spincash/terms">
+                    Terms of Service
+                </a>
+
+                <a href="mailto:nr1432r@gmail.com">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 SpinCash. All rights reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
