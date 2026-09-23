@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#08783c">
+
+    <title>Privacy Policy – RollCash</title>
+
+    <meta name="description"
+          content="Privacy Policy for RollCash. Learn how RollCash collects, uses, stores, and protects information.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                "Inter",
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 50% -10%,
+                    rgba(17, 166, 87, 0.13),
+                    transparent 35%
+                ),
+                #f7faf8;
+
+            color: #172019;
+
+            line-height: 1.7;
+
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(255, 255, 255, 0.90);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid rgba(10, 93, 47, 0.08);
+        }
+
+        .nav-inner {
+            width: min(1120px, calc(100% - 36px));
+
+            min-height: 74px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        /* =====================================================
+           BRAND
+        ===================================================== */
+
+        .brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            color: #172019;
+        }
+
+        .brand-logo {
+            width: 45px;
+            height: 45px;
+
+            border-radius: 13px;
+
+            object-fit: cover;
+
+            box-shadow:
+                0 8px 20px rgba(5, 108, 53, 0.18);
+        }
+
+        .brand-name {
+            font-size: 19px;
+
+            font-weight: 900;
+
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name span {
+            color: #078844;
+        }
+
+
+        /* =====================================================
+           BACK BUTTON
+        ===================================================== */
+
+        .back-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 10px 15px;
+
+            border-radius: 11px;
+
+            background: #edf8f1;
+
+            border: 1px solid #d8eee0;
+
+            color: #087b3e;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            transition: 0.25s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+
+            background: #e2f5e9;
+
+            box-shadow:
+                0 8px 20px rgba(8, 125, 62, 0.10);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            position: relative;
+
+            padding: 70px 20px 45px;
+
+            text-align: center;
+
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 430px;
+            height: 430px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(10, 155, 76, 0.13),
+                    transparent 70%
+                );
+
+            left: 50%;
+
+            top: -300px;
+
+            transform: translateX(-50%);
+        }
+
+        .hero-content {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 760px;
+
+            margin: auto;
+        }
+
+
+        /* =====================================================
+           BADGE
+        ===================================================== */
+
+        .badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 8px 14px;
+
+            border-radius: 999px;
+
+            background: #e7f8ee;
+
+            border: 1px solid #d2eddd;
+
+            color: #087c3f;
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            letter-spacing: 0.8px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 20px;
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #0ca256;
+
+            box-shadow:
+                0 0 0 5px rgba(12, 162, 86, 0.10);
+        }
+
+
+        /* =====================================================
+           HERO TEXT
+        ===================================================== */
+
+        .hero h1 {
+            font-size:
+                clamp(38px, 6vw, 58px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2.5px;
+
+            font-weight: 900;
+
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            background:
+                linear-gradient(
+                    135deg,
+                    #087c3f,
+                    #10a95a,
+                    #c9971b
+                );
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            color: transparent;
+        }
+
+        .hero-description {
+            max-width: 680px;
+
+            margin: auto;
+
+            color: #6c7871;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+        }
+
+        .last-updated {
+            margin-top: 14px;
+
+            color: #8a948e;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           MAIN CONTENT
+        ===================================================== */
+
+        .content {
+            width: min(920px, calc(100% - 36px));
+
+            margin:
+                15px auto 80px;
+        }
+
+
+        /* =====================================================
+           INTRO CARD
+        ===================================================== */
+
+        .intro-card {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087c3e,
+                    #10a65a
+                );
+
+            color: white;
+
+            padding: 32px;
+
+            border-radius: 24px;
+
+            margin-bottom: 18px;
+
+            box-shadow:
+                0 20px 45px rgba(8, 119, 59, 0.16);
+        }
+
+        .intro-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 230px;
+            height: 230px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.08);
+
+            right: -80px;
+
+            top: -120px;
+        }
+
+        .intro-card h2 {
+            position: relative;
+
+            z-index: 2;
+
+            font-size: 21px;
+
+            margin-bottom: 10px;
+        }
+
+        .intro-card p {
+            position: relative;
+
+            z-index: 2;
+
+            color:
+                rgba(255,255,255,0.86);
+
+            font-size: 14px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =====================================================
+           POLICY CARD
+        ===================================================== */
+
+        .policy-card {
+            background: white;
+
+            border:
+                1px solid #e2e9e5;
+
+            border-radius: 21px;
+
+            padding: 30px;
+
+            margin-bottom: 15px;
+
+            box-shadow:
+                0 9px 28px rgba(25, 55, 38, 0.045);
+        }
+
+        .policy-card h2 {
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            color: #17251d;
+
+            font-size: 20px;
+
+            letter-spacing: -0.3px;
+
+            margin-bottom: 13px;
+        }
+
+        .number {
+            width: 32px;
+            height: 32px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #e7f8ee;
+
+            color: #087d40;
+
+            font-size: 12px;
+
+            font-weight: 900;
+        }
+
+        .policy-card p {
+            color: #637069;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+            margin-bottom: 12px;
+        }
+
+        .policy-card p:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* =====================================================
+           SERVICE LIST
+        ===================================================== */
+
+        .service-list {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 11px;
+
+            margin-top: 17px;
+        }
+
+        .service-item {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 11px;
+
+            padding: 14px;
+
+            border-radius: 13px;
+
+            background: #f7faf8;
+
+            border:
+                1px solid #e4ebe6;
+        }
+
+        .service-icon {
+            width: 31px;
+            height: 31px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background: #e5f7ec;
+
+            color: #087d40;
+
+            font-size: 14px;
+        }
+
+        .service-item strong {
+            display: block;
+
+            color: #25332b;
+
+            font-size: 13px;
+
+            margin-bottom: 2px;
+        }
+
+        .service-item span {
+            color: #77817c;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           BULLET LIST
+        ===================================================== */
+
+        .bullet-list {
+            padding-left: 20px;
+
+            margin-top: 12px;
+        }
+
+        .bullet-list li {
+            color: #637069;
+
+            font-size: 14px;
+
+            margin: 7px 0;
+        }
+
+
+        /* =====================================================
+           GOOGLE DATA NOTE
+        ===================================================== */
+
+        .google-note {
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5fbf7,
+                    #fffdf4
+                );
+
+            border:
+                1px solid #dcebe1;
+
+            border-left:
+                4px solid #0a9149;
+
+            border-radius: 15px;
+
+            padding: 18px;
+
+            margin-top: 16px;
+        }
+
+        .google-note strong {
+            display: block;
+
+            color: #1e3026;
+
+            font-size: 13px;
+
+            margin-bottom: 5px;
+        }
+
+        .google-note p {
+            margin: 0;
+
+            font-size: 12px;
+
+            color: #68746d;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .contact-card {
+            background:
+                linear-gradient(
+                    135deg,
+                    #087c3f,
+                    #12a65b
+                );
+
+            border: none;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 40px 30px;
+
+            border-radius: 24px;
+
+            margin-top: 22px;
+
+            box-shadow:
+                0 22px 45px rgba(8, 119, 59, 0.16);
+        }
+
+        .contact-card h2 {
+            color: white;
+
+            justify-content: center;
+
+            font-size: 24px;
+
+            margin-bottom: 9px;
+        }
+
+        .contact-card .number {
+            display: none;
+        }
+
+        .contact-card p {
+            max-width: 580px;
+
+            margin:
+                0 auto 18px;
+
+            color:
+                rgba(255,255,255,0.84);
+        }
+
+        .email-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 12px 18px;
+
+            border-radius: 12px;
+
+            background: white;
+
+            color: #087c3f;
+
+            font-size: 13px;
+
+            font-weight: 900;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.10);
+
+            transition: 0.25s ease;
+        }
+
+        .email-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 14px 30px rgba(0,0,0,0.15);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: white;
+
+            border-top:
+                1px solid #e1e8e3;
+
+            padding: 30px 20px;
+        }
+
+        .footer-inner {
+            width: min(920px, 100%);
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .footer-brand {
+            font-size: 16px;
+
+            font-weight: 900;
+        }
+
+        .footer-brand span {
+            color: #078844;
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: flex-end;
+
+            gap: 16px;
+        }
+
+        .footer-links a {
+            color: #68736d;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            transition: 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #087d40;
+        }
+
+        .copyright {
+            margin-top: 6px;
+
+            color: #929b96;
+
+            font-size: 10px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            .nav-inner {
+                min-height: 66px;
+            }
+
+            .brand-logo {
+                width: 41px;
+                height: 41px;
+            }
+
+            .brand-name {
+                font-size: 17px;
+            }
+
+            .back-button {
+                padding: 9px 11px;
+
+                font-size: 11px;
+            }
+
+            .hero {
+                padding:
+                    50px 18px 35px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+
+                letter-spacing: -1.8px;
+            }
+
+            .content {
+                width:
+                    min(100% - 28px, 920px);
+            }
+
+            .policy-card {
+                padding: 22px 19px;
+
+                border-radius: 18px;
+            }
+
+            .policy-card h2 {
+                font-size: 18px;
+            }
+
+            .service-list {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-card {
+                padding: 24px 21px;
+
+                border-radius: 19px;
+            }
+
+            .contact-card {
+                padding:
+                    32px 20px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .footer-links {
+                justify-content: flex-start;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="nav-inner">
+
+        <a href="/rollcash" class="brand">
+
+            <img
+                src="{{ url_for('static', filename='images/rollcash.png') }}"
+                alt="RollCash Logo"
+                class="brand-logo"
+            >
+
+            <div class="brand-name">
+                Roll<span>Cash</span>
+            </div>
+
+        </a>
+
+
+        <a
+            href="/rollcash"
+            class="back-button"
+        >
+            ← Back to RollCash
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+
+            <span class="badge-dot"></span>
+
+            Privacy & Security
+
+        </div>
+
+
+        <h1>
+            Privacy
+            <span>Policy</span>
+        </h1>
+
+
+        <p class="hero-description">
+
+            This Privacy Policy explains how RollCash
+            collects, uses, protects, and handles information
+            when you use the RollCash application and related
+            services.
+
+        </p>
+
+
+        <div class="last-updated">
+            Last Updated: September 23, 2026
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTENT
+===================================================== -->
+
+<main class="content">
+
+
+    <!-- INTRO -->
+
+    <section class="intro-card">
+
+        <h2>
+            About RollCash
+        </h2>
+
+        <p>
+
+            RollCash is provided as a free application.
+            The Service is provided by RollCash at no cost
+            and is intended for use as is. This Privacy Policy
+            explains our practices regarding the collection,
+            use, storage, and disclosure of information when
+            you use our Service.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 01 -->
+
+    <section class="policy-card">
+
+        <h2>
+
+            <span class="number">
+                01
+            </span>
+
+            Information Collection and Use
+
+        </h2>
+
+
+        <p>
+
+            For a better experience while using our Service,
+            we may collect certain information that you provide
+            directly or that is generated through your use of
+            the application.
+
+        </p>
+
+
+        <p>
+            This information may include:
+        </p>
+
+
+        <ul class="bullet-list">
+
+            <li>
+                Your name and email address associated with
+                your account.
+            </li>
+
+            <li>
+                Account and authentication information.
+            </li>
+
+            <li>
+                Device-related information required to operate
+                and secure the application.
+            </li>
+
+            <li>
+                Information related to rewards, referrals,
+                activity, and account usage.
+            </li>
+
+        </ul>
+
+
+        <p style="margin-top:14px;">
+
+            Information collected may be used to provide and
+            improve the Service, manage user accounts, maintain
+            rewards and referrals, support applicable withdrawal
+            functionality, maintain security, and improve the
+            overall user experience.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 02 -->
+
+    <section class="policy-card">
+
+        <h2>
+
+            <span class="number">
+                02
+            </span>
+
+            Google Sign-In
+
+        </h2>
+
+
+        <p>
+
+            RollCash uses Google Sign-In to provide secure
+            authentication and account access.
+
+        </p>
+
+
+        <p>
+
+            When you choose to sign in with Google, we may
+            access basic account information such as your
+            name and email address.
+
+        </p>
+
+
+        <p>
+
+            This information is used for account creation,
+            authentication, login purposes, and to securely
+            associate your RollCash account and applicable
+            rewards or activity with your account.
+
+        </p>
+
+
+        <div class="google-note">
+
+            <strong>
+                Google Account Information
+            </strong>
+
+            <p>
+
+                Google account information is used only for
+                the purposes disclosed in this Privacy Policy
+                and to provide and maintain the RollCash
+                Service.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 03 -->
+
+    <section class="policy-card">
+
+        <h2>
+
+            <span class="number">
+                03
+            </span>
+
+            Firebase Services
+
+        </h2>
+
+
+        <p>
+
+            RollCash uses Google Firebase services to provide
+            authentication, data storage, analytics, and
+            application stability features.
+
+        </p>
+
+
+        <div class="service-list">
+
+
+            <div class="service-item">
+
+                <div class="service-icon">
+                    🔐
+                </div>
+
+                <div>
+
+                    <strong>
+                        Firebase Authentication
+                    </strong>
+
+                    <span>
+                        Used to securely manage user accounts
+                        and authentication.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="service-item">
+
+                <div class="service-icon">
+                    ☁️
+                </div>
+
+                <div>
+
+                    <strong>
+                        Cloud Firestore
+                    </strong>
+
+                    <span>
+                        Used to store applicable account,
+                        reward, referral, and application data.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="service-item">
+
+                <div class="service-icon">
+                    📊
+                </div>
+
+                <div>
+
+                    <strong>
+                        Firebase Analytics
+                    </strong>
+
+                    <span>
+                        Used to understand application usage
+                        and improve features and experience.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="service-item">
+
+                <div class="service-icon">
+                    🛠️
+                </div>
+
+                <div>
+
+                    <strong>
+                        Firebase Crashlytics
+                    </strong>
+
+                    <span>
+                        Used to identify crashes and improve
+                        application stability.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <p style="margin-top:17px;">
+
+            Firebase services may collect device information,
+            usage information, and application interaction data
+            in accordance with their applicable privacy practices.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 04 -->
+
+    <section class="policy-card">
+
+        <h2>
+
+            <span class="number">
+                04
+            </span>
+
+            Advertisements
+
+        </h2>
+
+
+        <p>
+
+            RollCash displays advertisements using third-party
+            advertising services, primarily Google AdMob.
+
+        </p>
+
+
+        <p>
+
+            Advertising providers may collect information such
+            as device identifiers, Advertising ID, IP address,
+            and usage information for purposes such as serving
+            personalized or non-personalized advertisements,
+            measuring advertising performance, preventing fraud,
+            and supporting the Service.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 05 -->
+
+    <section class="policy-card">
+
+        <h2>
+
+            <span class="number">
+                05
+            </span>
+
+            Data Security
+
+        </h2>
+
+
+        <p>
+
+            We value your trust in providing your personal
+            information and strive to use commercially
+            reasonable measures to protect information handled
+            through the Service.
+
+        </p>
+
+
+        <p>
+
+            However, no method of transmission over the Internet
+            or method of electronic storage is completely secure
+            and reliable. Therefore, we cannot guarantee absolute
+            security of your information.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 06 -->
+
+    <section class="policy-card">
+
+        <h2>
+
+            <span class="number">
+                06
+            </span>
+
+            Third-Party Services
+
+        </h2>
+
+
+        <p>
+
+            RollCash may use third-party services that may
+            collect information in connection with providing,
+            maintaining, analyzing, securing, or improving
+            the Service.
+
+        </p>
+
+
+        <ul class="bullet-list">
+
+            <li>
+                Google Play Services
+            </li>
+
+            <li>
+                Google Firebase
+            </li>
+
+            <li>
+                Google AdMob
+            </li>
+
+            <li>
+                Google Sign-In
+            </li>
+
+        </ul>
+
+    </section>
+
+
+
+    <!-- 07 -->
+
+    <section class="policy-card">
+
+        <h2>
+
+            <span class="number">
+                07
+            </span>
+
+            Children's Privacy
+
+        </h2>
+
+
+        <p>
+
+            Our Service is not directed to children under the
+            age of 13. We do not knowingly collect personally
+            identifiable information from children under 13.
+
+        </p>
+
+
+        <p>
+
+            If we become aware that a child under 13 has provided
+            us with personal information, we will take reasonable
+            steps to delete such information from our systems.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- 08 -->
+
+    <section class="policy-card">
+
+        <h2>
+
+            <span class="number">
+                08
+            </span>
+
+            Changes to This Privacy Policy
+
+        </h2>
+
+
+        <p>
+
+            We may update this Privacy Policy from time to time.
+            Any changes will be posted on this page with an
+            updated "Last Updated" date.
+
+        </p>
+
+
+        <p>
+
+            You are advised to review this page periodically
+            for any changes to this Privacy Policy.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- CONTACT -->
+
+    <section class="contact-card">
+
+        <h2>
+            Contact Us
+        </h2>
+
+
+        <p>
+
+            If you have any questions, concerns, or suggestions
+            regarding this Privacy Policy, please contact us.
+
+        </p>
+
+
+        <a
+            href="mailto:nr1432r@gmail.com"
+            class="email-button"
+        >
+            ✉ nr1432r@gmail.com
+        </a>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-inner">
+
+
+        <div>
+
+            <div class="footer-brand">
+                Roll<span>Cash</span>
+            </div>
+
+            <div class="copyright">
+                © 2026 RollCash. All rights reserved.
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="/rollcash">
+                Home
+            </a>
+
+            <a href="/rollcash/privacy-policy">
+                Privacy Policy
+            </a>
+
+            <a href="/rollcash/terms">
+                Terms of Service
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
