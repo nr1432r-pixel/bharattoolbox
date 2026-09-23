@@ -1,0 +1,2787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#1565C0">
+
+    <title>NCERT All In One – Books • Quiz • PYQ • Mock Test</title>
+
+    <meta name="description"
+          content="NCERT All In One is an independent educational app providing NCERT books, study resources, objective questions, question banks, quizzes, mock tests, formulas and more for students.">
+
+    <meta name="keywords"
+          content="NCERT All In One, NCERT Books, NCERT PDF, Class 1 to 12, NCERT Quiz, PYQ, Question Bank, Mock Test, Study App">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                "Inter",
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 50% -10%,
+                    rgba(21, 101, 192, 0.12),
+                    transparent 35%
+                ),
+                #f7f9fc;
+
+            color: #17202a;
+
+            line-height: 1.6;
+
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        .container {
+            width: min(1160px, calc(100% - 36px));
+            margin: auto;
+        }
+
+        .blue {
+            color: #1565c0;
+        }
+
+        .blue-gradient {
+            background:
+                linear-gradient(
+                    135deg,
+                    #1565c0,
+                    #2196f3,
+                    #42a5f5
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(255,255,255,0.90);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid rgba(21,101,192,0.08);
+        }
+
+        .nav-inner {
+            min-height: 76px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+
+        /* =====================================================
+           BRAND
+        ===================================================== */
+
+        .brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            font-weight: 900;
+
+            color: #18242e;
+        }
+
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+
+            object-fit: cover;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 8px 22px rgba(21,101,192,0.18);
+        }
+
+        .brand-name {
+            font-size: 18px;
+
+            letter-spacing: -0.5px;
+        }
+
+        .brand-name span {
+            color: #1565c0;
+        }
+
+
+        /* =====================================================
+           NAV LINKS
+        ===================================================== */
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+        }
+
+        .nav-links a {
+            padding: 10px 14px;
+
+            border-radius: 10px;
+
+            color: #63717c;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            transition: 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1565c0;
+
+            background: #edf5ff;
+        }
+
+        .nav-download {
+            color: white !important;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1565c0,
+                    #1976d2
+                ) !important;
+
+            box-shadow:
+                0 8px 20px rgba(21,101,192,0.20);
+        }
+
+        .nav-download:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 26px rgba(21,101,192,0.27);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            position: relative;
+
+            padding:
+                75px 0 75px;
+
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 550px;
+            height: 550px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(21,101,192,0.12),
+                    transparent 68%
+                );
+
+            left: -220px;
+
+            top: -100px;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 480px;
+            height: 480px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(66,165,245,0.10),
+                    transparent 68%
+                );
+
+            right: -190px;
+
+            bottom: -180px;
+        }
+
+        .hero-grid {
+            position: relative;
+
+            z-index: 2;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0,1.05fr)
+                minmax(380px,0.95fr);
+
+            align-items: center;
+
+            gap: 70px;
+        }
+
+
+        /* =====================================================
+           HERO CONTENT
+        ===================================================== */
+
+        .hero-content {
+            animation:
+                heroIn 0.8s ease both;
+        }
+
+        @keyframes heroIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        .eyebrow {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 8px 13px;
+
+            border-radius: 999px;
+
+            background: #edf5ff;
+
+            border: 1px solid #d6e8fb;
+
+            color: #1565c0;
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            letter-spacing: 0.8px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 20px;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #1976d2;
+
+            box-shadow:
+                0 0 0 5px rgba(25,118,210,0.10);
+        }
+
+        .hero h1 {
+            font-size:
+                clamp(43px,6vw,72px);
+
+            line-height: 0.99;
+
+            letter-spacing: -3.8px;
+
+            font-weight: 900;
+
+            margin-bottom: 22px;
+        }
+
+        .hero-description {
+            max-width: 620px;
+
+            color: #687680;
+
+            font-size: 16px;
+
+            line-height: 1.75;
+
+            margin-bottom: 28px;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .hero-buttons {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 11px;
+
+            margin-bottom: 28px;
+        }
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 9px;
+
+            min-height: 50px;
+
+            padding: 0 20px;
+
+            border-radius: 13px;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .btn-primary {
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1565c0,
+                    #1976d2
+                );
+
+            box-shadow:
+                0 12px 28px rgba(21,101,192,0.22);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 17px 35px rgba(21,101,192,0.28);
+        }
+
+        .btn-secondary {
+            color: #24313b;
+
+            background: white;
+
+            border:
+                1px solid #dfe7ee;
+
+            box-shadow:
+                0 8px 20px rgba(20,50,80,0.05);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+
+            border-color: #b9d4ef;
+
+            background: #f8fbff;
+        }
+
+
+        /* =====================================================
+           TRUST
+        ===================================================== */
+
+        .trust-row {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 9px;
+        }
+
+        .trust-item {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 8px 11px;
+
+            border-radius: 10px;
+
+            background: white;
+
+            border:
+                1px solid #e2e9ef;
+
+            color: #65727c;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 6px 17px rgba(20,50,80,0.035);
+        }
+
+        .trust-icon {
+            color: #1976d2;
+        }
+
+
+        /* =====================================================
+           HERO APP CARD
+        ===================================================== */
+
+        .hero-visual {
+            min-height: 530px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            position: relative;
+
+            animation:
+                visualIn 0.9s .15s ease both;
+        }
+
+        @keyframes visualIn {
+
+            from {
+                opacity: 0;
+                transform: scale(.93);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+        .visual-glow {
+            position: absolute;
+
+            width: 420px;
+            height: 420px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(21,101,192,0.17),
+                    rgba(66,165,245,0.08),
+                    transparent 68%
+                );
+        }
+
+        .app-card {
+            position: relative;
+
+            width: min(455px,90vw);
+
+            padding: 18px;
+
+            border-radius: 31px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.97),
+                    rgba(243,248,253,.97)
+                );
+
+            border:
+                1px solid rgba(255,255,255,.9);
+
+            box-shadow:
+                0 35px 75px rgba(25,65,100,0.16),
+                0 8px 25px rgba(25,65,100,0.07);
+
+            transform: rotate(1deg);
+
+            animation:
+                floating 4.5s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%,100% {
+                transform:
+                    rotate(1deg)
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    rotate(-1deg)
+                    translateY(-11px);
+            }
+
+        }
+
+        .app-logo {
+            width: 100%;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 18px 38px rgba(15,55,90,0.18);
+        }
+
+        .floating-badge {
+            position: absolute;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 10px 13px;
+
+            border-radius: 12px;
+
+            background: white;
+
+            border:
+                1px solid #e3eaf1;
+
+            box-shadow:
+                0 12px 28px rgba(25,65,100,0.12);
+
+            color: #40505c;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            animation:
+                badgeFloat 3s ease-in-out infinite;
+        }
+
+        .badge-one {
+            left: -30px;
+            top: 18%;
+        }
+
+        .badge-two {
+            right: -28px;
+            bottom: 18%;
+
+            animation-delay: 1s;
+        }
+
+        @keyframes badgeFloat {
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-9px);
+            }
+
+        }
+
+        .badge-icon {
+            width: 25px;
+            height: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 8px;
+
+            background: #edf5ff;
+
+            color: #1565c0;
+        }
+
+
+        /* =====================================================
+           QUICK FEATURES
+        ===================================================== */
+
+        .quick-section {
+            padding: 10px 0 80px;
+        }
+
+        .quick-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 13px;
+        }
+
+        .quick-card {
+            background: white;
+
+            border:
+                1px solid #e2e9ef;
+
+            border-radius: 18px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 9px 25px rgba(25,55,80,0.04);
+
+            transition: .25s ease;
+        }
+
+        .quick-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 17px 35px rgba(25,55,80,0.08);
+        }
+
+        .quick-icon {
+            width: 43px;
+            height: 43px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: #edf5ff;
+
+            color: #1565c0;
+
+            font-size: 20px;
+
+            margin-bottom: 14px;
+        }
+
+        .quick-card h3 {
+            font-size: 15px;
+
+            margin-bottom: 5px;
+        }
+
+        .quick-card p {
+            color: #7a858e;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           SECTION
+        ===================================================== */
+
+        .section {
+            padding: 85px 0;
+        }
+
+        .section-heading {
+            max-width: 700px;
+
+            text-align: center;
+
+            margin:
+                0 auto 45px;
+        }
+
+        .section-label {
+            display: inline-block;
+
+            color: #1565c0;
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 {
+            font-size:
+                clamp(30px,4vw,45px);
+
+            line-height: 1.08;
+
+            letter-spacing: -1.8px;
+
+            margin-bottom: 13px;
+        }
+
+        .section-heading p {
+            color: #75818b;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           FEATURES
+        ===================================================== */
+
+        .features-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 16px;
+        }
+
+        .feature-card {
+            position: relative;
+
+            overflow: hidden;
+
+            background: white;
+
+            border:
+                1px solid #e1e8ef;
+
+            border-radius: 21px;
+
+            padding: 28px;
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 20px 42px rgba(25,55,80,0.08);
+        }
+
+        .feature-icon {
+            width: 51px;
+            height: 51px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eaf3fd,
+                    #f5f9ff
+                );
+
+            color: #1565c0;
+
+            font-size: 23px;
+
+            margin-bottom: 18px;
+        }
+
+        .feature-card h3 {
+            font-size: 17px;
+
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: #73808a;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           CLASSES
+        ===================================================== */
+
+        .classes-section {
+            background: white;
+
+            border-top:
+                1px solid #e6ebf0;
+
+            border-bottom:
+                1px solid #e6ebf0;
+        }
+
+        .classes-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(6,1fr);
+
+            gap: 11px;
+        }
+
+        .class-card {
+            padding: 20px 12px;
+
+            text-align: center;
+
+            border:
+                1px solid #e1e8ef;
+
+            border-radius: 16px;
+
+            background: #f9fbfd;
+
+            transition: .25s ease;
+        }
+
+        .class-card:hover {
+            transform: translateY(-4px);
+
+            background: #edf5ff;
+
+            border-color: #c6dcf2;
+        }
+
+        .class-number {
+            font-size: 20px;
+
+            font-weight: 900;
+
+            color: #1565c0;
+
+            margin-bottom: 4px;
+        }
+
+        .class-label {
+            color: #7b8790;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           STUDY RESOURCES
+        ===================================================== */
+
+        .resource-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap: 17px;
+        }
+
+        .resource-card {
+            display: flex;
+
+            gap: 17px;
+
+            align-items: flex-start;
+
+            padding: 23px;
+
+            background: white;
+
+            border:
+                1px solid #e1e8ef;
+
+            border-radius: 19px;
+
+            transition: .25s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 15px 35px rgba(25,55,80,0.07);
+        }
+
+        .resource-icon {
+            width: 47px;
+            height: 47px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background: #edf5ff;
+
+            color: #1565c0;
+
+            font-size: 21px;
+        }
+
+        .resource-card h3 {
+            font-size: 15px;
+
+            margin-bottom: 5px;
+        }
+
+        .resource-card p {
+            color: #77838d;
+
+            font-size: 11px;
+
+            line-height: 1.65;
+        }
+
+
+        /* =====================================================
+           WHY SECTION
+        ===================================================== */
+
+        .why-box {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 18px;
+        }
+
+        .why-card {
+            padding: 29px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #ffffff,
+                    #f5f9fd
+                );
+
+            border:
+                1px solid #e0e8ef;
+        }
+
+        .why-card h3 {
+            font-size: 18px;
+
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            color: #73808a;
+
+            font-size: 12px;
+
+            line-height: 1.75;
+        }
+
+        .check-list {
+            list-style: none;
+
+            margin-top: 16px;
+        }
+
+        .check-list li {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 9px;
+
+            color: #687680;
+
+            font-size: 12px;
+
+            margin: 9px 0;
+        }
+
+        .check {
+            color: #1565c0;
+
+            font-weight: 900;
+        }
+
+
+        /* =====================================================
+           GOOGLE PLAY / DOWNLOAD
+        ===================================================== */
+
+        .download-section {
+            padding: 30px 0 90px;
+        }
+
+        .download-box {
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 30px;
+
+            padding: 55px 50px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #125ca9,
+                    #1976d2
+                );
+
+            color: white;
+
+            box-shadow:
+                0 25px 55px rgba(21,101,192,0.18);
+        }
+
+        .download-box::before {
+            content: "";
+
+            position: absolute;
+
+            width: 340px;
+            height: 340px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            right: -110px;
+
+            top: -190px;
+        }
+
+        .download-box::after {
+            content: "";
+
+            position: absolute;
+
+            width: 230px;
+            height: 230px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.06);
+
+            left: -100px;
+
+            bottom: -140px;
+        }
+
+        .download-content {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 760px;
+        }
+
+        .download-content h2 {
+            font-size:
+                clamp(29px,4vw,44px);
+
+            line-height: 1.08;
+
+            letter-spacing: -1.7px;
+
+            margin-bottom: 12px;
+        }
+
+        .download-content p {
+            color:
+                rgba(255,255,255,.84);
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            margin-bottom: 23px;
+        }
+
+        .download-buttons {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 11px;
+        }
+
+        .play-btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            min-height: 54px;
+
+            padding: 0 20px;
+
+            border-radius: 13px;
+
+            background: white;
+
+            color: #1565c0;
+
+            font-size: 13px;
+
+            font-weight: 900;
+
+            box-shadow:
+                0 12px 27px rgba(0,0,0,0.12);
+
+            transition: .25s ease;
+        }
+
+        .play-btn:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 17px 33px rgba(0,0,0,0.16);
+        }
+
+        .play-icon {
+            font-size: 22px;
+        }
+
+
+        /* =====================================================
+           FEEDBACK
+        ===================================================== */
+
+        .feedback-section {
+            padding: 0 0 90px;
+        }
+
+        .feedback-card {
+            display: grid;
+
+            grid-template-columns:
+                1fr auto;
+
+            align-items: center;
+
+            gap: 30px;
+
+            padding: 30px;
+
+            background: white;
+
+            border:
+                1px solid #e1e8ef;
+
+            border-radius: 23px;
+
+            box-shadow:
+                0 12px 32px rgba(25,55,80,0.05);
+        }
+
+        .feedback-card h3 {
+            font-size: 20px;
+
+            margin-bottom: 7px;
+        }
+
+        .feedback-card p {
+            color: #77838d;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+        .feedback-actions {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 9px;
+        }
+
+        .feedback-btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 7px;
+
+            padding: 12px 16px;
+
+            border-radius: 11px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            transition: .25s ease;
+        }
+
+        .feedback-btn.primary {
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1565c0,
+                    #1976d2
+                );
+        }
+
+        .feedback-btn.secondary {
+            color: #1565c0;
+
+            background: #edf5ff;
+
+            border:
+                1px solid #d5e7fb;
+        }
+
+        .feedback-btn:hover {
+            transform: translateY(-2px);
+        }
+
+
+        /* =====================================================
+           DISCLAIMER
+        ===================================================== */
+
+        .disclaimer-section {
+            padding: 0 0 70px;
+        }
+
+        .disclaimer-box {
+            padding: 23px;
+
+            background:
+                #f4f8fc;
+
+            border:
+                1px solid #dfe8ef;
+
+            border-left:
+                4px solid #1565c0;
+
+            border-radius: 16px;
+        }
+
+        .disclaimer-box h3 {
+            font-size: 14px;
+
+            margin-bottom: 7px;
+        }
+
+        .disclaimer-box p {
+            color: #707d87;
+
+            font-size: 11px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: white;
+
+            border-top:
+                1px solid #e1e8ef;
+
+            padding: 35px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+        .footer-brand {
+            font-size: 17px;
+
+            font-weight: 900;
+        }
+
+        .footer-brand span {
+            color: #1565c0;
+        }
+
+        .footer-description {
+            max-width: 330px;
+
+            margin-top: 8px;
+
+            color: #8a949d;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: flex-end;
+
+            gap: 16px;
+        }
+
+        .footer-links a {
+            color: #687680;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            transition: .2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #1565c0;
+        }
+
+        .copyright {
+            margin-top: 12px;
+
+            color: #9aa3aa;
+
+            font-size: 10px;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+
+                gap: 35px;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons,
+            .trust-row {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                min-height: auto;
+            }
+
+            .quick-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .classes-grid {
+                grid-template-columns:
+                    repeat(4,1fr);
+            }
+
+        }
+
+
+        @media (max-width: 760px) {
+
+            .container {
+                width:
+                    min(100% - 28px, 1160px);
+            }
+
+            .nav-inner {
+                min-height: 68px;
+            }
+
+            .brand-logo {
+                width: 43px;
+                height: 43px;
+            }
+
+            .brand-name {
+                font-size: 16px;
+            }
+
+            .nav-links a:not(.nav-download) {
+                display: none;
+            }
+
+            .hero {
+                padding:
+                    52px 0 50px;
+            }
+
+            .hero h1 {
+                font-size: 46px;
+
+                letter-spacing: -2.5px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .app-card {
+                width:
+                    min(430px,92vw);
+
+                padding: 13px;
+
+                border-radius: 25px;
+            }
+
+            .app-logo {
+                border-radius: 18px;
+            }
+
+            .floating-badge {
+                display: none;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .classes-grid {
+                grid-template-columns:
+                    repeat(3,1fr);
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-box {
+                grid-template-columns: 1fr;
+            }
+
+            .feedback-card {
+                grid-template-columns: 1fr;
+            }
+
+            .feedback-actions {
+                justify-content: flex-start;
+            }
+
+            .download-box {
+                padding:
+                    40px 25px;
+
+                border-radius: 24px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .footer-links {
+                justify-content: flex-start;
+            }
+
+        }
+
+
+        @media (max-width: 430px) {
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .trust-row {
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+            .trust-item {
+                justify-content: center;
+            }
+
+            .quick-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .classes-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .download-buttons {
+                flex-direction: column;
+            }
+
+            .play-btn {
+                justify-content: center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="container nav-inner">
+
+
+        <a
+            href="/ncert"
+            class="brand"
+        >
+
+            <img
+                src="{{ url_for('static', filename='images/ncert.png') }}"
+                alt="NCERT All In One Logo"
+                class="brand-logo"
+            >
+
+            <div class="brand-name">
+                NCERT <span>All In One</span>
+            </div>
+
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="#features">
+                Features
+            </a>
+
+            <a href="#classes">
+                Classes
+            </a>
+
+            <a href="#resources">
+                Resources
+            </a>
+
+            <a href="/ncert/privacy-policy">
+                Privacy
+            </a>
+
+            <a href="/ncert/terms">
+                Terms
+            </a>
+
+            <a
+                href="/ncert/app"
+                class="nav-download"
+            >
+                Get App
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="container hero-grid">
+
+
+        <!-- LEFT -->
+
+        <div class="hero-content">
+
+
+            <div class="eyebrow">
+
+                <span class="eyebrow-dot"></span>
+
+                STUDY • PRACTICE • PREPARE
+
+            </div>
+
+
+            <h1>
+
+                Everything you need
+                for your
+                <span class="blue-gradient">
+                    NCERT journey.
+                </span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                NCERT All In One brings books, study materials,
+                objective questions, question banks, PYQs,
+                formulas, quizzes and mock tests together in
+                one simple educational app.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+
+                <a
+                    href="/ncert/app"
+                    class="btn btn-primary"
+                >
+                    📱 Get the App
+                </a>
+
+
+                <a
+                    href="#features"
+                    class="btn btn-secondary"
+                >
+                    Explore Features →
+                </a>
+
+            </div>
+
+
+            <div class="trust-row">
+
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    Classes 1–12
+                </div>
+
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    Books & Resources
+                </div>
+
+                <div class="trust-item">
+                    <span class="trust-icon">✓</span>
+                    Quiz & Mock Tests
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RIGHT -->
+
+        <div class="hero-visual">
+
+
+            <div class="visual-glow"></div>
+
+
+            <div class="app-card">
+
+                <img
+                    src="{{ url_for('static', filename='images/ncert.png') }}"
+                    alt="NCERT All In One"
+                    class="app-logo"
+                >
+
+            </div>
+
+
+            <div class="floating-badge badge-one">
+
+                <span class="badge-icon">
+                    📚
+                </span>
+
+                NCERT Resources
+
+            </div>
+
+
+            <div class="floating-badge badge-two">
+
+                <span class="badge-icon">
+                    📝
+                </span>
+
+                Quiz & Mock Test
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUICK FEATURES
+===================================================== -->
+
+<section class="quick-section">
+
+    <div class="container quick-grid">
+
+
+        <div class="quick-card">
+
+            <div class="quick-icon">
+                📚
+            </div>
+
+            <h3>
+                Books
+            </h3>
+
+            <p>
+                Access educational book resources
+                in one convenient place.
+            </p>
+
+        </div>
+
+
+        <div class="quick-card">
+
+            <div class="quick-icon">
+                🎯
+            </div>
+
+            <h3>
+                Objective
+            </h3>
+
+            <p>
+                Practice objective-style questions
+                for better preparation.
+            </p>
+
+        </div>
+
+
+        <div class="quick-card">
+
+            <div class="quick-icon">
+                🧠
+            </div>
+
+            <h3>
+                Quiz
+            </h3>
+
+            <p>
+                Test your knowledge with interactive
+                quizzes.
+            </p>
+
+        </div>
+
+
+        <div class="quick-card">
+
+            <div class="quick-icon">
+                📝
+            </div>
+
+            <h3>
+                Mock Tests
+            </h3>
+
+            <p>
+                Practice with structured mock tests
+                and question sets.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section
+    class="section"
+    id="features"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Everything in one app
+            </div>
+
+            <h2>
+
+                Study smarter with
+                <span class="blue-gradient">
+                    useful tools.
+                </span>
+
+            </h2>
+
+            <p>
+
+                NCERT All In One is designed to bring
+                commonly used educational resources into
+                a simple and organized learning experience.
+
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📚
+                </div>
+
+                <h3>
+                    NCERT Books
+                </h3>
+
+                <p>
+                    Access available NCERT educational
+                    book resources through the application.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📖
+                </div>
+
+                <h3>
+                    Notes & Study Material
+                </h3>
+
+                <p>
+                    Keep useful study resources organized
+                    for convenient revision and preparation.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🎯
+                </div>
+
+                <h3>
+                    Objective Questions
+                </h3>
+
+                <p>
+                    Practice objective questions to
+                    strengthen concepts and preparation.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📝
+                </div>
+
+                <h3>
+                    Question Bank
+                </h3>
+
+                <p>
+                    Practice structured question sets
+                    across supported classes and subjects.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🏆
+                </div>
+
+                <h3>
+                    PYQs
+                </h3>
+
+                <p>
+                    Practice previous-year style resources
+                    where available in the application.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🧮
+                </div>
+
+                <h3>
+                    Formulas
+                </h3>
+
+                <p>
+                    Keep important formulas and revision
+                    resources easily accessible.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    Interactive Quiz
+                </h3>
+
+                <p>
+                    Test your understanding through
+                    interactive quiz experiences.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Mock Test
+                </h3>
+
+                <p>
+                    Practice test-style questions and
+                    review your preparation.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ⭐
+                </div>
+
+                <h3>
+                    Bookmarks & Progress
+                </h3>
+
+                <p>
+                    Save useful content and keep track
+                    of relevant learning progress.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CLASSES
+===================================================== -->
+
+<section
+    class="section classes-section"
+    id="classes"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                For students
+            </div>
+
+            <h2>
+                Classes
+                <span class="blue-gradient">
+                    1 to 12.
+                </span>
+            </h2>
+
+            <p>
+                Educational resources organized across
+                supported school classes.
+            </p>
+
+        </div>
+
+
+        <div class="classes-grid">
+
+
+            <div class="class-card">
+                <div class="class-number">01</div>
+                <div class="class-label">CLASS 1</div>
+            </div>
+
+
+            <div class="class-card">
+                <div class="class-number">02</div>
+                <div class="class-label">CLASS 2</div>
+            </div>
+
+
+            <div class="class-card">
+                <div class="class-number">03</div>
+                <div class="class-label">CLASS 3</div>
+            </div>
+
+
+            <div class="class-card">
+                <div class="class-number">04</div>
+                <div class="class-label">CLASS 4</div>
+            </div>
+
+
+            <div class="class-card">
+                <div class="class-number">05</div>
+                <div class="class-label">CLASS 5</div>
+            </div>
+
+
+            <div class="class-card">
+                <div class="class-number">06</div>
+                <div class="class-label">CLASS 6</div>
+            </div>
+
+
+            <div class="class-card">
+                <div class="class-number">07</div>
+                <div class="class-label">CLASS 7</div>
+            </div>
+
+
+            <div class="class-card">
+                <div class="class-number">08</div>
+                <div class="class-label">CLASS 8</div>
+            </div>
+
+
+            <div class="class-card">
+                <div class="class-number">09</div>
+                <div class="class-label">CLASS 9</div>
+            </div>
+
+
+            <div class="class-card">
+                <div class="class-number">10</div>
+                <div class="class-label">CLASS 10</div>
+            </div>
+
+
+            <div class="class-card">
+                <div class="class-number">11</div>
+                <div class="class-label">CLASS 11</div>
+            </div>
+
+
+            <div class="class-card">
+                <div class="class-number">12</div>
+                <div class="class-label">CLASS 12</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RESOURCES
+===================================================== -->
+
+<section
+    class="section"
+    id="resources"
+>
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Learning resources
+            </div>
+
+            <h2>
+                More than just
+                <span class="blue-gradient">
+                    books.
+                </span>
+            </h2>
+
+            <p>
+                A collection of learning and preparation
+                resources designed for students.
+            </p>
+
+        </div>
+
+
+        <div class="resource-grid">
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+                    📚
+                </div>
+
+                <div>
+
+                    <h3>
+                        NCERT Books
+                    </h3>
+
+                    <p>
+                        Convenient access to available
+                        educational book resources.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+                    📑
+                </div>
+
+                <div>
+
+                    <h3>
+                        Question Banks
+                    </h3>
+
+                    <p>
+                        Practice structured questions
+                        for revision and preparation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+                    🎯
+                </div>
+
+                <div>
+
+                    <h3>
+                        Objective Practice
+                    </h3>
+
+                    <p>
+                        Practice objective questions
+                        across supported content.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+                    🏆
+                </div>
+
+                <div>
+
+                    <h3>
+                        Previous Questions
+                    </h3>
+
+                    <p>
+                        Review available previous-year
+                        question resources.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+                    🧮
+                </div>
+
+                <div>
+
+                    <h3>
+                        Formula Collection
+                    </h3>
+
+                    <p>
+                        Quickly revise important formulas
+                        from supported subjects.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="resource-card">
+
+                <div class="resource-icon">
+                    🧠
+                </div>
+
+                <div>
+
+                    <h3>
+                        Quiz & Mock Test
+                    </h3>
+
+                    <p>
+                        Practice and test your preparation
+                        through interactive activities.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHY NCERT ALL IN ONE
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                Designed for students
+            </div>
+
+            <h2>
+                Simple.
+                <span class="blue-gradient">
+                    Organized.
+                </span>
+                Useful.
+            </h2>
+
+            <p>
+                Everything is organized to help students
+                find commonly used study resources faster.
+            </p>
+
+        </div>
+
+
+        <div class="why-box">
+
+
+            <div class="why-card">
+
+                <h3>
+                    📱 One App Experience
+                </h3>
+
+                <p>
+                    Instead of switching between multiple
+                    resources, students can access supported
+                    learning materials and practice tools
+                    from one application.
+                </p>
+
+
+                <ul class="check-list">
+
+                    <li>
+                        <span class="check">✓</span>
+                        Books and educational resources
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Objective and question practice
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Quiz and mock test experiences
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <h3>
+                    🔐 Secure Account Experience
+                </h3>
+
+                <p>
+                    Supported account features use authentication
+                    and cloud services to help manage user
+                    information and applicable progress.
+                </p>
+
+
+                <ul class="check-list">
+
+                    <li>
+                        <span class="check">✓</span>
+                        Google Sign-In support
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Firebase-powered services
+                    </li>
+
+                    <li>
+                        <span class="check">✓</span>
+                        Progress and bookmark support
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DOWNLOAD
+===================================================== -->
+
+<section
+    class="download-section"
+    id="download"
+>
+
+    <div class="container">
+
+
+        <div class="download-box">
+
+            <div class="download-content">
+
+                <h2>
+                    Start your learning
+                    journey with
+                    NCERT All In One.
+                </h2>
+
+
+                <p>
+                    Download the app from Google Play and
+                    explore books, study resources, quizzes,
+                    question banks, formulas and mock tests.
+                </p>
+
+
+                <div class="download-buttons">
+
+                    <a
+                        href="/ncert/app"
+                        class="play-btn"
+                    >
+
+                        <span class="play-icon">
+                            ▶
+                        </span>
+
+                        <span>
+                            Get it on Google Play
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEEDBACK
+===================================================== -->
+
+<section class="feedback-section">
+
+    <div class="container">
+
+
+        <div class="feedback-card">
+
+
+            <div>
+
+                <h3>
+                    💬 Have feedback?
+                </h3>
+
+                <p>
+                    Your suggestions and feedback help us
+                    improve NCERT All In One. You can contact
+                    us directly or leave a review on Google Play.
+                </p>
+
+            </div>
+
+
+            <div class="feedback-actions">
+
+
+                <a
+                    href="mailto:nr1432r@gmail.com?subject=NCERT%20All%20In%20One%20Feedback"
+                    class="feedback-btn primary"
+                >
+                    ✉ Send Feedback
+                </a>
+
+
+                <a
+                    href="/ncert/review"
+                    class="feedback-btn secondary"
+                >
+                    ⭐ Rate the App
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DISCLAIMER
+===================================================== -->
+
+<section class="disclaimer-section">
+
+    <div class="container">
+
+
+        <div class="disclaimer-box">
+
+            <h3>
+                Important Disclaimer
+            </h3>
+
+            <p>
+
+                NCERT All In One is an independent educational
+                platform and is not affiliated with, authorized
+                by, endorsed by, or officially connected with
+                NCERT, CBSE, or any government organization.
+                Educational resources are provided through the
+                application's available features and may be
+                sourced from publicly available educational
+                resources. Please refer to the Privacy Policy
+                for information about data handling.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+
+        <div>
+
+            <div class="footer-brand">
+                NCERT <span>All In One</span>
+            </div>
+
+
+            <div class="footer-description">
+
+                An independent educational platform designed
+                to organize useful study resources and
+                preparation tools for students.
+
+            </div>
+
+
+            <div class="copyright">
+
+                © 2026 NCERT All In One. All rights reserved.
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="/ncert">
+                Home
+            </a>
+
+            <a href="#features">
+                Features
+            </a>
+
+            <a href="#resources">
+                Resources
+            </a>
+
+            <a href="/ncert/privacy-policy">
+                Privacy Policy
+            </a>
+
+            <a href="/ncert/terms">
+                Terms of Service
+            </a>
+
+            <a href="mailto:nr1432r@gmail.com">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
