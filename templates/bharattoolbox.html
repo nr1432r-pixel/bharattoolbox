@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bharat Toolbox | All-in-One Useful Tools</title>
+
+    <meta
+        name="description"
+        content="Bharat Toolbox brings useful everyday tools together in one simple and convenient app."
+    >
+
+    <meta name="theme-color" content="#0b57d0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background: #f7faff;
+            color: #101828;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid #e7edf5;
+        }
+
+        .nav-container {
+            max-width: 1180px;
+            margin: auto;
+            padding: 13px 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 46px;
+            height: 46px;
+
+            object-fit: cover;
+
+            border-radius: 13px;
+
+            box-shadow:
+                0 7px 20px rgba(11, 87, 208, 0.18);
+        }
+
+        .brand-info {
+            line-height: 1.15;
+        }
+
+        .brand-name {
+            font-size: 17px;
+            font-weight: 800;
+            color: #101828;
+        }
+
+        .brand-tagline {
+            display: block;
+
+            margin-top: 3px;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            color: #7b8798;
+
+            letter-spacing: .3px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-links a {
+            padding: 9px 12px;
+
+            border-radius: 10px;
+
+            color: #526174;
+
+            font-size: 14px;
+            font-weight: 650;
+
+            transition: .25s ease;
+        }
+
+        .nav-links a:hover {
+            background: #edf4ff;
+            color: #0b57d0;
+        }
+
+        .nav-download {
+            background: #0b57d0 !important;
+            color: white !important;
+
+            padding: 10px 16px !important;
+
+            box-shadow:
+                0 8px 20px rgba(11, 87, 208, .20);
+        }
+
+        .nav-download:hover {
+            background: #0847ad !important;
+            transform: translateY(-1px);
+        }
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(42, 110, 255, .16),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 10% 90%,
+                    rgba(77, 150, 255, .10),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    180deg,
+                    #ffffff 0%,
+                    #f6f9ff 100%
+                );
+
+            padding: 82px 20px 75px;
+
+            border-bottom: 1px solid #e8eef7;
+        }
+
+        .hero-container {
+            max-width: 1180px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+
+            align-items: center;
+
+            gap: 55px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 8px 14px;
+
+            background: #eaf2ff;
+            color: #0b57d0;
+
+            border: 1px solid #d7e6ff;
+
+            border-radius: 50px;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-badge-dot {
+            width: 7px;
+            height: 7px;
+
+            background: #18a558;
+
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            max-width: 700px;
+
+            font-size: clamp(40px, 5.5vw, 68px);
+
+            line-height: 1.04;
+
+            letter-spacing: -2.8px;
+
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #0b57d0;
+        }
+
+        .hero-description {
+            max-width: 650px;
+
+            font-size: 18px;
+
+            color: #667085;
+
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .primary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            background: #0b57d0;
+            color: white;
+
+            padding: 13px 19px;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            box-shadow:
+                0 12px 25px rgba(11, 87, 208, .20);
+
+            transition: .25s ease;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-2px);
+            background: #0847ad;
+            box-shadow:
+                0 15px 30px rgba(11, 87, 208, .25);
+        }
+
+        .secondary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            background: white;
+            color: #344054;
+
+            border: 1px solid #dfe6f0;
+
+            padding: 13px 19px;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+            font-weight: 750;
+
+            transition: .25s ease;
+        }
+
+        .secondary-btn:hover {
+            border-color: #b9d0f7;
+            background: #f8fbff;
+            color: #0b57d0;
+        }
+
+        .hero-note {
+            margin-top: 19px;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            color: #7b8798;
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .hero-note span {
+            color: #18a558;
+            font-size: 16px;
+        }
+
+        /* =========================================
+           HERO VISUAL
+        ========================================= */
+
+        .hero-visual {
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            min-height: 390px;
+        }
+
+        .logo-card {
+            width: min(320px, 80vw);
+
+            background: rgba(255,255,255,.86);
+
+            border: 1px solid rgba(219,228,241,.95);
+
+            border-radius: 32px;
+
+            padding: 32px;
+
+            text-align: center;
+
+            box-shadow:
+                0 30px 70px rgba(31, 67, 120, .13);
+
+            backdrop-filter: blur(15px);
+
+            position: relative;
+            z-index: 3;
+        }
+
+        .main-logo {
+            width: 150px;
+            height: 150px;
+
+            object-fit: cover;
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 20px 45px rgba(11, 87, 208, .20);
+
+            margin-bottom: 19px;
+        }
+
+        .logo-card h3 {
+            font-size: 23px;
+            margin-bottom: 6px;
+        }
+
+        .logo-card p {
+            color: #7a8798;
+            font-size: 13px;
+        }
+
+        .floating-card {
+            position: absolute;
+
+            background: white;
+
+            border: 1px solid #e4eaf3;
+
+            border-radius: 15px;
+
+            padding: 12px 15px;
+
+            box-shadow:
+                0 15px 35px rgba(16,24,40,.10);
+
+            font-size: 12px;
+            font-weight: 800;
+
+            color: #344054;
+
+            z-index: 5;
+        }
+
+        .floating-one {
+            top: 20px;
+            left: 0;
+        }
+
+        .floating-two {
+            right: 0;
+            top: 80px;
+        }
+
+        .floating-three {
+            bottom: 35px;
+            left: 20px;
+        }
+
+        /* =========================================
+           STATS
+        ========================================= */
+
+        .stats {
+            max-width: 1000px;
+
+            margin: -28px auto 0;
+
+            padding: 0 20px;
+
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            background: white;
+
+            border: 1px solid #e3e9f2;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 15px 40px rgba(16,24,40,.07);
+
+            overflow: hidden;
+        }
+
+        .stat {
+            padding: 23px;
+
+            text-align: center;
+
+            border-right: 1px solid #edf1f6;
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat strong {
+            display: block;
+
+            color: #0b57d0;
+
+            font-size: 25px;
+        }
+
+        .stat span {
+            color: #7a8798;
+
+            font-size: 12px;
+            font-weight: 650;
+        }
+
+        /* =========================================
+           COMMON SECTION
+        ========================================= */
+
+        .section {
+            padding: 85px 20px;
+        }
+
+        .section-container {
+            max-width: 1180px;
+            margin: auto;
+        }
+
+        .section-heading {
+            max-width: 700px;
+
+            margin: 0 auto 45px;
+
+            text-align: center;
+        }
+
+        .section-label {
+            display: inline-block;
+
+            color: #0b57d0;
+
+            background: #eaf2ff;
+
+            border-radius: 50px;
+
+            padding: 7px 12px;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            margin-bottom: 13px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(29px, 4vw, 43px);
+
+            letter-spacing: -1.2px;
+
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            color: #667085;
+
+            font-size: 15px;
+        }
+
+        /* =========================================
+           TOOLS
+        ========================================= */
+
+        .tools-section {
+            background: white;
+        }
+
+        .tools-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 15px;
+        }
+
+        .tool-card {
+            padding: 21px;
+
+            border: 1px solid #e4eaf2;
+
+            border-radius: 17px;
+
+            background: #fff;
+
+            transition: .25s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+
+            border-color: #c9dcfb;
+
+            box-shadow:
+                0 15px 35px rgba(16,24,40,.07);
+        }
+
+        .tool-icon {
+            width: 43px;
+            height: 43px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: #edf4ff;
+
+            color: #0b57d0;
+
+            font-size: 20px;
+
+            margin-bottom: 15px;
+        }
+
+        .tool-card h3 {
+            font-size: 15px;
+
+            margin-bottom: 5px;
+        }
+
+        .tool-card p {
+            color: #7a8798;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+        /* =========================================
+           FEATURES
+        ========================================= */
+
+        .features-section {
+            background: #f6f9ff;
+        }
+
+        .features-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 18px;
+        }
+
+        .feature-card {
+            background: white;
+
+            border: 1px solid #e4eaf2;
+
+            border-radius: 20px;
+
+            padding: 27px;
+
+            transition: .25s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 35px rgba(16,24,40,.06);
+        }
+
+        .feature-icon {
+            font-size: 28px;
+
+            margin-bottom: 14px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: #667085;
+
+            font-size: 13px;
+        }
+
+        /* =========================================
+           WHY
+        ========================================= */
+
+        .why-grid {
+            display: grid;
+
+            grid-template-columns: .9fr 1.1fr;
+
+            gap: 50px;
+
+            align-items: center;
+        }
+
+        .why-box {
+            background:
+                linear-gradient(
+                    145deg,
+                    #0b57d0,
+                    #174ea6
+                );
+
+            color: white;
+
+            border-radius: 27px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 22px 50px rgba(11,87,208,.20);
+        }
+
+        .why-box .mini-logo {
+            width: 58px;
+            height: 58px;
+
+            border-radius: 16px;
+
+            object-fit: cover;
+
+            margin-bottom: 20px;
+        }
+
+        .why-box h3 {
+            font-size: 27px;
+
+            margin-bottom: 12px;
+        }
+
+        .why-box p {
+            color: rgba(255,255,255,.80);
+
+            font-size: 14px;
+        }
+
+        .check-list {
+            display: grid;
+
+            gap: 17px;
+        }
+
+        .check-item {
+            display: flex;
+
+            gap: 13px;
+
+            align-items: flex-start;
+        }
+
+        .check {
+            width: 29px;
+            height: 29px;
+
+            flex: 0 0 29px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background: #eaf2ff;
+
+            color: #0b57d0;
+
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .check-item h4 {
+            font-size: 15px;
+
+            margin-bottom: 3px;
+        }
+
+        .check-item p {
+            color: #667085;
+
+            font-size: 13px;
+        }
+
+        /* =========================================
+           APP CTA
+        ========================================= */
+
+        .download-section {
+            padding: 30px 20px 90px;
+        }
+
+        .download-card {
+            max-width: 1180px;
+
+            margin: auto;
+
+            background:
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(255,255,255,.13),
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0b57d0,
+                    #174ea6
+                );
+
+            color: white;
+
+            border-radius: 30px;
+
+            padding: 48px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 35px;
+
+            box-shadow:
+                0 25px 55px rgba(11,87,208,.20);
+        }
+
+        .download-card h2 {
+            font-size: 34px;
+
+            line-height: 1.15;
+
+            margin-bottom: 10px;
+        }
+
+        .download-card p {
+            max-width: 650px;
+
+            color: rgba(255,255,255,.80);
+
+            font-size: 14px;
+        }
+
+        .play-btn {
+            flex-shrink: 0;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            background: white;
+
+            color: #0b57d0;
+
+            padding: 14px 20px;
+
+            border-radius: 13px;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            transition: .25s ease;
+        }
+
+        .play-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(0,0,0,.15);
+        }
+
+        /* =========================================
+           LINKS
+        ========================================= */
+
+        .links-section {
+            background: white;
+
+            padding: 65px 20px;
+        }
+
+        .links-grid {
+            max-width: 900px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 13px;
+        }
+
+        .link-card {
+            text-align: center;
+
+            padding: 19px 12px;
+
+            border: 1px solid #e4eaf2;
+
+            border-radius: 15px;
+
+            color: #526174;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            transition: .25s ease;
+        }
+
+        .link-card:hover {
+            background: #f5f9ff;
+
+            color: #0b57d0;
+
+            border-color: #c9dcfb;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            background: #ffffff;
+
+            border-top: 1px solid #e4eaf2;
+
+            padding: 38px 20px;
+        }
+
+        .footer-inner {
+            max-width: 1180px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+        .footer-brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+        }
+
+        .footer-logo {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 11px;
+
+            object-fit: cover;
+        }
+
+        .footer-name {
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .footer-copy {
+            margin-top: 3px;
+
+            color: #8994a3;
+
+            font-size: 11px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            gap: 18px;
+
+            flex-wrap: wrap;
+
+            justify-content: flex-end;
+        }
+
+        .footer-links a {
+            color: #667085;
+
+            font-size: 12px;
+
+            font-weight: 650;
+        }
+
+        .footer-links a:hover {
+            color: #0b57d0;
+        }
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 950px) {
+
+            .hero-container {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+
+                gap: 40px;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons,
+            .hero-note {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                min-height: 340px;
+            }
+
+            .tools-grid {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+
+            .nav-container {
+                padding: 11px 15px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 58px 17px 55px;
+            }
+
+            .hero h1 {
+                letter-spacing: -1.8px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .hero-visual {
+                min-height: 310px;
+            }
+
+            .logo-card {
+                width: 275px;
+
+                padding: 25px;
+            }
+
+            .main-logo {
+                width: 125px;
+                height: 125px;
+            }
+
+            .floating-one {
+                left: 0;
+                top: 12px;
+            }
+
+            .floating-two {
+                right: 0;
+                top: 50px;
+            }
+
+            .floating-three {
+                bottom: 15px;
+                left: 5px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat {
+                border-right: none;
+
+                border-bottom: 1px solid #edf1f6;
+            }
+
+            .stat:last-child {
+                border-bottom: none;
+            }
+
+            .section {
+                padding: 65px 16px;
+            }
+
+            .tools-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .download-card {
+                padding: 31px 24px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                border-radius: 24px;
+            }
+
+            .download-card h2 {
+                font-size: 28px;
+            }
+
+            .links-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .footer-inner {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .footer-links {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 430px) {
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .primary-btn,
+            .secondary-btn {
+                width: 100%;
+            }
+
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <a
+            href="{{ url_for('bharat_toolbox') }}"
+            class="brand"
+        >
+
+            <img
+                src="{{ url_for('static', filename='images/bharat-toolbox.png') }}"
+                alt="Bharat Toolbox Logo"
+                class="brand-logo"
+            >
+
+            <div class="brand-info">
+
+                <div class="brand-name">
+                    Bharat Toolbox
+                </div>
+
+                <span class="brand-tagline">
+                    USEFUL TOOLS • ONE PLACE
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="#tools">
+                Tools
+            </a>
+
+            <a href="#features">
+                Features
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_privacy') }}">
+                Privacy
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_terms') }}">
+                Terms
+            </a>
+
+            <a
+                href="{{ url_for('bharat_toolbox_app') }}"
+                class="nav-download"
+            >
+                Get App
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-container">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+
+                <span class="hero-badge-dot"></span>
+
+                Smart Everyday Tools
+
+            </div>
+
+
+            <h1>
+                Everything You Need,
+                <span>In One Toolbox.</span>
+            </h1>
+
+
+            <p class="hero-description">
+
+                Bharat Toolbox brings useful everyday tools together
+                in one simple, fast and convenient application.
+                From calculators and converters to PDF, image,
+                text and utility tools — everything is organized
+                in one place.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="{{ url_for('bharat_toolbox_app') }}"
+                    class="primary-btn"
+                >
+                    ▶ &nbsp; Get Bharat Toolbox
+                </a>
+
+
+                <a
+                    href="#tools"
+                    class="secondary-btn"
+                >
+                    Explore Tools →
+                </a>
+
+            </div>
+
+
+            <div class="hero-note">
+
+                <span>✓</span>
+
+                Simple • Useful • Easy to Use
+
+            </div>
+
+        </div>
+
+
+        <!-- HERO VISUAL -->
+
+        <div class="hero-visual">
+
+            <div class="floating-card floating-one">
+                🧮 Calculator
+            </div>
+
+            <div class="floating-card floating-two">
+                📄 PDF Tools
+            </div>
+
+            <div class="floating-card floating-three">
+                🔳 QR Generator
+            </div>
+
+
+            <div class="logo-card">
+
+                <img
+                    src="{{ url_for('static', filename='images/bharat-toolbox.png') }}"
+                    alt="Bharat Toolbox"
+                    class="main-logo"
+                >
+
+                <h3>
+                    Bharat Toolbox
+                </h3>
+
+                <p>
+                    Useful tools. One simple app.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<div class="stats">
+
+    <div class="stats-grid">
+
+        <div class="stat">
+
+            <strong>50+</strong>
+
+            <span>
+                Useful Tools
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>1 App</strong>
+
+            <span>
+                Multiple Everyday Utilities
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>Easy</strong>
+
+            <span>
+                Simple User Experience
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     TOOLS
+===================================================== -->
+
+<section
+    class="section tools-section"
+    id="tools"
+>
+
+    <div class="section-container">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                TOOLBOX
+            </div>
+
+            <h2>
+                Useful Tools,
+                All in One Place
+            </h2>
+
+            <p>
+                A growing collection of practical tools designed
+                for everyday tasks.
+            </p>
+
+        </div>
+
+
+        <div class="tools-grid">
+
+
+            <div class="tool-card">
+
+                <div class="tool-icon">
+                    🧮
+                </div>
+
+                <h3>
+                    Scientific Calculator
+                </h3>
+
+                <p>
+                    Perform everyday and advanced calculations.
+                </p>
+
+            </div>
+
+
+            <div class="tool-card">
+
+                <div class="tool-icon">
+                    📅
+                </div>
+
+                <h3>
+                    Age Calculator
+                </h3>
+
+                <p>
+                    Quickly calculate age and date differences.
+                </p>
+
+            </div>
+
+
+            <div class="tool-card">
+
+                <div class="tool-icon">
+                    📄
+                </div>
+
+                <h3>
+                    PDF Tools
+                </h3>
+
+                <p>
+                    Work with common PDF tasks and documents.
+                </p>
+
+            </div>
+
+
+            <div class="tool-card">
+
+                <div class="tool-icon">
+                    🖼️
+                </div>
+
+                <h3>
+                    Image Tools
+                </h3>
+
+                <p>
+                    Useful utilities for working with images.
+                </p>
+
+            </div>
+
+
+            <div class="tool-card">
+
+                <div class="tool-icon">
+                    🔳
+                </div>
+
+                <h3>
+                    QR Code Generator
+                </h3>
+
+                <p>
+                    Create QR codes quickly and easily.
+                </p>
+
+            </div>
+
+
+            <div class="tool-card">
+
+                <div class="tool-icon">
+                    🔐
+                </div>
+
+                <h3>
+                    Password Generator
+                </h3>
+
+                <p>
+                    Generate strong random passwords.
+                </p>
+
+            </div>
+
+
+            <div class="tool-card">
+
+                <div class="tool-icon">
+                    🔤
+                </div>
+
+                <h3>
+                    Text Tools
+                </h3>
+
+                <p>
+                    Handy utilities for text processing.
+                </p>
+
+            </div>
+
+
+            <div class="tool-card">
+
+                <div class="tool-icon">
+                    🌐
+                </div>
+
+                <h3>
+                    Translator
+                </h3>
+
+                <p>
+                    Translate text between supported languages.
+                </p>
+
+            </div>
+
+
+            <div class="tool-card">
+
+                <div class="tool-icon">
+                    💰
+                </div>
+
+                <h3>
+                    Money Calculator
+                </h3>
+
+                <p>
+                    Useful calculations for money and expenses.
+                </p>
+
+            </div>
+
+
+            <div class="tool-card">
+
+                <div class="tool-icon">
+                    ⛽
+                </div>
+
+                <h3>
+                    Petrol Calculator
+                </h3>
+
+                <p>
+                    Calculate fuel-related costs and usage.
+                </p>
+
+            </div>
+
+
+            <div class="tool-card">
+
+                <div class="tool-icon">
+                    🎂
+                </div>
+
+                <h3>
+                    Birthday Tools
+                </h3>
+
+                <p>
+                    Handy birthday and date utilities.
+                </p>
+
+            </div>
+
+
+            <div class="tool-card">
+
+                <div class="tool-icon">
+                    🛠️
+                </div>
+
+                <h3>
+                    Everyday Utilities
+                </h3>
+
+                <p>
+                    More practical tools for daily needs.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section
+    class="section features-section"
+    id="features"
+>
+
+    <div class="section-container">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                WHY BHARAT TOOLBOX
+            </div>
+
+            <h2>
+                Designed to Keep Things Simple
+            </h2>
+
+            <p>
+                Built around convenience, accessibility and
+                practical everyday use.
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Fast & Convenient
+                </h3>
+
+                <p>
+                    Access multiple useful utilities without
+                    needing separate applications for every task.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🎯
+                </div>
+
+                <h3>
+                    Simple Interface
+                </h3>
+
+                <p>
+                    Clean navigation and straightforward tools
+                    make everyday tasks easier.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Mobile Friendly
+                </h3>
+
+                <p>
+                    Designed to provide a comfortable experience
+                    across different Android devices.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🧰
+                </div>
+
+                <h3>
+                    Many Utilities
+                </h3>
+
+                <p>
+                    Calculators, converters, PDF tools, image
+                    utilities, text tools and more.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🔒
+                </div>
+
+                <h3>
+                    Privacy Focused
+                </h3>
+
+                <p>
+                    Bharat Toolbox is designed with user privacy
+                    in mind and does not require an account.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🔄
+                </div>
+
+                <h3>
+                    Continuously Improving
+                </h3>
+
+                <p>
+                    New improvements and useful tools may be added
+                    in future versions.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHY SECTION
+===================================================== -->
+
+<section class="section">
+
+    <div class="section-container">
+
+        <div class="why-grid">
+
+
+            <div class="why-box">
+
+                <img
+                    src="{{ url_for('static', filename='images/bharat-toolbox.png') }}"
+                    alt="Bharat Toolbox Logo"
+                    class="mini-logo"
+                >
+
+                <h3>
+                    One App.
+                    Many Useful Tools.
+                </h3>
+
+                <p>
+                    Bharat Toolbox is designed to make common
+                    digital tasks easier by bringing practical
+                    utilities together in one place.
+                </p>
+
+            </div>
+
+
+            <div class="check-list">
+
+
+                <div class="check-item">
+
+                    <div class="check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            No Account Required
+                        </h4>
+
+                        <p>
+                            The app is designed to work without
+                            requiring users to create an account.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <div class="check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Practical Everyday Utilities
+                        </h4>
+
+                        <p>
+                            Useful tools for calculations,
+                            documents, images, text and more.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <div class="check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Easy Navigation
+                        </h4>
+
+                        <p>
+                            Tools are organized to help you
+                            find what you need quickly.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="check-item">
+
+                    <div class="check">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <h4>
+                            Regular Improvements
+                        </h4>
+
+                        <p>
+                            The app may receive new tools,
+                            improvements and updates over time.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DOWNLOAD CTA
+===================================================== -->
+
+<section class="download-section">
+
+    <div class="download-card">
+
+        <div>
+
+            <h2>
+                Get Bharat Toolbox
+            </h2>
+
+            <p>
+                Download the app from Google Play and keep
+                useful tools within easy reach.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{{ url_for('bharat_toolbox_app') }}"
+            class="play-btn"
+        >
+            ▶ &nbsp; Get it on Google Play
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     QUICK LINKS
+===================================================== -->
+
+<section class="links-section">
+
+    <div class="section-container">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                QUICK LINKS
+            </div>
+
+            <h2>
+                Bharat Toolbox
+            </h2>
+
+            <p>
+                Helpful links and app information.
+            </p>
+
+        </div>
+
+
+        <div class="links-grid">
+
+
+            <a
+                href="{{ url_for('bharat_toolbox_app') }}"
+                class="link-card"
+            >
+                📱 Get App
+            </a>
+
+
+            <a
+                href="{{ url_for('bharat_toolbox_review') }}"
+                class="link-card"
+            >
+                ⭐ Rate App
+            </a>
+
+
+            <a
+                href="{{ url_for('bharat_toolbox_feedback') }}"
+                class="link-card"
+            >
+                💬 Feedback
+            </a>
+
+
+            <a
+                href="{{ url_for('bharat_toolbox_contact') }}"
+                class="link-card"
+            >
+                ✉️ Contact
+            </a>
+
+
+            <a
+                href="{{ url_for('bharat_toolbox_privacy') }}"
+                class="link-card"
+            >
+                🔒 Privacy Policy
+            </a>
+
+
+            <a
+                href="{{ url_for('bharat_toolbox_terms') }}"
+                class="link-card"
+            >
+                📋 Terms & Conditions
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-inner">
+
+
+        <div class="footer-brand">
+
+            <img
+                src="{{ url_for('static', filename='images/bharat-toolbox.png') }}"
+                alt="Bharat Toolbox"
+                class="footer-logo"
+            >
+
+            <div>
+
+                <div class="footer-name">
+                    Bharat Toolbox
+                </div>
+
+                <div class="footer-copy">
+                    © 2026 Bharat Toolbox. All rights reserved.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="#tools">
+                Tools
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_privacy') }}">
+                Privacy Policy
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_terms') }}">
+                Terms
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_review') }}">
+                Rate App
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_feedback') }}">
+                Feedback
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_contact') }}">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
