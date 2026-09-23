@@ -347,6 +347,29 @@ def spincash_pro_privacy():
 @app.route("/spincash-pro/terms")
 def spincash_pro_terms():
     return render_template("spincash-pro-terms.html")
+
+
+
+# =========================
+# SPINCASH OAUTH PAGES
+# =========================
+
+@app.route("/spincash")
+def spincash():
+    return render_template("spincash.html")
+
+
+@app.route("/spincash/privacy-policy")
+def spincash_privacy():
+    return render_template("spincash-privacy.html")
+
+
+@app.route("/spincash/terms")
+def spincash_terms():
+    return render_template("spincash-terms.html")
+
+
+
     
 # ---------------- 1️⃣ HINGLISH → HINDI ----------------
 @app.route("/hinglish-convert", methods=["POST"])
