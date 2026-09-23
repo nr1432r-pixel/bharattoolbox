@@ -370,6 +370,26 @@ def spincash_terms():
 
 
 
+# =========================
+# RollCash Pages
+# =========================
+
+@app.route("/rollcash")
+def rollcash():
+    return render_template("rollcash.html")
+
+
+@app.route("/rollcash/privacy-policy")
+def rollcash_privacy():
+    return render_template("rollcash-privacy.html")
+
+
+@app.route("/rollcash/terms")
+def rollcash_terms():
+    return render_template("rollcash-terms.html")
+
+
+
     
 # ---------------- 1️⃣ HINGLISH → HINDI ----------------
 @app.route("/hinglish-convert", methods=["POST"])
