@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Privacy Policy | Bharat Toolbox</title>
+
+    <meta
+        name="description"
+        content="Privacy Policy for Bharat Toolbox. Learn how Bharat Toolbox handles information, files, internet usage, advertisements, and third-party services."
+    >
+
+    <meta name="theme-color" content="#0b57d0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background: #f6f9ff;
+            color: #172033;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(255, 255, 255, 0.94);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid #e7edf5;
+        }
+
+        .nav-container {
+            max-width: 1180px;
+            margin: auto;
+
+            padding: 13px 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 46px;
+            height: 46px;
+
+            object-fit: cover;
+
+            border-radius: 13px;
+
+            box-shadow:
+                0 7px 20px rgba(11, 87, 208, 0.18);
+        }
+
+        .brand-info {
+            line-height: 1.15;
+        }
+
+        .brand-name {
+            font-size: 17px;
+            font-weight: 800;
+
+            color: #101828;
+        }
+
+        .brand-tagline {
+            display: block;
+
+            margin-top: 3px;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            color: #7b8798;
+
+            letter-spacing: .3px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+
+            gap: 5px;
+        }
+
+        .nav-links a {
+            padding: 9px 12px;
+
+            border-radius: 10px;
+
+            color: #526174;
+
+            font-size: 14px;
+            font-weight: 650;
+
+            transition: .25s ease;
+        }
+
+        .nav-links a:hover {
+            background: #edf4ff;
+            color: #0b57d0;
+        }
+
+        .nav-links .active {
+            background: #eaf2ff;
+            color: #0b57d0;
+        }
+
+        .nav-download {
+            background: #0b57d0 !important;
+
+            color: white !important;
+
+            padding: 10px 16px !important;
+
+            box-shadow:
+                0 8px 20px rgba(11, 87, 208, .20);
+        }
+
+        .nav-download:hover {
+            background: #0847ad !important;
+        }
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(42, 110, 255, .15),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    180deg,
+                    #ffffff 0%,
+                    #f6f9ff 100%
+                );
+
+            padding: 72px 20px 58px;
+
+            border-bottom: 1px solid #e8eef7;
+        }
+
+        .hero-inner {
+            max-width: 900px;
+
+            margin: auto;
+
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 8px 14px;
+
+            background: #eaf2ff;
+
+            border: 1px solid #d7e6ff;
+
+            color: #0b57d0;
+
+            border-radius: 50px;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            margin-bottom: 20px;
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+
+            background: #18a558;
+
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 58px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2px;
+
+            color: #101828;
+
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: #0b57d0;
+        }
+
+        .hero p {
+            max-width: 720px;
+
+            margin: auto;
+
+            color: #667085;
+
+            font-size: 17px;
+        }
+
+        .updated {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            padding: 8px 14px;
+
+            border-radius: 9px;
+
+            background: white;
+
+            border: 1px solid #e3e9f2;
+
+            color: #667085;
+
+            font-size: 12px;
+            font-weight: 650;
+        }
+
+        /* =========================================
+           PAGE
+        ========================================= */
+
+        .page {
+            max-width: 980px;
+
+            margin: auto;
+
+            padding: 55px 20px 80px;
+        }
+
+        /* =========================================
+           INTRO
+        ========================================= */
+
+        .intro-card {
+            background: white;
+
+            border: 1px solid #e2e9f3;
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            margin-bottom: 22px;
+
+            box-shadow:
+                0 15px 40px rgba(16,24,40,.045);
+        }
+
+        .intro-card p {
+            color: #526174;
+        }
+
+        .intro-card strong {
+            color: #101828;
+        }
+
+        /* =========================================
+           SECTIONS
+        ========================================= */
+
+        .section {
+            background: white;
+
+            border: 1px solid #e2e9f3;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            margin-bottom: 18px;
+
+            box-shadow:
+                0 10px 30px rgba(16,24,40,.035);
+
+            transition: .25s ease;
+        }
+
+        .section:hover {
+            border-color: #d4e2f8;
+        }
+
+        .section-number {
+            width: 39px;
+            height: 39px;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: #eaf2ff;
+
+            color: #0b57d0;
+
+            font-size: 12px;
+            font-weight: 850;
+
+            margin-bottom: 15px;
+        }
+
+        .section h2 {
+            font-size: 22px;
+
+            letter-spacing: -.4px;
+
+            color: #101828;
+
+            margin-bottom: 12px;
+        }
+
+        .section p {
+            color: #526174;
+
+            margin-bottom: 12px;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section ul {
+            margin: 13px 0 0 20px;
+
+            color: #526174;
+        }
+
+        .section li {
+            margin-bottom: 9px;
+
+            padding-left: 3px;
+        }
+
+        .highlight {
+            margin-top: 17px;
+
+            padding: 17px 18px;
+
+            background: #f4f8ff;
+
+            border-left: 4px solid #0b57d0;
+
+            border-radius: 0 13px 13px 0;
+
+            color: #44546a;
+
+            font-size: 14px;
+        }
+
+        .highlight a {
+            color: #0b57d0;
+
+            font-weight: 750;
+        }
+
+        /* =========================================
+           PRIVACY POINT
+        ========================================= */
+
+        .privacy-point {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 13px;
+
+            margin-top: 16px;
+        }
+
+        .privacy-icon {
+            width: 34px;
+            height: 34px;
+
+            flex: 0 0 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #edf4ff;
+
+            color: #0b57d0;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+        }
+
+        .privacy-point strong {
+            display: block;
+
+            color: #344054;
+
+            font-size: 14px;
+
+            margin-bottom: 2px;
+        }
+
+        .privacy-point span {
+            color: #667085;
+
+            font-size: 13px;
+        }
+
+        /* =========================================
+           CONTACT
+        ========================================= */
+
+        .contact-card {
+            margin-top: 18px;
+
+            padding: 34px;
+
+            border-radius: 24px;
+
+            background:
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(255,255,255,.12),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0b57d0,
+                    #174ea6
+                );
+
+            color: white;
+
+            box-shadow:
+                0 20px 45px rgba(11,87,208,.20);
+        }
+
+        .contact-card h3 {
+            font-size: 25px;
+
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            color: rgba(255,255,255,.80);
+
+            margin-bottom: 20px;
+        }
+
+        .contact-email {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            background: white;
+
+            color: #0b57d0;
+
+            padding: 11px 17px;
+
+            border-radius: 11px;
+
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            background: white;
+
+            border-top: 1px solid #e2e9f3;
+
+            padding: 38px 20px;
+        }
+
+        .footer-inner {
+            max-width: 1180px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+        .footer-brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+        }
+
+        .footer-logo {
+            width: 40px;
+            height: 40px;
+
+            object-fit: cover;
+
+            border-radius: 11px;
+        }
+
+        .footer-name {
+            font-size: 15px;
+
+            font-weight: 800;
+        }
+
+        .footer-copy {
+            color: #8994a3;
+
+            font-size: 11px;
+
+            margin-top: 3px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: flex-end;
+
+            gap: 18px;
+        }
+
+        .footer-links a {
+            color: #667085;
+
+            font-size: 12px;
+
+            font-weight: 650;
+        }
+
+        .footer-links a:hover {
+            color: #0b57d0;
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 760px) {
+
+            .nav-container {
+                padding: 11px 15px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 55px 17px 45px;
+            }
+
+            .hero h1 {
+                letter-spacing: -1.3px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .page {
+                padding: 35px 15px 55px;
+            }
+
+            .intro-card,
+            .section {
+                padding: 23px;
+
+                border-radius: 17px;
+            }
+
+            .section h2 {
+                font-size: 20px;
+            }
+
+            .contact-card {
+                padding: 26px;
+
+                border-radius: 19px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .footer-links {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <a
+            href="{{ url_for('bharat_toolbox') }}"
+            class="brand"
+        >
+
+            <img
+                src="{{ url_for('static', filename='images/bharat-toolbox.png') }}"
+                alt="Bharat Toolbox Logo"
+                class="brand-logo"
+            >
+
+            <div class="brand-info">
+
+                <div class="brand-name">
+                    Bharat Toolbox
+                </div>
+
+                <span class="brand-tagline">
+                    USEFUL TOOLS • ONE PLACE
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('bharat_toolbox') }}">
+                Home
+            </a>
+
+            <a
+                href="{{ url_for('bharat_toolbox_privacy') }}"
+                class="active"
+            >
+                Privacy Policy
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_terms') }}">
+                Terms
+            </a>
+
+            <a
+                href="{{ url_for('bharat_toolbox_app') }}"
+                class="nav-download"
+            >
+                Get App
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <div class="hero-badge">
+
+            <span class="badge-dot"></span>
+
+            Privacy & Security
+
+        </div>
+
+
+        <h1>
+            Privacy <span>Policy</span>
+        </h1>
+
+
+        <p>
+            Bharat Toolbox respects your privacy and is designed
+            to provide useful tools while keeping your personal
+            information protected.
+        </p>
+
+
+        <div class="updated">
+            Last Updated: August 2026
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTENT
+===================================================== -->
+
+<main class="page">
+
+
+    <!-- INTRO -->
+
+    <div class="intro-card">
+
+        <p>
+            <strong>Bharat Toolbox</strong> respects your privacy.
+            This application is designed to provide various useful
+            tools while ensuring that your personal information
+            remains protected.
+        </p>
+
+        <p style="margin-top: 12px;">
+            We do not collect, store, or share any personal
+            information from users through the application.
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         01 INFORMATION COLLECTION
+    ================================================== -->
+
+    <section class="section">
+
+        <div class="section-number">
+            01
+        </div>
+
+        <h2>
+            Information Collection
+        </h2>
+
+        <p>
+            Bharat Toolbox does not collect any personally
+            identifiable information such as your name, email
+            address, phone number, or location.
+        </p>
+
+        <p>
+            The app functions without requiring users to create
+            an account or provide personal details.
+        </p>
+
+        <div class="privacy-point">
+
+            <div class="privacy-icon">
+                ✓
+            </div>
+
+            <div>
+
+                <strong>
+                    No account required
+                </strong>
+
+                <span>
+                    You can use the application without creating
+                    a user account.
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         02 FILE ACCESS
+    ================================================== -->
+
+    <section class="section">
+
+        <div class="section-number">
+            02
+        </div>
+
+        <h2>
+            File Access
+        </h2>
+
+        <p>
+            Some tools inside the app may request permission to
+            access device storage. This permission is used only
+            for selecting, processing, or saving files such as
+            images or documents.
+        </p>
+
+        <div class="highlight">
+
+            <strong>
+                Local Processing:
+            </strong>
+
+            All file processing happens locally on the user's
+            device. No files are uploaded, stored, or shared
+            on any external server.
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         03 INTERNET USAGE
+    ================================================== -->
+
+    <section class="section">
+
+        <div class="section-number">
+            03
+        </div>
+
+        <h2>
+            Internet Usage
+        </h2>
+
+        <p>
+            Certain features inside Bharat Toolbox may require
+            an internet connection to access online tools or
+            web-based services.
+        </p>
+
+        <p>
+            The app itself does not track, record, or monitor
+            user activity on the internet.
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         04 THIRD PARTY
+    ================================================== -->
+
+    <section class="section">
+
+        <div class="section-number">
+            04
+        </div>
+
+        <h2>
+            Third-Party Services
+        </h2>
+
+        <p>
+            Bharat Toolbox may use trusted third-party services
+            to improve functionality and display advertisements.
+            These services may collect limited technical
+            information according to their own privacy policies.
+        </p>
+
+        <p>
+            Third-party services used in this app may include:
+        </p>
+
+
+        <ul>
+
+            <li>
+                Google Play Services
+            </li>
+
+            <li>
+                Google AdMob — for advertisements
+            </li>
+
+        </ul>
+
+
+        <div class="privacy-point">
+
+            <div class="privacy-icon">
+                📢
+            </div>
+
+            <div>
+
+                <strong>
+                    Google AdMob
+                </strong>
+
+                <span>
+                    Google AdMob may collect information such as
+                    device identifiers, advertising ID, and basic
+                    usage data in order to provide relevant
+                    advertisements.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="highlight">
+
+            For more information, you can review
+
+            <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Google's Privacy Policy
+            </a>.
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         05 DATA SECURITY
+    ================================================== -->
+
+    <section class="section">
+
+        <div class="section-number">
+            05
+        </div>
+
+        <h2>
+            Data Security
+        </h2>
+
+        <p>
+            All processing performed by Bharat Toolbox occurs
+            locally on the user's device.
+        </p>
+
+        <p>
+            The application does not store any user data on
+            external servers.
+        </p>
+
+        <p>
+            We take reasonable measures to ensure that the app
+            operates securely and respects user privacy.
+        </p>
+
+
+        <div class="highlight">
+
+            Bharat Toolbox is designed to minimize the need
+            for personal information and external data storage.
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         06 CHILDREN
+    ================================================== -->
+
+    <section class="section">
+
+        <div class="section-number">
+            06
+        </div>
+
+        <h2>
+            Children's Privacy
+        </h2>
+
+        <p>
+            Bharat Toolbox does not knowingly collect personal
+            information from children.
+        </p>
+
+        <p>
+            The app is designed for general audiences.
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         07 CHANGES
+    ================================================== -->
+
+    <section class="section">
+
+        <div class="section-number">
+            07
+        </div>
+
+        <h2>
+            Changes to This Privacy Policy
+        </h2>
+
+        <p>
+            This Privacy Policy may be updated in future versions
+            of the app. Any changes will be reflected on this page.
+        </p>
+
+        <p>
+            Users are encouraged to review this Privacy Policy
+            periodically.
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         08 CONTACT
+    ================================================== -->
+
+    <section class="section">
+
+        <div class="section-number">
+            08
+        </div>
+
+        <h2>
+            Contact Us
+        </h2>
+
+        <p>
+            If you have any questions regarding this Privacy Policy,
+            you can contact us at:
+        </p>
+
+
+        <div class="contact-card">
+
+            <h3>
+                Have a Privacy Question?
+            </h3>
+
+            <p>
+                We're happy to help with questions or concerns
+                regarding privacy and Bharat Toolbox.
+            </p>
+
+            <a
+                href="mailto:nr1432r@gmail.com?subject=Bharat%20Toolbox%20Privacy%20Question"
+                class="contact-email"
+            >
+                ✉ &nbsp; nr1432r@gmail.com
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-inner">
+
+
+        <div class="footer-brand">
+
+            <img
+                src="{{ url_for('static', filename='images/bharat-toolbox.png') }}"
+                alt="Bharat Toolbox"
+                class="footer-logo"
+            >
+
+            <div>
+
+                <div class="footer-name">
+                    Bharat Toolbox
+                </div>
+
+                <div class="footer-copy">
+                    © 2026 Bharat Toolbox. All rights reserved.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="{{ url_for('bharat_toolbox') }}">
+                Home
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_privacy') }}">
+                Privacy Policy
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_terms') }}">
+                Terms & Conditions
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_review') }}">
+                Rate App
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_feedback') }}">
+                Feedback
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_contact') }}">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
