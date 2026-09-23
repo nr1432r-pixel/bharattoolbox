@@ -390,6 +390,26 @@ def rollcash_terms():
 
 
 
+# =========================
+# NCERT All In One Pages
+# =========================
+
+@app.route("/ncert")
+def ncert():
+    return render_template("ncert.html")
+
+
+@app.route("/ncert/privacy-policy")
+def ncert_privacy():
+    return render_template("ncert-privacy.html")
+
+
+@app.route("/ncert/terms")
+def ncert_terms():
+    return render_template("ncert-terms.html")
+
+
+
     
 # ---------------- 1️⃣ HINGLISH → HINDI ----------------
 @app.route("/hinglish-convert", methods=["POST"])
