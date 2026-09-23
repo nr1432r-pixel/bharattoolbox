@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Terms & Conditions | Bharat Toolbox</title>
+
+    <meta
+        name="description"
+        content="Terms and Conditions for Bharat Toolbox. Please read these terms before using the Bharat Toolbox application."
+    >
+
+    <meta name="theme-color" content="#0b57d0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background: #f6f9ff;
+            color: #172033;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background: rgba(255, 255, 255, 0.94);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid #e7edf5;
+        }
+
+        .nav-container {
+            max-width: 1180px;
+            margin: auto;
+
+            padding: 13px 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 46px;
+            height: 46px;
+
+            object-fit: cover;
+
+            border-radius: 13px;
+
+            box-shadow:
+                0 7px 20px rgba(11, 87, 208, 0.18);
+        }
+
+        .brand-info {
+            line-height: 1.15;
+        }
+
+        .brand-name {
+            font-size: 17px;
+            font-weight: 800;
+
+            color: #101828;
+        }
+
+        .brand-tagline {
+            display: block;
+
+            margin-top: 3px;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            color: #7b8798;
+
+            letter-spacing: .3px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+
+            gap: 5px;
+        }
+
+        .nav-links a {
+            padding: 9px 12px;
+
+            border-radius: 10px;
+
+            color: #526174;
+
+            font-size: 14px;
+            font-weight: 650;
+
+            transition: .25s ease;
+        }
+
+        .nav-links a:hover {
+            background: #edf4ff;
+            color: #0b57d0;
+        }
+
+        .nav-links .active {
+            background: #eaf2ff;
+            color: #0b57d0;
+        }
+
+        .nav-download {
+            background: #0b57d0 !important;
+
+            color: white !important;
+
+            padding: 10px 16px !important;
+
+            box-shadow:
+                0 8px 20px rgba(11, 87, 208, .20);
+        }
+
+        .nav-download:hover {
+            background: #0847ad !important;
+        }
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(42, 110, 255, .15),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    180deg,
+                    #ffffff 0%,
+                    #f6f9ff 100%
+                );
+
+            padding: 72px 20px 58px;
+
+            border-bottom: 1px solid #e8eef7;
+        }
+
+        .hero-inner {
+            max-width: 900px;
+            margin: auto;
+
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+
+            align-items: center;
+            gap: 8px;
+
+            padding: 8px 14px;
+
+            background: #eaf2ff;
+
+            border: 1px solid #d7e6ff;
+
+            color: #0b57d0;
+
+            border-radius: 50px;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            margin-bottom: 20px;
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+
+            background: #18a558;
+
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 58px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2px;
+
+            color: #101828;
+
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: #0b57d0;
+        }
+
+        .hero p {
+            max-width: 720px;
+
+            margin: auto;
+
+            color: #667085;
+
+            font-size: 17px;
+        }
+
+        .updated {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            padding: 8px 14px;
+
+            border-radius: 9px;
+
+            background: white;
+
+            border: 1px solid #e3e9f2;
+
+            color: #667085;
+
+            font-size: 12px;
+            font-weight: 650;
+        }
+
+        /* =========================================
+           CONTENT
+        ========================================= */
+
+        .page {
+            max-width: 980px;
+
+            margin: auto;
+
+            padding: 55px 20px 80px;
+        }
+
+        .intro-card {
+            background: white;
+
+            border: 1px solid #e2e9f3;
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            margin-bottom: 22px;
+
+            box-shadow:
+                0 15px 40px rgba(16, 24, 40, .045);
+        }
+
+        .intro-card p {
+            color: #526174;
+        }
+
+        .intro-card strong {
+            color: #101828;
+        }
+
+        .section {
+            background: white;
+
+            border: 1px solid #e2e9f3;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            margin-bottom: 18px;
+
+            box-shadow:
+                0 10px 30px rgba(16, 24, 40, .035);
+
+            transition: .25s ease;
+        }
+
+        .section:hover {
+            border-color: #d4e2f8;
+        }
+
+        .section-number {
+            width: 39px;
+            height: 39px;
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: #eaf2ff;
+
+            color: #0b57d0;
+
+            font-size: 12px;
+            font-weight: 850;
+
+            margin-bottom: 15px;
+        }
+
+        .section h2 {
+            font-size: 22px;
+
+            letter-spacing: -.4px;
+
+            color: #101828;
+
+            margin-bottom: 12px;
+        }
+
+        .section p {
+            color: #526174;
+
+            margin-bottom: 12px;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section ul {
+            margin: 13px 0 0 20px;
+
+            color: #526174;
+        }
+
+        .section li {
+            margin-bottom: 9px;
+
+            padding-left: 3px;
+        }
+
+        .highlight {
+            margin-top: 17px;
+
+            padding: 17px 18px;
+
+            background: #f4f8ff;
+
+            border-left: 4px solid #0b57d0;
+
+            border-radius: 0 13px 13px 0;
+
+            color: #44546a;
+
+            font-size: 14px;
+        }
+
+        .warning {
+            margin-top: 17px;
+
+            padding: 17px 18px;
+
+            background: #fff8e8;
+
+            border: 1px solid #f0dfb6;
+
+            border-radius: 13px;
+
+            color: #6d571e;
+
+            font-size: 14px;
+        }
+
+        .warning strong {
+            color: #4e3d0d;
+        }
+
+        /* =========================================
+           CONTACT
+        ========================================= */
+
+        .contact-card {
+            margin-top: 18px;
+
+            padding: 34px;
+
+            border-radius: 24px;
+
+            background:
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(255,255,255,.12),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0b57d0,
+                    #174ea6
+                );
+
+            color: white;
+
+            box-shadow:
+                0 20px 45px rgba(11,87,208,.20);
+        }
+
+        .contact-card h3 {
+            font-size: 25px;
+
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            color: rgba(255,255,255,.80);
+
+            margin-bottom: 20px;
+        }
+
+        .contact-email {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            background: white;
+
+            color: #0b57d0;
+
+            padding: 11px 17px;
+
+            border-radius: 11px;
+
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            background: white;
+
+            border-top: 1px solid #e2e9f3;
+
+            padding: 38px 20px;
+        }
+
+        .footer-inner {
+            max-width: 1180px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+        .footer-brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+        }
+
+        .footer-logo {
+            width: 40px;
+            height: 40px;
+
+            object-fit: cover;
+
+            border-radius: 11px;
+        }
+
+        .footer-name {
+            font-size: 15px;
+
+            font-weight: 800;
+        }
+
+        .footer-copy {
+            color: #8994a3;
+
+            font-size: 11px;
+
+            margin-top: 3px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: flex-end;
+
+            gap: 18px;
+        }
+
+        .footer-links a {
+            color: #667085;
+
+            font-size: 12px;
+
+            font-weight: 650;
+        }
+
+        .footer-links a:hover {
+            color: #0b57d0;
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 760px) {
+
+            .nav-container {
+                padding: 11px 15px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 55px 17px 45px;
+            }
+
+            .hero h1 {
+                letter-spacing: -1.3px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .page {
+                padding: 35px 15px 55px;
+            }
+
+            .intro-card,
+            .section {
+                padding: 23px;
+
+                border-radius: 17px;
+            }
+
+            .section h2 {
+                font-size: 20px;
+            }
+
+            .contact-card {
+                padding: 26px;
+
+                border-radius: 19px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .footer-links {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="nav-container">
+
+        <a
+            href="{{ url_for('bharat_toolbox') }}"
+            class="brand"
+        >
+
+            <img
+                src="{{ url_for('static', filename='images/bharat-toolbox.png') }}"
+                alt="Bharat Toolbox Logo"
+                class="brand-logo"
+            >
+
+            <div class="brand-info">
+
+                <div class="brand-name">
+                    Bharat Toolbox
+                </div>
+
+                <span class="brand-tagline">
+                    USEFUL TOOLS • ONE PLACE
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="{{ url_for('bharat_toolbox') }}">
+                Home
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_privacy') }}">
+                Privacy Policy
+            </a>
+
+            <a
+                href="{{ url_for('bharat_toolbox_terms') }}"
+                class="active"
+            >
+                Terms
+            </a>
+
+            <a
+                href="{{ url_for('bharat_toolbox_app') }}"
+                class="nav-download"
+            >
+                Get App
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-inner">
+
+        <div class="hero-badge">
+
+            <span class="badge-dot"></span>
+
+            Legal Information
+
+        </div>
+
+
+        <h1>
+            Terms & <span>Conditions</span>
+        </h1>
+
+
+        <p>
+            Please read these Terms and Conditions carefully
+            before using Bharat Toolbox and its available tools.
+        </p>
+
+
+        <div class="updated">
+            Last Updated: August 2026
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTENT
+===================================================== -->
+
+<main class="page">
+
+
+    <!-- INTRO -->
+
+    <div class="intro-card">
+
+        <p>
+            Welcome to <strong>Bharat Toolbox</strong>.
+            These Terms and Conditions govern your use of the
+            Bharat Toolbox application and its related services.
+        </p>
+
+        <p style="margin-top: 12px;">
+            By downloading, accessing, or using Bharat Toolbox,
+            you acknowledge that you have read, understood, and
+            agreed to these Terms and Conditions.
+        </p>
+
+    </div>
+
+
+    <!-- 01 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            01
+        </div>
+
+        <h2>
+            About Bharat Toolbox
+        </h2>
+
+        <p>
+            Bharat Toolbox is an application that provides a
+            collection of useful tools and utilities for everyday
+            tasks.
+        </p>
+
+        <p>
+            The application may include calculators, converters,
+            PDF utilities, image tools, text tools, QR code
+            generation, password generation, translation tools,
+            and other utilities.
+        </p>
+
+        <div class="highlight">
+
+            The availability and functionality of individual
+            tools may change as the application is updated.
+
+        </div>
+
+    </section>
+
+
+    <!-- 02 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            02
+        </div>
+
+        <h2>
+            Acceptance of Terms
+        </h2>
+
+        <p>
+            By using Bharat Toolbox, you agree to comply with
+            these Terms and Conditions and all applicable laws
+            and regulations.
+        </p>
+
+        <p>
+            If you do not agree with these Terms, please do not
+            use the application.
+        </p>
+
+    </section>
+
+
+    <!-- 03 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            03
+        </div>
+
+        <h2>
+            Use of the Application
+        </h2>
+
+        <p>
+            You may use Bharat Toolbox for lawful personal and
+            legitimate purposes.
+        </p>
+
+        <ul>
+
+            <li>
+                Use the application only for lawful activities.
+            </li>
+
+            <li>
+                Do not attempt to interfere with the normal
+                operation of the application.
+            </li>
+
+            <li>
+                Do not attempt to gain unauthorized access to
+                application systems or services.
+            </li>
+
+            <li>
+                Do not use the application to conduct fraudulent,
+                abusive, or unlawful activities.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- 04 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            04
+        </div>
+
+        <h2>
+            File Processing
+        </h2>
+
+        <p>
+            Certain tools may allow users to select, process,
+            convert, or save files such as images and documents.
+        </p>
+
+        <p>
+            Where processing is performed locally on the device,
+            users remain responsible for the files they select
+            and process through the application.
+        </p>
+
+        <div class="warning">
+
+            <strong>Important:</strong>
+            Do not use the application to process files that you
+            do not have the legal right or permission to use.
+
+        </div>
+
+    </section>
+
+
+    <!-- 05 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            05
+        </div>
+
+        <h2>
+            Accuracy of Tools and Results
+        </h2>
+
+        <p>
+            Bharat Toolbox provides tools intended for convenience
+            and general-purpose use.
+        </p>
+
+        <p>
+            While reasonable efforts may be made to provide useful
+            and accurate results, we do not guarantee that every
+            calculation, conversion, generated result, translation,
+            or other output will always be accurate or error-free.
+        </p>
+
+        <div class="highlight">
+
+            Users should independently verify important results
+            before relying on them for financial, legal, medical,
+            academic, professional, or other important decisions.
+
+        </div>
+
+    </section>
+
+
+    <!-- 06 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            06
+        </div>
+
+        <h2>
+            Internet and Third-Party Services
+        </h2>
+
+        <p>
+            Certain features may require an internet connection
+            or may depend on third-party services.
+        </p>
+
+        <p>
+            Third-party services may have their own terms,
+            conditions, privacy policies, availability,
+            and technical limitations.
+        </p>
+
+        <p>
+            Bharat Toolbox is not responsible for changes,
+            interruptions, or limitations caused by third-party
+            services.
+        </p>
+
+    </section>
+
+
+    <!-- 07 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            07
+        </div>
+
+        <h2>
+            Advertisements
+        </h2>
+
+        <p>
+            Bharat Toolbox may display advertisements through
+            third-party advertising services such as Google AdMob.
+        </p>
+
+        <p>
+            Advertisements are provided by third-party services
+            and may be personalized or non-personalized according
+            to applicable settings and policies.
+        </p>
+
+        <div class="highlight">
+
+            Your interaction with advertisements may be subject
+            to the privacy policies and terms of the relevant
+            advertising provider.
+
+        </div>
+
+    </section>
+
+
+    <!-- 08 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            08
+        </div>
+
+        <h2>
+            Intellectual Property
+        </h2>
+
+        <p>
+            The Bharat Toolbox name, logo, application design,
+            interface, graphics, original content, and software
+            may be protected by applicable intellectual property
+            laws.
+        </p>
+
+        <p>
+            You may not copy, reproduce, modify, distribute,
+            sell, or commercially exploit protected application
+            materials without appropriate authorization, except
+            where permitted by applicable law.
+        </p>
+
+    </section>
+
+
+    <!-- 09 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            09
+        </div>
+
+        <h2>
+            Prohibited Activities
+        </h2>
+
+        <p>
+            You agree not to misuse Bharat Toolbox or attempt
+            to compromise its security or functionality.
+        </p>
+
+        <ul>
+
+            <li>
+                Reverse engineer, decompile, or modify the
+                application except where permitted by law.
+            </li>
+
+            <li>
+                Attempt unauthorized access to application
+                systems, databases, or services.
+            </li>
+
+            <li>
+                Introduce malicious software, code, or harmful
+                content into the application.
+            </li>
+
+            <li>
+                Abuse automated requests or attempt to overload
+                application services.
+            </li>
+
+            <li>
+                Use the application for fraudulent or unlawful
+                purposes.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- 10 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            10
+        </div>
+
+        <h2>
+            Application Availability
+        </h2>
+
+        <p>
+            We aim to keep Bharat Toolbox available and
+            functional, but uninterrupted access cannot be
+            guaranteed.
+        </p>
+
+        <p>
+            The application may become temporarily unavailable
+            due to maintenance, updates, technical problems,
+            network issues, device limitations, or third-party
+            service interruptions.
+        </p>
+
+    </section>
+
+
+    <!-- 11 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            11
+        </div>
+
+        <h2>
+            Disclaimer
+        </h2>
+
+        <p>
+            Bharat Toolbox is provided on an "as is" and
+            "as available" basis to the extent permitted by
+            applicable law.
+        </p>
+
+        <p>
+            We do not guarantee that the application, its tools,
+            or its results will always be accurate, complete,
+            secure, uninterrupted, or free from errors.
+        </p>
+
+        <div class="warning">
+
+            <strong>Important:</strong>
+            Bharat Toolbox should not be considered a substitute
+            for professional advice. Verify important information
+            with appropriate qualified or official sources.
+
+        </div>
+
+    </section>
+
+
+    <!-- 12 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            12
+        </div>
+
+        <h2>
+            Limitation of Liability
+        </h2>
+
+        <p>
+            To the maximum extent permitted by applicable law,
+            Bharat Toolbox and its developers will not be
+            responsible for losses or damages resulting from
+            the use of, or inability to use, the application.
+        </p>
+
+        <p>
+            This may include losses arising from inaccurate
+            results, technical interruptions, third-party
+            services, or reliance on information provided by
+            the application.
+        </p>
+
+    </section>
+
+
+    <!-- 13 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            13
+        </div>
+
+        <h2>
+            Privacy
+        </h2>
+
+        <p>
+            Your use of Bharat Toolbox is also subject to our
+            Privacy Policy, which explains how the application
+            handles information, file access, internet usage,
+            advertisements, and third-party services.
+        </p>
+
+        <div class="highlight">
+
+            <a href="{{ url_for('bharat_toolbox_privacy') }}">
+                View Bharat Toolbox Privacy Policy →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- 14 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            14
+        </div>
+
+        <h2>
+            Children's Privacy
+        </h2>
+
+        <p>
+            Bharat Toolbox does not knowingly collect personal
+            information from children.
+        </p>
+
+        <p>
+            The application is designed for general audiences.
+            Parents or guardians should supervise children's use
+            of applications and internet-connected services where
+            appropriate.
+        </p>
+
+    </section>
+
+
+    <!-- 15 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            15
+        </div>
+
+        <h2>
+            Changes to These Terms
+        </h2>
+
+        <p>
+            These Terms and Conditions may be updated from time
+            to time to reflect changes to the application,
+            services, legal requirements, or operational practices.
+        </p>
+
+        <p>
+            Updated Terms will be published on this page with
+            a revised "Last Updated" date.
+        </p>
+
+        <p>
+            Continued use of Bharat Toolbox after updated Terms
+            are published may constitute acceptance of the updated
+            Terms to the extent permitted by applicable law.
+        </p>
+
+    </section>
+
+
+    <!-- 16 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            16
+        </div>
+
+        <h2>
+            Termination
+        </h2>
+
+        <p>
+            Users may stop using Bharat Toolbox at any time.
+        </p>
+
+        <p>
+            Access to certain services or features may be
+            restricted, suspended, or discontinued where necessary,
+            including for security, technical, operational, or
+            misuse-related reasons.
+        </p>
+
+    </section>
+
+
+    <!-- 17 -->
+
+    <section class="section">
+
+        <div class="section-number">
+            17
+        </div>
+
+        <h2>
+            Contact Us
+        </h2>
+
+        <p>
+            If you have questions, concerns, feedback, or requests
+            regarding these Terms and Conditions, please contact us.
+        </p>
+
+        <div class="contact-card">
+
+            <h3>
+                Need Help?
+            </h3>
+
+            <p>
+                Contact the Bharat Toolbox team for questions
+                regarding the application or these Terms.
+            </p>
+
+            <a
+                href="mailto:nr1432r@gmail.com?subject=Bharat%20Toolbox%20Terms%20Question"
+                class="contact-email"
+            >
+                ✉ &nbsp; nr1432r@gmail.com
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-inner">
+
+
+        <div class="footer-brand">
+
+            <img
+                src="{{ url_for('static', filename='images/bharat-toolbox.png') }}"
+                alt="Bharat Toolbox"
+                class="footer-logo"
+            >
+
+            <div>
+
+                <div class="footer-name">
+                    Bharat Toolbox
+                </div>
+
+                <div class="footer-copy">
+                    © 2026 Bharat Toolbox. All rights reserved.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="{{ url_for('bharat_toolbox') }}">
+                Home
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_privacy') }}">
+                Privacy Policy
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_terms') }}">
+                Terms & Conditions
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_review') }}">
+                Rate App
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_feedback') }}">
+                Feedback
+            </a>
+
+            <a href="{{ url_for('bharat_toolbox_contact') }}">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
