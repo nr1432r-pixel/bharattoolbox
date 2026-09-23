@@ -427,6 +427,75 @@ def ncert_review():
     return redirect(
         "https://play.google.com/store/apps/details?id=com.ncert.allinone&pcampaignid=web_share"
     )
+
+
+
+
+# =========================================================
+# Bharat Toolbox Pages
+# =========================================================
+
+@app.route("/bharat-toolbox")
+def bharat_toolbox():
+    return render_template("bharattoolbox.html")
+
+
+# Privacy Policy
+@app.route("/bharat-toolbox/privacy-policy")
+def bharat_toolbox_privacy():
+    return render_template("bharattoolbox-privacy.html")
+
+
+# Terms & Conditions
+@app.route("/bharat-toolbox/terms")
+def bharat_toolbox_terms():
+    return render_template("bharattoolbox-terms.html")
+
+
+# Google Play App
+@app.route("/bharat-toolbox/app")
+def bharat_toolbox_app():
+    from flask import redirect
+
+    return redirect(
+        "https://play.google.com/store/apps/details?id=com.bharattoolbox.app&pcampaignid=web_share"
+    )
+
+
+# App Review
+@app.route("/bharat-toolbox/review")
+def bharat_toolbox_review():
+    from flask import redirect
+
+    return redirect(
+        "https://play.google.com/store/apps/details?id=com.bharattoolbox.app&pcampaignid=web_share"
+    )
+
+
+# Feedback
+@app.route("/bharat-toolbox/feedback")
+def bharat_toolbox_feedback():
+    from flask import redirect
+
+    return redirect(
+        "mailto:nr1432r@gmail.com"
+        "?subject=Bharat%20Toolbox%20Feedback"
+    )
+
+
+# Contact
+@app.route("/bharat-toolbox/contact")
+def bharat_toolbox_contact():
+    from flask import redirect
+
+    return redirect(
+        "mailto:nr1432r@gmail.com"
+        "?subject=Bharat%20Toolbox%20Support"
+    )
+
+
+
+
     
 # ---------------- 1️⃣ HINGLISH → HINDI ----------------
 @app.route("/hinglish-convert", methods=["POST"])
