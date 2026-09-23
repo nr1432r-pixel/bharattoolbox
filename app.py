@@ -390,9 +390,9 @@ def rollcash_terms():
 
 
 
-# =========================
+# =========================================================
 # NCERT All In One Pages
-# =========================
+# =========================================================
 
 @app.route("/ncert")
 def ncert():
@@ -409,7 +409,24 @@ def ncert_terms():
     return render_template("ncert-terms.html")
 
 
+# Google Play App
+@app.route("/ncert/app")
+def ncert_app():
+    from flask import redirect
 
+    return redirect(
+        "https://play.google.com/store/apps/details?id=com.ncert.allinone&pcampaignid=web_share"
+    )
+
+
+# App Review
+@app.route("/ncert/review")
+def ncert_review():
+    from flask import redirect
+
+    return redirect(
+        "https://play.google.com/store/apps/details?id=com.ncert.allinone&pcampaignid=web_share"
+    )
     
 # ---------------- 1️⃣ HINGLISH → HINDI ----------------
 @app.route("/hinglish-convert", methods=["POST"])
